@@ -6,18 +6,22 @@ import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Build;
-import android.support.annotation.NonNull;
+import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 import android.view.MenuItem;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import www.weride.com.fragments.GroupFragment;
 import www.weride.com.fragments.MapFragment;
@@ -38,9 +42,10 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(!(canAccessLocation())){
-            grabPermissions(LOCATION_PERMS, INITIAL_REQUEST+3);
-        }
+        checkPermissions();
+//        if(!(canAccessLocation())){
+//            grabPermissions(LOCATION_PERMS, INITIAL_REQUEST+3);
+//        }
         setContentView(R.layout.activity_main);
         //prepare and set toolbar
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -52,9 +57,6 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
         drawerToggle = setupDrawerToggle();
 
         mainDrawer.addDrawerListener(drawerToggle);
-        if(!(canAccessLocation())){
-            grabPermissions(LOCATION_PERMS, INITIAL_REQUEST+3);
-        }
 
         //set the first fragment.
         fragmentManager = getSupportFragmentManager();
@@ -157,5 +159,34 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     @Override
     public void onFragmentInteraction(Uri uri) {
 
+    }
+
+    private final static int REQUEST_CODE_ASK_PERMISSIONS = 1;
+
+    private static final String[] REQUIRED_SDK_PERMISSIONS = new String[]{
+            Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.BLUETOOTH, Manifest.permission.ACCESS_COARSE_LOCATION};
+
+
+    protected void checkPermissions() {
+        final List<String> missingPermissions = new ArrayList<String>();
+        // check all required dynamic permissions
+        for (final String permission : REQUIRED_SDK_PERMISSIONS) {
+            final int result = ContextCompat.checkSelfPermission(this, permission);
+            if (result != PackageManager.PERMISSION_GRANTED) {
+                missingPermissions.add(permission);
+            }
+        }
+        if (!missingPermissions.isEmpty()) {
+            // request all missing permissions
+            final String[] permissions = missingPermissions
+                    .toArray(new String[missingPermissions.size()]);
+            ActivityCompat.requestPermissions(this, permissions, REQUEST_CODE_ASK_PERMISSIONS);
+        } else {
+            final int[] grantResults = new int[REQUIRED_SDK_PERMISSIONS.length];
+            Arrays.fill(grantResults, PackageManager.PERMISSION_GRANTED);
+            onRequestPermissionsResult(REQUEST_CODE_ASK_PERMISSIONS, REQUIRED_SDK_PERMISSIONS,
+                    grantResults);
+
+        }
     }
 }
