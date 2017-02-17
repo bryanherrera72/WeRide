@@ -1,14 +1,17 @@
 package www.weride.com.fragments;
 
 import android.content.Context;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import com.mapzen.android.graphics.MapView;
 import com.mapzen.android.graphics.MapzenMap;
@@ -31,6 +34,8 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
     PeliasSearchView searchView;
     MapzenMap map;
     private boolean enableLocationOnResume = false;
+    private ImageButton findme;
+    int[] findmelocation = new int[2];
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -40,6 +45,7 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
     private String mParam1;
     private String mParam2;
 
+    private boolean permissionsvalid = false;
     private OnFragmentInteractionListener mListener;
 
     public MapFragment() {
@@ -81,11 +87,16 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         final View map = inflater.inflate(R.layout.fragment_map, container, false);
         MapView mapview = (MapView) map.findViewById(R.id.fragment_map);
-
         mapview.getMapAsync(new BubbleWrapStyle(), this);
+        findme = mapview.getFindMe();
+        findme.setBackgroundResource(R.drawable.find_me_fab);
+        findme.setImageResource(R.drawable.ic_find_me_dark);
+        findme.getLocationInWindow(findmelocation);
+        Log.i("location is: ", "" + findmelocation[0]);
         return map;
     }
 
@@ -94,6 +105,10 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
+    }
+
+    public void setPermissionsvalid(boolean valid){
+        permissionsvalid = valid;
     }
 
     @Override
@@ -116,18 +131,23 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
     @Override
     public void onResume(){
         super.onResume();
-        if (enableLocationOnResume) {
-           map.setMyLocationEnabled(true);
+        if(!(map == null)) {
+            if (enableLocationOnResume) {
+                map.setMyLocationEnabled(true);
+            }
         }
     }
     @Override
     public void onPause(){
         super.onPause();
-        if (map.isMyLocationEnabled()) {
-            map.setMyLocationEnabled(false);
-            enableLocationOnResume = true;
+        if(!( map == null)){
+            if (map.isMyLocationEnabled()) {
+                map.setMyLocationEnabled(false);
+                enableLocationOnResume = true;
+            }
         }
     }
+
     @Override
     public void onMapReady(MapzenMap mapzenMap) {
         //set the current instance of the map to this "READY" map
@@ -135,7 +155,11 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
         MapFragment.this.map = mapzenMap;
         //set some initial configs
         mapzenMap.setCameraType(CameraType.ISOMETRIC);
-        mapzenMap.setMyLocationEnabled(true);
+        //determine if location is allowed, if so, display current location button.
+        if(permissionsvalid) {
+            Log.i("true?", "" + permissionsvalid);
+            mapzenMap.setMyLocationEnabled(true);
+        }
     }
 
     /**
@@ -151,5 +175,7 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+        void onPermissionsValid(boolean valid);
     }
+
 }

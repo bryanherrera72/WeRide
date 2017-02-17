@@ -2,6 +2,7 @@ package www.weride.com;
 
 import android.Manifest;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.net.Uri;
@@ -17,59 +18,69 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import www.weride.com.activities.SearchActivity;
 import www.weride.com.fragments.GroupFragment;
 import www.weride.com.fragments.MapFragment;
 
 public class MainActivity extends AppCompatActivity implements MapFragment.OnFragmentInteractionListener,
                                                                 GroupFragment.OnFragmentInteractionListener{
-    private DrawerLayout mainDrawer;
-    private Toolbar toolbar;
-    private NavigationView navDrawer;
+    public DrawerLayout mainDrawer;
+    public Toolbar toolbar, standardtoolbar;
+    private  NavigationView navDrawer;
 
     private FragmentManager fragmentManager;
-    private ActionBarDrawerToggle drawerToggle;
+    public ActionBarDrawerToggle drawerToggle;
     private MapFragment map;
-    private static final int INITIAL_REQUEST= 1337;
-    private static final String[] LOCATION_PERMS = {
-            Manifest.permission.ACCESS_FINE_LOCATION
+
+    private boolean locationaccess = false;
+
+
+    private final static int REQUEST_CODE_ASK_PERMISSIONS = 1;
+
+    private static final String[] REQUIRED_SDK_PERMISSIONS = new String[]{
+            Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.BLUETOOTH, Manifest.permission.ACCESS_COARSE_LOCATION
     };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         checkPermissions();
-//        if(!(canAccessLocation())){
-//            grabPermissions(LOCATION_PERMS, INITIAL_REQUEST+3);
-//        }
         setContentView(R.layout.activity_main);
         //prepare and set toolbar
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        standardtoolbar = (Toolbar) findViewById(R.id.standard_toolbar);
+
         //set the drawer layout inside the main layout
         mainDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         navDrawer = (NavigationView) findViewById(R.id.navView);
         setupDrawerContent(navDrawer);
-        drawerToggle = setupDrawerToggle();
-
-        mainDrawer.addDrawerListener(drawerToggle);
+        swapToMapToolbar();
 
         //set the first fragment.
         fragmentManager = getSupportFragmentManager();
-        try{map =  MapFragment.class.newInstance();}
+        try{
+            map =  MapFragment.class.newInstance();
+        }
         catch(Exception e){
             e.printStackTrace();
         }
-        fragmentManager.beginTransaction().replace(R.id.flContent, map).commit();
+        fragmentManager.beginTransaction().add(R.id.flContent, map).commit();
     }
 
-    private ActionBarDrawerToggle setupDrawerToggle(){
+    //assign a drawer toggle to a toolbar parameter.
+    private ActionBarDrawerToggle setupDrawerToggle(Toolbar toolbar){
         return new ActionBarDrawerToggle(this, mainDrawer,toolbar, R.string.drawer_open, R.string.drawer_close);
     }
+
     //Setup the drawer content within the nav view
     private void setupDrawerContent(NavigationView navigationView){
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener(){
@@ -86,16 +97,21 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
         Fragment frag = null;
         Class fragmentClass;
         switch(item.getItemId()){
+            //map is visible
             case R.id.map_fragment:
                 fragmentClass = MapFragment.class;
+                swapToMapToolbar();
                 break;
+            //group fragment, shows list of groups + option to create
             case R.id.group_fragment:
                 fragmentClass = GroupFragment.class;
+                swapToFragmentToolbar();
                 break;
             default:
                 fragmentClass = MapFragment.class;
         }
         try{
+            //This ensures that we're getting an instance of a map fragment set, if that's what we need.
             if(item.getItemId() == R.id.map_fragment){
                 frag = map;
             }
@@ -107,7 +123,7 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
         }
         fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.flContent, frag).commit();
-
+        //set the nav drawer item as checked and close it.
         item.setChecked(true);
         setTitle(item.getTitle());
         mainDrawer.closeDrawers();
@@ -117,21 +133,37 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     @Override
     protected void onPostCreate(Bundle savedInstanceState){
         super.onPostCreate(savedInstanceState);
+        //resync the drawer toggle.
         drawerToggle.syncState();
     }
 
     @Override
     public void onConfigurationChanged(Configuration newConfig){
         super.onConfigurationChanged(newConfig);
+        //This changes drawer toggle depending on orientation
         drawerToggle.onConfigurationChanged(newConfig);
+    }
+    //inflate the menu that is shown in the action bar.
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        //********************************************** need to check if this is the main toolbar,
+        // thats the only one getting search icon.
+        getMenuInflater().inflate(R.menu.menu_main,menu);
+        return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         switch(item.getItemId()){
+            //hamburger was clicked
             case android.R.id.home:
                 mainDrawer.openDrawer(GravityCompat.START);
-                return true;
+                break;
+            //search button was clicked
+            case R.id.search:
+                Intent i  = new Intent(this, SearchActivity.class);
+                startActivity(i);
+                break;
         }
         if(drawerToggle.onOptionsItemSelected(item)){
             return true;
@@ -141,14 +173,45 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     @Override
     public void onResume(){
         super.onResume();
+        //if we have a mapfragment, ensure the permissions are prepped.
+        MapFragment frag = (MapFragment) getSupportFragmentManager().findFragmentById(R.id.map_fragment);
+        //if(frag!=null && frag.isVisible()){
+            onPermissionsValid(canAccessLocation());
+        //}
+    }
+    //Change the toolbar to the cardview toolbar
+    private void swapToMapToolbar(){
+        RelativeLayout mainlayout = (RelativeLayout) findViewById(R.id.activity_main);
+        //show the main cardview toolbar
+        toolbar.setVisibility(View.VISIBLE);
+        View cardview = mainlayout.findViewById(R.id.toolbar_card);
+        cardview.setVisibility(View.VISIBLE);
+
+        standardtoolbar.setVisibility(View.GONE);
+        setSupportActionBar(toolbar);
+        drawerToggle = setupDrawerToggle(toolbar);
+        mainDrawer.addDrawerListener(drawerToggle);
+        drawerToggle.syncState();
+    }
+    //Change the toolbar to standard toolbar.
+    private void swapToFragmentToolbar(){
+        RelativeLayout mainlayout = (RelativeLayout) findViewById(R.id.activity_main);
+        //hide the main cardview toolbar
+        View maintoolbar = mainlayout.findViewById(R.id.toolbar);
+        maintoolbar.setVisibility(View.GONE);
+        View cardview = mainlayout.findViewById(R.id.toolbar_card);
+        cardview.setVisibility(View.GONE);
+
+        standardtoolbar.setVisibility(View.VISIBLE);
+        setSupportActionBar(standardtoolbar);
+        drawerToggle = setupDrawerToggle(standardtoolbar);
+        mainDrawer.addDrawerListener(drawerToggle);
+        drawerToggle.syncState();
 
     }
-    @TargetApi(Build.VERSION_CODES.M)
-    private void grabPermissions(String[] perms, int request){
-        requestPermissions(LOCATION_PERMS, INITIAL_REQUEST+3);
-    }
+
     private boolean canAccessLocation(){
-        return (hasPermission(Manifest.permission.ACCESS_FINE_LOCATION));
+        return (hasPermission(Manifest.permission.ACCESS_FINE_LOCATION) || hasPermission(Manifest.permission.ACCESS_COARSE_LOCATION));
     }
 
     @TargetApi(Build.VERSION_CODES.M)
@@ -156,17 +219,8 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
         return(PackageManager.PERMISSION_GRANTED == checkSelfPermission(perm));
 
     }
-    @Override
-    public void onFragmentInteraction(Uri uri) {
 
-    }
-
-    private final static int REQUEST_CODE_ASK_PERMISSIONS = 1;
-
-    private static final String[] REQUIRED_SDK_PERMISSIONS = new String[]{
-            Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.BLUETOOTH, Manifest.permission.ACCESS_COARSE_LOCATION};
-
-
+    //check for permissions and if they are not there, request them.
     protected void checkPermissions() {
         final List<String> missingPermissions = new ArrayList<String>();
         // check all required dynamic permissions
@@ -189,4 +243,21 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
 
         }
     }
+
+    //this method checks the permissions and tells the mapfragment whether or not location is allowed
+    @Override
+    public void onPermissionsValid(boolean valid){
+        MapFragment mapfrag = (MapFragment) getSupportFragmentManager().findFragmentById(R.id.flContent);
+        if(mapfrag != null){
+            mapfrag.setPermissionsvalid(valid);
+        }
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
+
+
+
 }

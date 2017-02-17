@@ -6,6 +6,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@android:color/secondary_text_light</item>
+        <item name = "android:textColorPrimaryInverse">@color/mz_white</item>
     </style>
 
 </resources>

@@ -1,4 +1,5 @@
-<menu xmlns:android= "http://schemas.android.com/apk/res/android">
+<menu xmlns:android= "http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent">
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/map_fragment"
