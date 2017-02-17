@@ -37,6 +37,13 @@
                         layout="@layout/toolbar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
+
+                    <AutoCompleteTextView
+                        android:text=""
+                        android:layout_marginLeft="50dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/autoCompleteTextView" />
                 </android.support.v7.widget.CardView>
             </FrameLayout>
 

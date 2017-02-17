@@ -18,6 +18,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.AutoCompleteTextView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     private DrawerLayout mainDrawer;
     private Toolbar toolbar;
     private NavigationView navDrawer;
-
+    private AutoCompleteTextView aText;
     private FragmentManager fragmentManager;
     private ActionBarDrawerToggle drawerToggle;
     private MapFragment map;
