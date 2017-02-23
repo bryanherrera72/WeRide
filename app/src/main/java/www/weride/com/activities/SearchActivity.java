@@ -16,6 +16,5 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search);
         searchbar = (Toolbar) findViewById(R.id.search_bar);
         setSupportActionBar(searchbar);
-
     }
 }
