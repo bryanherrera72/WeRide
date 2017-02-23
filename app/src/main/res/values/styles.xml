@@ -9,5 +9,7 @@
         <item name="android:textColorPrimary">@android:color/secondary_text_light</item>
         <item name = "android:textColorPrimaryInverse">@color/mz_white</item>
     </style>
-
+    <style name="SplashTheme" parent = "Theme.AppCompat.NoActionBar">
+        <item name = "android:windowBackground">@drawable/splash_screen_background</item>
+    </style>
 </resources>
