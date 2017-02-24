@@ -266,5 +266,4 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     }
 
 
-
 }

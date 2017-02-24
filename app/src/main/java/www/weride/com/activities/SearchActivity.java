@@ -52,6 +52,7 @@ public class SearchActivity extends AppCompatActivity implements Callback<Result
         searchbar = (Toolbar) findViewById(R.id.search_bar);
         setSupportActionBar(searchbar);
 
+
         pelias = new Pelias();
         peliasLocationProvider = new MapzenMapPeliasLocationProvider(this);
         pelias.setLocationProvider(peliasLocationProvider);
@@ -131,6 +132,7 @@ public class SearchActivity extends AppCompatActivity implements Callback<Result
         if(destpoint != null) {
             mapfrag.displayPoint(destpoint);
         }
+
 
     }
 }
