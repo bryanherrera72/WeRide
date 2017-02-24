@@ -23,6 +23,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
 
+import com.mapzen.tangram.LngLat;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -176,7 +178,7 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
         //if we have a mapfragment, ensure the permissions are prepped.
         MapFragment frag = (MapFragment) getSupportFragmentManager().findFragmentById(R.id.map_fragment);
         //if(frag!=null && frag.isVisible()){
-            onPermissionsValid(canAccessLocation());
+//            onPermissionsValid(canAccessLocation());
         //}
     }
     //Change the toolbar to the cardview toolbar
@@ -210,9 +212,9 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
 
     }
 
-    private boolean canAccessLocation(){
-        return (hasPermission(Manifest.permission.ACCESS_FINE_LOCATION) || hasPermission(Manifest.permission.ACCESS_COARSE_LOCATION));
-    }
+//    private boolean canAccessLocation(){
+//        return (hasPermission(Manifest.permission.ACCESS_FINE_LOCATION) || hasPermission(Manifest.permission.ACCESS_COARSE_LOCATION));
+//    }
 
     @TargetApi(Build.VERSION_CODES.M)
     private boolean hasPermission(String perm){
@@ -251,6 +253,11 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
         if(mapfrag != null){
             mapfrag.setPermissionsvalid(valid);
         }
+    }
+
+    @Override
+    public void something(LngLat dest) {
+
     }
 
     @Override

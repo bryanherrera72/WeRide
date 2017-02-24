@@ -1,12 +1,9 @@
 package www.weride.com.fragments;
 
 import android.content.Context;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +16,7 @@ import com.mapzen.android.graphics.OnMapReadyCallback;
 import com.mapzen.android.graphics.model.BubbleWrapStyle;
 import com.mapzen.android.graphics.model.CameraType;
 import com.mapzen.pelias.widget.PeliasSearchView;
+import com.mapzen.tangram.LngLat;
 
 import www.weride.com.R;
 
@@ -36,6 +34,7 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
     private boolean enableLocationOnResume = false;
     private ImageButton findme;
     int[] findmelocation = new int[2];
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -78,9 +77,6 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        searchView = new PeliasSearchView(this.getContext());
-        ActionBar.LayoutParams layoutParams =
-                new ActionBar.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT);
 
     }
 
@@ -162,6 +158,11 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
         }
     }
 
+    public void displayPoint(LngLat destpoint) {
+        map.drawSearchResult(destpoint);
+        map.setPosition(destpoint);
+        map.setZoom(15);
+    }
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -176,6 +177,10 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
         void onPermissionsValid(boolean valid);
+        void something(LngLat dest);
+
     }
+
+
 
 }
