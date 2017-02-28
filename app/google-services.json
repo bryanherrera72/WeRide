@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "735715552598",
+    "firebase_url": "https://weride-30b7e.firebaseio.com",
+    "project_id": "weride-30b7e",
+    "storage_bucket": "weride-30b7e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:735715552598:android:96096c1c6b9a34b6",
+        "android_client_info": {
+          "package_name": "www.weride.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "735715552598-g7mn8vec5apqcnkt98l8fnu15smpqjn1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "www.weride.com",
+            "certificate_hash": "24c5588cebf1819e519b0a07519adfaf67527cd0"
+          }
+        },
+        {
+          "client_id": "735715552598-pv2fkt18catfl1fpiv27j60vjlff1s63.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDj7mDKtBrzZ44LXIqEbvpfsNGUDRWeOfc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "735715552598-pv2fkt18catfl1fpiv27j60vjlff1s63.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
