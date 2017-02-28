@@ -32,9 +32,11 @@ import java.util.List;
 import www.weride.com.activities.SearchActivity;
 import www.weride.com.fragments.GroupFragment;
 import www.weride.com.fragments.MapFragment;
+import www.weride.com.fragments.SettingsFragment;
 
 public class MainActivity extends AppCompatActivity implements MapFragment.OnFragmentInteractionListener,
-                                                                GroupFragment.OnFragmentInteractionListener{
+                                                                GroupFragment.OnFragmentInteractionListener,
+                                                                SettingsFragment.OnFragmentInteractionListener{
     public DrawerLayout mainDrawer;
     public Toolbar toolbar, standardtoolbar;
     private  NavigationView navDrawer;
@@ -109,6 +111,11 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
                 fragmentClass = GroupFragment.class;
                 swapToFragmentToolbar();
                 break;
+            //settings fragment.
+            case R.id.settings_fragment:
+                fragmentClass = SettingsFragment.class;
+                swapToFragmentToolbar();
+                break;
             default:
                 fragmentClass = MapFragment.class;
         }
@@ -148,8 +155,6 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     //inflate the menu that is shown in the action bar.
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
-        //********************************************** need to check if this is the main toolbar,
-        // thats the only one getting search icon.
         getMenuInflater().inflate(R.menu.menu_main,menu);
         return true;
     }

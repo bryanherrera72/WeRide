@@ -13,9 +13,9 @@
             android:title="Groups"
             />
         <item
-            android:id="@+id/options_fragment"
+            android:id="@+id/settings_fragment"
             android:icon="@drawable/ic_settings"
-            android:title="Options"
+            android:title="Settings"
             />
 
         <!--Any subheaders can be added as subgroups too-->
