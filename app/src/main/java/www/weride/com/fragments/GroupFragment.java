@@ -5,12 +5,23 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import java.security.acl.Group;
+import java.util.ArrayList;
+import java.util.List;
+
 import www.weride.com.MainActivity;
 import www.weride.com.R;
+import www.weride.com.classes.GroupInfo;
+import www.weride.com.classes.GroupsListAdapter;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,7 +42,8 @@ public class GroupFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
-
+    private RecyclerView groupslist;
+    private GroupsListAdapter groupadapter;
     public GroupFragment() {
         // Required empty public constructor
     }
@@ -67,13 +79,32 @@ public class GroupFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         setHasOptionsMenu(true);
-
-
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_group, container, false);
-
-
+        groupslist = (RecyclerView) view.findViewById(R.id.groups_list);
+        groupadapter = new GroupsListAdapter(getActivity(), getData());
+        groupslist.setAdapter(groupadapter);
+        groupslist.setLayoutManager(new LinearLayoutManager(this.getActivity()));
+        Button createGroup = (Button) view.findViewById(R.id.create_group_button);
+        createGroup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Create the dialog.
+            }
+        });
         return view;
+    }
+    public static List<GroupInfo> getData(){
+        List<GroupInfo> data = new ArrayList<>();
+        int[] icons = {R.drawable.ic_one, R.drawable.ic_two, R.drawable.ic_three};
+        String[] titles = {"Bryan's Group", "Friends", "Work"};
+        for(int i = 0; i < titles.length && i < icons.length; i++){
+            GroupInfo current = new GroupInfo();
+            current.iconId = icons[i];
+            current.title = titles[i];
+            data.add(current);
+        }
+        return data;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
