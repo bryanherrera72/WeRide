@@ -28,6 +28,10 @@
 
         </activity>
         <activity android:name=".activities.SearchActivity" />
+        <activity android:name=".activities.GroupActivity">
+
+        </activity>
+
     </application>
 
 </manifest>

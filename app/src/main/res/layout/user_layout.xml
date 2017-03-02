@@ -1,0 +1,30 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="www.weride.com.activities.GroupActivity">
+
+
+    <RelativeLayout
+        android:id="@+id/group_container"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+
+        <Button
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:id="@+id/add_user_button"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/add_user_text"
+            android:textColor="@color/mz_white"
+            android:enabled="true"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/groups_list"
+            android:layout_below="@id/create_group_button"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent" />
+    </RelativeLayout>
+
+</FrameLayout>
