@@ -2,7 +2,6 @@ package www.weride.com;
 
 import android.Manifest;
 import android.annotation.TargetApi;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.net.Uri;
@@ -29,9 +28,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import www.weride.com.activities.SearchActivity;
 import www.weride.com.fragments.GroupFragment;
 import www.weride.com.fragments.MapFragment;
+import www.weride.com.fragments.SearchFragment;
 
 public class MainActivity extends AppCompatActivity implements MapFragment.OnFragmentInteractionListener,
                                                                 GroupFragment.OnFragmentInteractionListener{
@@ -156,6 +155,8 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
+        Class fragmentClass;
+        SearchFragment frag;
         switch(item.getItemId()){
             //hamburger was clicked
             case android.R.id.home:
@@ -163,10 +164,13 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
                 break;
             //search button was clicked
             case R.id.search:
-                Intent i  = new Intent(this, SearchActivity.class);
-                startActivity(i);
+//                Intent i  = new Intent(this, SearchActivity.class);
+//                startActivity(i);
+                fragmentClass = SearchFragment.class;
                 break;
         }
+        if(!(fragmentClass == null))
+            frag = fragmentClass.newInstance();
         if(drawerToggle.onOptionsItemSelected(item)){
             return true;
         }
