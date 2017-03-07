@@ -167,8 +167,8 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
                 break;
             //search button was clicked
             case R.id.search:
-                Intent i  = new Intent(this, SearchActivity.class);
-                startActivity(i);
+                //Intent i  = new Intent(this, SearchActivity.class);
+                //startActivity(i);
                 break;
         }
         if(drawerToggle.onOptionsItemSelected(item)){
