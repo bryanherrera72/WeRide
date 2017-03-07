@@ -29,7 +29,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import www.weride.com.activities.SearchActivity;
 import www.weride.com.fragments.GroupFragment;
 import www.weride.com.fragments.MapFragment;
 import www.weride.com.fragments.SettingsFragment;
