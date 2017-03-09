@@ -17,6 +17,7 @@ import www.weride.com.R;
  * Created by bryanherrera on 2/28/17.
  */
 
+//note from miguel: removed references to image view
 public class GroupsListAdapter extends RecyclerView.Adapter<GroupsListAdapter.GroupViewHolder>{
     private LayoutInflater inflater;
     List<GroupInfo> data = Collections.emptyList();
@@ -37,7 +38,6 @@ public class GroupsListAdapter extends RecyclerView.Adapter<GroupsListAdapter.Gr
     public void onBindViewHolder(GroupViewHolder holder, int position) {
         GroupInfo current = data.get(position);
         holder.title.setText(current.title);
-        holder.icon.setImageResource(current.iconId);
     }
 
     @Override
@@ -47,11 +47,9 @@ public class GroupsListAdapter extends RecyclerView.Adapter<GroupsListAdapter.Gr
 
     class GroupViewHolder extends RecyclerView.ViewHolder{
         TextView title;
-        ImageView icon;
         public GroupViewHolder(View itemView) {
             super(itemView);
             title =(TextView) itemView.findViewById(R.id.listText);
-            icon = (ImageView) itemView.findViewById(R.id.listIcon);
         }
     }
 }

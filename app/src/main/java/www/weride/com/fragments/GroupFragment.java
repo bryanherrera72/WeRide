@@ -133,11 +133,9 @@ public class GroupFragment extends Fragment {
     }
     public static List<GroupInfo> getData(){
         List<GroupInfo> data = new ArrayList<>();
-        int[] icons = {R.drawable.ic_one, R.drawable.ic_two, R.drawable.ic_three};
         String[] titles = {"Bryan's Group", "Friends", "Work"};
-        for(int i = 0; i < titles.length && i < icons.length; i++){
+        for(int i = 0; i < titles.length; i++){
             GroupInfo current = new GroupInfo();
-            current.iconId = icons[i];
             current.title = titles[i];
             data.add(current);
         }
