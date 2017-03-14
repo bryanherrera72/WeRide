@@ -36,9 +36,10 @@ import www.weride.com.fragments.MapFragment;
 import www.weride.com.fragments.SearchFragment;
 
 public class MainActivity extends AppCompatActivity implements MapFragment.OnFragmentInteractionListener,
-                                                                GroupFragment.OnFragmentInteractionListener{
+                                                                GroupFragment.OnFragmentInteractionListener,
+                                                                SearchFragment.OnFragmentInteractionListener{
     public DrawerLayout mainDrawer;
-    public Toolbar toolbar, standardtoolbar;
+    private Toolbar toolbar, standardtoolbar;
     private  NavigationView navDrawer;
 
     private FragmentManager fragmentManager;
@@ -160,7 +161,7 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         Class fragmentClass= null;
-        SearchFragment frag;
+        SearchFragment frag = null;
         switch(item.getItemId()){
             //hamburger was clicked
             case android.R.id.home:
@@ -181,9 +182,11 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             }
+        fragmentManager.beginTransaction().replace(R.id.flContent, frag).commit();
         if(drawerToggle.onOptionsItemSelected(item)){
             return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
     @Override
@@ -193,6 +196,17 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
         //MapFragment frag = (MapFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_map);
         onPermissionsValid(canAccessLocation());
     }
+    public Toolbar getToolbar(){
+        Toolbar rtn;
+        if(toolbar.isShown()){
+            rtn = toolbar;
+        }
+        else{
+            rtn = standardtoolbar;
+        }
+        return rtn;
+    }
+
     //Change the toolbar to the cardview toolbar
     private void swapToMapToolbar(){
         RelativeLayout mainlayout = (RelativeLayout) findViewById(R.id.activity_main);

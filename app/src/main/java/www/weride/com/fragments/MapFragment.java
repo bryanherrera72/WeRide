@@ -172,6 +172,7 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
             enableLocationOnResume = true;
         }
 
+
         //set the current instance of the map to this "READY" map
         //allows access to it throughout the current fragment instance.
         MapFragment.this.map = mapzenMap;

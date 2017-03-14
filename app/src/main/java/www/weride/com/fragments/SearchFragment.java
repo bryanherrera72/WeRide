@@ -4,10 +4,24 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+
+import com.mapzen.android.lost.api.Result;
+import com.mapzen.android.search.MapzenSearch;
+import com.mapzen.pelias.Pelias;
+import com.mapzen.pelias.widget.AutoCompleteAdapter;
+import com.mapzen.pelias.widget.AutoCompleteListView;
+import com.mapzen.pelias.widget.PeliasSearchView;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import www.weride.com.MainActivity;
 import www.weride.com.R;
 
 /**
@@ -18,12 +32,18 @@ import www.weride.com.R;
  * Use the {@link SearchFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SearchFragment extends Fragment {
+public class SearchFragment extends Fragment implements retrofit2.Callback<com.mapzen.pelias.gson.Result> {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    PeliasSearchView searchView;
+    MainActivity mainActivity;
+    Toolbar mainToolbar;
+    ActionBar.LayoutParams layoutParams;
+    MapzenSearch mapzenSearch;
+    Pelias pel;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -55,6 +75,10 @@ public class SearchFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mainActivity = (MainActivity) this.getActivity();
+        searchView = new PeliasSearchView(this.getContext());
+        mapzenSearch = new MapzenSearch(mainActivity);
+        pel = mapzenSearch.getPelias();
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -65,7 +89,21 @@ public class SearchFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false);
+        View view = inflater.inflate(R.layout.fragment_search, container, false);
+        layoutParams = new ActionBar.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT);
+        mainActivity.getToolbar().addView(searchView, layoutParams);
+        AutoCompleteListView  listView = (AutoCompleteListView)
+                view.findViewById(R.id.list_view);
+        AutoCompleteAdapter adapter = new AutoCompleteAdapter(mainActivity,
+                android.R.layout.simple_list_item_1);
+        listView.setAdapter(adapter);
+        searchView.setPelias(pel);
+        searchView.setAutoCompleteListView(listView);
+        searchView.setCallback(this);
+
+        return view;
+        // return inflater.inflate(R.layout.fragment_search, container, false);
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -91,6 +129,19 @@ public class SearchFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
+    @Override
+    public void onResponse(Call<com.mapzen.pelias.gson.Result> call, Response<com.mapzen.pelias.gson.Result> response) {
+        if(!(response.body() == null)){
+            //do drawing here.
+        }
+    }
+
+    @Override
+    public void onFailure(Call<com.mapzen.pelias.gson.Result> call, Throwable t) {
+        //response failed. no location.
+    }
+
 
     /**
      * This interface must be implemented by activities that contain this
