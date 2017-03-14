@@ -151,8 +151,6 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
             toolbar.removeView(findViewById(R.id.search_toolbar));
             swapToMapToolbar();
         }
-        else
-            Log.i("falsey", "true");
     }
 
     @Override

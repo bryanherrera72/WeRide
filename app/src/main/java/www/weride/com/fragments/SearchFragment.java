@@ -98,6 +98,7 @@ public class SearchFragment extends Fragment implements retrofit2.Callback<com.m
         View view = inflater.inflate(R.layout.fragment_search, container, false);
         layoutParams = new ActionBar.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT);
         searchView.setId(R.id.search_toolbar);
+        mainActivity.findViewById(R.id.search).setVisibility(View.GONE);
         mainActivity.getToolbar().addView(searchView, layoutParams);
         AutoCompleteListView  listView = (AutoCompleteListView)
                 view.findViewById(R.id.list_view);
