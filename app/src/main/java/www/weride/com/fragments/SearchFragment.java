@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
+import com.mapzen.android.graphics.MapzenMapPeliasLocationProvider;
 import com.mapzen.android.lost.api.Result;
 import com.mapzen.android.search.MapzenSearch;
 import com.mapzen.pelias.Pelias;
@@ -44,6 +45,7 @@ public class SearchFragment extends Fragment implements retrofit2.Callback<com.m
     ActionBar.LayoutParams layoutParams;
     MapzenSearch mapzenSearch;
     Pelias pel;
+    MapzenMapPeliasLocationProvider lp;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -77,8 +79,11 @@ public class SearchFragment extends Fragment implements retrofit2.Callback<com.m
         super.onCreate(savedInstanceState);
         mainActivity = (MainActivity) this.getActivity();
         searchView = new PeliasSearchView(this.getContext());
+        lp = new MapzenMapPeliasLocationProvider(mainActivity);
         mapzenSearch = new MapzenSearch(mainActivity);
+        mapzenSearch.setLocationProvider(lp);
         pel = mapzenSearch.getPelias();
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
