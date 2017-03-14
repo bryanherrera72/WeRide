@@ -2,8 +2,10 @@ package www.weride.com;
 
 import android.Manifest;
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,6 +19,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -42,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     public ActionBarDrawerToggle drawerToggle;
     private MapFragment map;
 
+    private LocationManager lm;
     private boolean locationaccess = false;
 
 
@@ -55,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         checkPermissions();
+        lm = (LocationManager) getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
         setContentView(R.layout.activity_main);
         //prepare and set toolbar
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -147,7 +152,6 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     //inflate the menu that is shown in the action bar.
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
-        //********************************************** need to check if this is the main toolbar,
         // thats the only one getting search icon.
         getMenuInflater().inflate(R.menu.menu_main,menu);
         return true;
@@ -155,7 +159,7 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
-        Class fragmentClass;
+        Class fragmentClass= null;
         SearchFragment frag;
         switch(item.getItemId()){
             //hamburger was clicked
@@ -170,7 +174,13 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
                 break;
         }
         if(!(fragmentClass == null))
-            frag = fragmentClass.newInstance();
+            try {
+                frag = (SearchFragment) fragmentClass.newInstance();
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
         if(drawerToggle.onOptionsItemSelected(item)){
             return true;
         }
@@ -180,10 +190,8 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     public void onResume(){
         super.onResume();
         //if we have a mapfragment, ensure the permissions are prepped.
-        MapFragment frag = (MapFragment) getSupportFragmentManager().findFragmentById(R.id.map_fragment);
-        //if(frag!=null && frag.isVisible()){
-//            onPermissionsValid(canAccessLocation());
-        //}
+        //MapFragment frag = (MapFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_map);
+        onPermissionsValid(canAccessLocation());
     }
     //Change the toolbar to the cardview toolbar
     private void swapToMapToolbar(){
@@ -213,12 +221,18 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
         drawerToggle = setupDrawerToggle(standardtoolbar);
         mainDrawer.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
-
     }
 
-//    private boolean canAccessLocation(){
-//        return (hasPermission(Manifest.permission.ACCESS_FINE_LOCATION) || hasPermission(Manifest.permission.ACCESS_COARSE_LOCATION));
-//    }
+    private boolean canAccessLocation(){
+        boolean enabled = false;
+        try{
+            enabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        //return (hasPermission(Manifest.permission.ACCESS_FINE_LOCATION) || hasPermission(Manifest.permission.ACCESS_COARSE_LOCATION));
+        return enabled;
+    }
 
     @TargetApi(Build.VERSION_CODES.M)
     private boolean hasPermission(String perm){
@@ -254,11 +268,16 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     @Override
     public void onPermissionsValid(boolean valid){
         MapFragment mapfrag = (MapFragment) getSupportFragmentManager().findFragmentById(R.id.flContent);
+
         if(mapfrag != null){
             mapfrag.setPermissionsvalid(valid);
         }
     }
 
+    @Override
+    public void mapIsReady(){
+        onPermissionsValid(canAccessLocation());
+    }
     @Override
     public void something(LngLat dest) {
 
@@ -268,6 +287,7 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     public void onFragmentInteraction(Uri uri) {
 
     }
+
 
 
 }
