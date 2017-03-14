@@ -145,6 +145,17 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     }
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if(MapFragment.class ==fragmentManager.findFragmentById(R.id.flContent).getClass()){
+            toolbar.removeView(findViewById(R.id.search_toolbar));
+            swapToMapToolbar();
+        }
+        else
+            Log.i("falsey", "true");
+    }
+
+    @Override
     public void onConfigurationChanged(Configuration newConfig){
         super.onConfigurationChanged(newConfig);
         //This changes drawer toggle depending on orientation
@@ -174,7 +185,7 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
                 fragmentClass = SearchFragment.class;
                 break;
         }
-        if(!(fragmentClass == null))
+        if(!(fragmentClass == null)){
             try {
                 frag = (SearchFragment) fragmentClass.newInstance();
             } catch (InstantiationException e) {
@@ -182,7 +193,8 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             }
-        fragmentManager.beginTransaction().replace(R.id.flContent, frag).commit();
+            fragmentManager.beginTransaction().replace(R.id.flContent, frag).addToBackStack("MainMapBackStack").commit();
+        }
         if(drawerToggle.onOptionsItemSelected(item)){
             return true;
         }
@@ -196,6 +208,7 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
         //MapFragment frag = (MapFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_map);
         onPermissionsValid(canAccessLocation());
     }
+
     public Toolbar getToolbar(){
         Toolbar rtn;
         if(toolbar.isShown()){
@@ -214,7 +227,7 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
         toolbar.setVisibility(View.VISIBLE);
         View cardview = mainlayout.findViewById(R.id.toolbar_card);
         cardview.setVisibility(View.VISIBLE);
-
+        if(toolbar.getChildCount() == 0){}
         standardtoolbar.setVisibility(View.GONE);
         setSupportActionBar(toolbar);
         drawerToggle = setupDrawerToggle(toolbar);
@@ -281,8 +294,10 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     //this method checks the permissions and tells the mapfragment whether or not location is allowed
     @Override
     public void onPermissionsValid(boolean valid){
-        MapFragment mapfrag = (MapFragment) getSupportFragmentManager().findFragmentById(R.id.flContent);
-
+        MapFragment mapfrag = null;
+        if(MapFragment.class ==  getSupportFragmentManager().findFragmentById(R.id.flContent).getClass()) {
+            mapfrag = (MapFragment) getSupportFragmentManager().findFragmentById(R.id.flContent);
+        }
         if(mapfrag != null){
             mapfrag.setPermissionsvalid(valid);
         }
