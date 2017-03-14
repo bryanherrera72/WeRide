@@ -108,7 +108,8 @@ public class SearchFragment extends Fragment implements retrofit2.Callback<com.m
         searchView.setPelias(pel);
         searchView.setAutoCompleteListView(listView);
         searchView.setCallback(this);
-
+        searchView.setIconifiedByDefault(false);
+        searchView.requestFocus();
         return view;
         // return inflater.inflate(R.layout.fragment_search, container, false);
 

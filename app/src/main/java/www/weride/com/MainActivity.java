@@ -178,14 +178,13 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
                 break;
             //search button was clicked
             case R.id.search:
-//                Intent i  = new Intent(this, SearchActivity.class);
-//                startActivity(i);
                 fragmentClass = SearchFragment.class;
                 break;
         }
         if(!(fragmentClass == null)){
             try {
                 frag = (SearchFragment) fragmentClass.newInstance();
+
             } catch (InstantiationException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
