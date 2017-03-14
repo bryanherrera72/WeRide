@@ -7,7 +7,8 @@
     <string name="drawer_close">Close navigation drawer</string>
     <string name="mapzen_api_key">mapzen-HDGPF6m</string>
     <string name="search">Search</string>
-    <string name ="create_button_text">+ Create Group</string>
+    <string name="create_button_text">+ Create Group</string>
     <string name="add_user_text">+ New User</string>
-    <string name = "create_group_title_hint">Title</string>
+    <string name="create_group_title_hint">Title</string>
+    <string name="title_activity_user">UserActivity</string>
 </resources>

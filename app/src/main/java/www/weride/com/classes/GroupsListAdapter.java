@@ -1,17 +1,19 @@
 package www.weride.com.classes;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.Collections;
 import java.util.List;
 
 import www.weride.com.R;
+import www.weride.com.activities.UserActivity;
 
 /**
  * Created by bryanherrera on 2/28/17.
@@ -20,9 +22,12 @@ import www.weride.com.R;
 //note from miguel: removed references to image view
 public class GroupsListAdapter extends RecyclerView.Adapter<GroupsListAdapter.GroupViewHolder>{
     private LayoutInflater inflater;
+    public static final String GROUP_NAME = "www.weride.com.activities.UserActivity";
+    Context context;
     List<GroupInfo> data = Collections.emptyList();
 
     public GroupsListAdapter(Context context, List<GroupInfo> data){
+        this.context = context;
         this.data = data;
         inflater = LayoutInflater.from(context);
     }
@@ -35,9 +40,17 @@ public class GroupsListAdapter extends RecyclerView.Adapter<GroupsListAdapter.Gr
     }
     //fill the data items here
     @Override
-    public void onBindViewHolder(GroupViewHolder holder, int position) {
-        GroupInfo current = data.get(position);
+    public void onBindViewHolder(final GroupViewHolder holder, int position) {
+        final GroupInfo current = data.get(position);
         holder.title.setText(current.title);
+        holder.editGroup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(context, UserActivity.class);
+                myIntent.putExtra(GROUP_NAME,current.title);
+                context.startActivity(myIntent);
+            }
+        });
     }
 
     @Override
@@ -47,9 +60,11 @@ public class GroupsListAdapter extends RecyclerView.Adapter<GroupsListAdapter.Gr
 
     class GroupViewHolder extends RecyclerView.ViewHolder{
         TextView title;
+        Button editGroup;
         public GroupViewHolder(View itemView) {
             super(itemView);
             title =(TextView) itemView.findViewById(R.id.listText);
+            editGroup = (Button) itemView.findViewById(R.id.ebutton);
         }
     }
 }
