@@ -19,6 +19,7 @@ import com.mapzen.android.graphics.MapzenMap;
 import com.mapzen.android.graphics.OnMapReadyCallback;
 import com.mapzen.android.graphics.model.BubbleWrapStyle;
 import com.mapzen.android.graphics.model.CameraType;
+import com.mapzen.android.graphics.model.Marker;
 import com.mapzen.pelias.widget.PeliasSearchView;
 import com.mapzen.tangram.LngLat;
 
@@ -157,13 +158,12 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
     @Override
     public void onMapReady(MapzenMap mapzenMap) {
         //set some initial configs
-        mapzenMap.setCameraType(CameraType.ISOMETRIC);
+        mapzenMap.setCameraType(CameraType.FLAT);
         //determine if location is allowed, if so, display current location button.
         mListener.mapIsReady();
         if(permissionsvalid) {
 
             mapzenMap.setMyLocationEnabled(true);
-            Log.i("location enabled?", ""  + mapzenMap.getOverlayManager().isMyLocationEnabled());
 //            mapzenMap.setCompassButtonEnabled(true);
 //            mapzenMap.setZoomButtonsEnabled(true);
             enableLocationOnResume = true;
@@ -173,7 +173,7 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
         //set the current instance of the map to this "READY" map
         //allows access to it throughout the current fragment instance.
         MapFragment.this.map = mapzenMap;
-        map.drawSearchResult(new LngLat(-118.026126,34.570467));
+        Log.i("Mapready: ", "hello");
     }
     /*
     * This method initializes the findme, zoom, and compass buttons.
@@ -204,9 +204,8 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
     }
 
     public void displayPoint(LngLat destpoint) {
-        map.drawRouteLocationMarker(destpoint);
+        Log.i("drawn to map: " , "now");
         map.setPosition(destpoint);
-
         map.setZoom(15);
 
     }

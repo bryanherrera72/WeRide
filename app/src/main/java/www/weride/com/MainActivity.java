@@ -308,11 +308,16 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
 
     @Override
     public void passPoint(LngLat dest) {
-        if(!(MapFragment.class == fragmentManager.findFragmentById(R.id.flContent).getClass()))
-            fragmentManager.beginTransaction().replace(R.id.flContent, map).commit();
-        swapToMapToolbar();
-        if (dest != null) {
-            map.displayPoint(dest);
+        if(!(map == null)){
+            swapToMapToolbar();
+            //check if the map is up front.
+            if(!(map.isVisible())){
+//                if its not, place it up front
+                fragmentManager.beginTransaction().replace(R.id.flContent, map).commit();
+            }
+            if(!(dest == null)){
+                map.displayPoint(dest);
+            }
         }
     }
 
