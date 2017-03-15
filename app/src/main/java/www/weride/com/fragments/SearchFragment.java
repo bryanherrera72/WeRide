@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 
 
 import com.mapzen.android.graphics.MapzenMapPeliasLocationProvider;
-import com.mapzen.android.lost.api.Result;
 import com.mapzen.android.search.MapzenSearch;
 import com.mapzen.pelias.Pelias;
 import com.mapzen.pelias.widget.AutoCompleteAdapter;
@@ -25,7 +24,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import www.weride.com.MainActivity;
 import www.weride.com.R;
-
+import com.mapzen.pelias.gson.Result;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
@@ -34,7 +33,7 @@ import www.weride.com.R;
  * Use the {@link SearchFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SearchFragment extends Fragment implements retrofit2.Callback<com.mapzen.pelias.gson.Result> {
+public class SearchFragment extends Fragment implements retrofit2.Callback<Result> {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -46,6 +45,7 @@ public class SearchFragment extends Fragment implements retrofit2.Callback<com.m
     ActionBar.LayoutParams layoutParams;
     MapzenSearch mapzenSearch;
     Pelias pel;
+    com.mapzen.pelias.gson.Result res;
     MapzenMapPeliasLocationProvider lp;
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -80,6 +80,7 @@ public class SearchFragment extends Fragment implements retrofit2.Callback<com.m
         super.onCreate(savedInstanceState);
         mainActivity = (MainActivity) this.getActivity();
         searchView = new PeliasSearchView(this.getContext());
+        mainToolbar = mainActivity.getToolbar();
         lp = new MapzenMapPeliasLocationProvider(mainActivity);
         mapzenSearch = new MapzenSearch(mainActivity);
         mapzenSearch.setLocationProvider(lp);
@@ -99,7 +100,7 @@ public class SearchFragment extends Fragment implements retrofit2.Callback<com.m
         layoutParams = new ActionBar.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT);
         searchView.setId(R.id.search_toolbar);
         mainActivity.findViewById(R.id.search).setVisibility(View.GONE);
-        mainActivity.getToolbar().addView(searchView, layoutParams);
+        mainToolbar.addView(searchView, layoutParams);
         AutoCompleteListView  listView = (AutoCompleteListView)
                 view.findViewById(R.id.list_view);
         AutoCompleteAdapter adapter = new AutoCompleteAdapter(mainActivity,
@@ -111,7 +112,6 @@ public class SearchFragment extends Fragment implements retrofit2.Callback<com.m
         searchView.setIconifiedByDefault(false);
         searchView.requestFocus();
         return view;
-        // return inflater.inflate(R.layout.fragment_search, container, false);
 
     }
 
@@ -140,14 +140,14 @@ public class SearchFragment extends Fragment implements retrofit2.Callback<com.m
     }
 
     @Override
-    public void onResponse(Call<com.mapzen.pelias.gson.Result> call, Response<com.mapzen.pelias.gson.Result> response) {
+    public void onResponse(Call<Result> call, Response<Result> response) {
         if(!(response.body() == null)){
-            //do drawing here.
+           Log.i("data is: ", "" + response.body().getFeatures().get(0).geometry.coordinates);
         }
     }
 
     @Override
-    public void onFailure(Call<com.mapzen.pelias.gson.Result> call, Throwable t) {
+    public void onFailure(Call<Result> call, Throwable t) {
         //response failed. no location.
     }
 
