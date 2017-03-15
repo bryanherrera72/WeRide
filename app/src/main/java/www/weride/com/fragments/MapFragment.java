@@ -1,18 +1,17 @@
 package www.weride.com.fragments;
 
-import android.app.ActionBar;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.util.LayoutDirection;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
+
 import com.mapzen.android.core.MapzenManager;
 import com.mapzen.android.graphics.CompassView;
 import com.mapzen.android.graphics.MapView;
@@ -22,9 +21,7 @@ import com.mapzen.android.graphics.model.BubbleWrapStyle;
 import com.mapzen.android.graphics.model.CameraType;
 import com.mapzen.pelias.widget.PeliasSearchView;
 import com.mapzen.tangram.LngLat;
-import com.mapzen.tangram.SceneUpdate;
 
-import www.weride.com.MainActivity;
 import www.weride.com.R;
 
 /**
@@ -227,7 +224,7 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
         void onPermissionsValid(boolean valid);
-        void something(LngLat dest);
+        void passPoint(LngLat dest);
         void mapIsReady();
     }
 

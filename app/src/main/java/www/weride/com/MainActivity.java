@@ -19,7 +19,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -41,11 +40,9 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     public DrawerLayout mainDrawer;
     private Toolbar toolbar, standardtoolbar;
     private  NavigationView navDrawer;
-
     private FragmentManager fragmentManager;
     public ActionBarDrawerToggle drawerToggle;
     private MapFragment map;
-
     private LocationManager lm;
     private boolean locationaccess = false;
 
@@ -304,16 +301,19 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     public void mapIsReady(){
         onPermissionsValid(canAccessLocation());
     }
-    @Override
-    public void something(LngLat dest) {
 
+    @Override
+    public void passPoint(LngLat dest) {
+        fragmentManager.beginTransaction().replace(R.id.flContent, map).commit();
+        if (dest != null) {
+            map.displayPoint(dest);
+        }
     }
 
     @Override
     public void onFragmentInteraction(Uri uri) {
 
+
     }
-
-
 
 }
