@@ -4,13 +4,12 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 
 import com.mapzen.android.graphics.MapzenMapPeliasLocationProvider;
 import com.mapzen.android.search.MapzenSearch;
@@ -18,9 +17,11 @@ import com.mapzen.pelias.Pelias;
 import com.mapzen.pelias.widget.AutoCompleteAdapter;
 import com.mapzen.pelias.widget.AutoCompleteListView;
 import com.mapzen.pelias.widget.PeliasSearchView;
+import com.mapzen.tangram.LngLat;
+
+import java.util.List;
 
 import retrofit2.Call;
-import retrofit2.Callback;
 import retrofit2.Response;
 import www.weride.com.MainActivity;
 import www.weride.com.R;
@@ -47,6 +48,13 @@ public class SearchFragment extends Fragment implements retrofit2.Callback<Resul
     Pelias pel;
     com.mapzen.pelias.gson.Result res;
     MapzenMapPeliasLocationProvider lp;
+
+    FragmentManager fragmentManager;
+    LngLat point;
+    double lngLat;
+    double latLng;
+
+
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -111,7 +119,13 @@ public class SearchFragment extends Fragment implements retrofit2.Callback<Resul
         searchView.setCallback(this);
         searchView.setIconifiedByDefault(false);
         searchView.requestFocus();
+        fragmentManager = getFragmentManager();
         return view;
+<<<<<<< HEAD
+=======
+
+        // return inflater.inflate(R.layout.fragment_search, container, false);
+>>>>>>> Ali2
 
     }
 
@@ -142,8 +156,14 @@ public class SearchFragment extends Fragment implements retrofit2.Callback<Resul
     @Override
     public void onResponse(Call<Result> call, Response<Result> response) {
         if(!(response.body() == null)){
-           Log.i("data is: ", "" + response.body().getFeatures().get(0).geometry.coordinates);
+
+           List<Double> coordinates = response.body().getFeatures().get(0).geometry.coordinates;
+            latLng = coordinates.get(0);
+            lngLat = coordinates.get(1);
+            point = new LngLat(latLng, lngLat);
+            mListener.passPoint(point);
         }
+
     }
 
     @Override
@@ -165,5 +185,11 @@ public class SearchFragment extends Fragment implements retrofit2.Callback<Resul
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+        void passPoint(LngLat dest);
     }
+
+
+
+
+
 }

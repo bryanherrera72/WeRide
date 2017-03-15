@@ -19,7 +19,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -41,11 +40,9 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     public DrawerLayout mainDrawer;
     private Toolbar toolbar, standardtoolbar;
     private  NavigationView navDrawer;
-
     private FragmentManager fragmentManager;
     public ActionBarDrawerToggle drawerToggle;
     private MapFragment map;
-
     private LocationManager lm;
     private boolean locationaccess = false;
 
@@ -147,10 +144,11 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        if(MapFragment.class ==fragmentManager.findFragmentById(R.id.flContent).getClass()){
-            toolbar.removeView(findViewById(R.id.search_toolbar));
+        //if(MapFragment.class ==fragmentManager.findFragmentById(R.id.flContent).getClass()){
+          //  toolbar.removeView(findViewById(R.id.search_toolbar));
+
             swapToMapToolbar();
-        }
+        //}
     }
 
     @Override
@@ -220,11 +218,14 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     //Change the toolbar to the cardview toolbar
     private void swapToMapToolbar(){
         RelativeLayout mainlayout = (RelativeLayout) findViewById(R.id.activity_main);
+        //first check if the child view of the toolbar is set
+        if(!(findViewById(R.id.search) == null)){
+            toolbar.removeView(findViewById(R.id.search_toolbar));
+        }
         //show the main cardview toolbar
         toolbar.setVisibility(View.VISIBLE);
         View cardview = mainlayout.findViewById(R.id.toolbar_card);
         cardview.setVisibility(View.VISIBLE);
-        if(toolbar.getChildCount() == 0){}
         standardtoolbar.setVisibility(View.GONE);
         setSupportActionBar(toolbar);
         drawerToggle = setupDrawerToggle(toolbar);
@@ -304,16 +305,21 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     public void mapIsReady(){
         onPermissionsValid(canAccessLocation());
     }
-    @Override
-    public void something(LngLat dest) {
 
+    @Override
+    public void passPoint(LngLat dest) {
+        if(!(MapFragment.class == fragmentManager.findFragmentById(R.id.flContent).getClass()))
+            fragmentManager.beginTransaction().replace(R.id.flContent, map).commit();
+        swapToMapToolbar();
+        if (dest != null) {
+            map.displayPoint(dest);
+        }
     }
 
     @Override
     public void onFragmentInteraction(Uri uri) {
 
+
     }
-
-
 
 }

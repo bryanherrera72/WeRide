@@ -1,18 +1,17 @@
 package www.weride.com.fragments;
 
-import android.app.ActionBar;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.util.LayoutDirection;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
+
 import com.mapzen.android.core.MapzenManager;
 import com.mapzen.android.graphics.CompassView;
 import com.mapzen.android.graphics.MapView;
@@ -22,9 +21,7 @@ import com.mapzen.android.graphics.model.BubbleWrapStyle;
 import com.mapzen.android.graphics.model.CameraType;
 import com.mapzen.pelias.widget.PeliasSearchView;
 import com.mapzen.tangram.LngLat;
-import com.mapzen.tangram.SceneUpdate;
 
-import www.weride.com.MainActivity;
 import www.weride.com.R;
 
 /**
@@ -176,6 +173,7 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
         //set the current instance of the map to this "READY" map
         //allows access to it throughout the current fragment instance.
         MapFragment.this.map = mapzenMap;
+        map.drawSearchResult(new LngLat(-118.026126,34.570467));
     }
     /*
     * This method initializes the findme, zoom, and compass buttons.
@@ -206,8 +204,9 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
     }
 
     public void displayPoint(LngLat destpoint) {
-        map.drawSearchResult(destpoint);
+        map.drawRouteLocationMarker(destpoint);
         map.setPosition(destpoint);
+
         map.setZoom(15);
 
     }
@@ -227,7 +226,7 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
         void onPermissionsValid(boolean valid);
-        void something(LngLat dest);
+        void passPoint(LngLat dest);
         void mapIsReady();
     }
 
