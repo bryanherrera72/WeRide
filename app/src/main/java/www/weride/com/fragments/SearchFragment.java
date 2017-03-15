@@ -156,7 +156,6 @@ public class SearchFragment extends Fragment implements retrofit2.Callback<com.m
             lngLat = coordinates.get(1);
             point = new LngLat(latLng, lngLat);
             mListener.passPoint(point);
-
         }
 
     }

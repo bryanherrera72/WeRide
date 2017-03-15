@@ -173,6 +173,7 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
         //set the current instance of the map to this "READY" map
         //allows access to it throughout the current fragment instance.
         MapFragment.this.map = mapzenMap;
+        map.drawSearchResult(new LngLat(-118.026126,34.570467));
     }
     /*
     * This method initializes the findme, zoom, and compass buttons.
@@ -203,8 +204,9 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
     }
 
     public void displayPoint(LngLat destpoint) {
-        map.drawSearchResult(destpoint);
+        map.drawRouteLocationMarker(destpoint);
         map.setPosition(destpoint);
+
         map.setZoom(15);
 
     }
