@@ -121,11 +121,7 @@ public class SearchFragment extends Fragment implements retrofit2.Callback<Resul
         searchView.requestFocus();
         fragmentManager = getFragmentManager();
         return view;
-<<<<<<< HEAD
-=======
 
-        // return inflater.inflate(R.layout.fragment_search, container, false);
->>>>>>> Ali2
 
     }
 
