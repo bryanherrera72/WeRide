@@ -11,4 +11,5 @@
     <string name="add_user_text">+ New User</string>
     <string name="create_group_title_hint">Title</string>
     <string name="title_activity_user">UserActivity</string>
+    <string name="remove_user">- Remove User</string>
 </resources>

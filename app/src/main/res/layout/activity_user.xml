@@ -21,9 +21,41 @@
 
             />
 
-    </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_user" />
+
+    </android.support.design.widget.AppBarLayout>
+    <RelativeLayout
+        android:id="@+id/user_container"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+
+
+        <Button
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:id="@+id/add_user"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/add_user_text"
+            android:textColor="@color/mz_white"
+            android:enabled="true"/>
+        <Button
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:id="@+id/remove_user"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/remove_user"
+            android:textColor="@color/mz_white"
+            android:enabled="true"/>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/users_list"
+            android:layout_below="@id/add_user"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent" />
+    </RelativeLayout>
+
 
 
 </android.support.design.widget.CoordinatorLayout>
+

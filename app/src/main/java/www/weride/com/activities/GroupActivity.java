@@ -21,6 +21,8 @@ import www.weride.com.classes.GroupsListAdapter;
  * Created by Kaz Cruz on 3/2/2017.
  */
 
+///note by Miguel: this entire activity might be useless, use the code in fragment_group to
+// change anything in the group portion of the app, the code is identical there
 public class GroupActivity extends Activity {
     private EditText group_name;
     private Button group_create;
