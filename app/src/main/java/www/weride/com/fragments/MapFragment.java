@@ -43,6 +43,7 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
     OnFragmentInteractionListener activity;
     MapzenManager mapzenman;
     FloatingActionButton navfab;
+    LngLat searchedLocation = null;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -169,7 +170,9 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
             enableLocationOnResume = true;
         }
 
-
+        if(!(searchedLocation == null)){
+            mapzenMap.drawSearchResult(searchedLocation);
+        }
         //set the current instance of the map to this "READY" map
         //allows access to it throughout the current fragment instance.
         MapFragment.this.map = mapzenMap;
@@ -205,7 +208,11 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
 
     public void displayPoint(LngLat destpoint) {
         Log.i("drawn to map: " , "now");
+        searchedLocation = destpoint;
+        ///////////////////////////////////////may need to set this destpoint to null after nav is attempted or something.
+        ///otherwise map will keep drawing it when it loads.
         map.setPosition(destpoint);
+
         map.setZoom(15);
 
     }
