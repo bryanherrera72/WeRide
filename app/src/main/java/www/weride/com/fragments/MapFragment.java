@@ -42,6 +42,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import www.weride.com.R;
 
 /**
@@ -52,7 +55,7 @@ import www.weride.com.R;
  * Use the {@link MapFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MapFragment extends com.mapzen.android.graphics.MapFragment implements OnMapReadyCallback, View.OnClickListener, LostApiClient.ConnectionCallbacks, RouteListener, RouteCallback{
+public class MapFragment extends com.mapzen.android.graphics.MapFragment implements OnMapReadyCallback, View.OnClickListener, LostApiClient.ConnectionCallbacks, RouteListener, RouteCallback, Callback{
 
     PeliasSearchView searchView;
     MapzenMap map;
@@ -73,6 +76,8 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
     LocationRequest locationRequest;
     ValhallaLocation valhallaLocation;
     Route currentroute;
+    LngLat searchedLocation = null;
+    double distance;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -135,6 +140,7 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
         fab = (FloatingActionButton) map.findViewById(R.id.floatingActionButton);
         fab.setOnClickListener(this);
         router = new MapzenRouter(this.getContext());
+        router.setCallback(this);
         valhallaLocation = new ValhallaLocation();
 
         lostApiClient = new LostApiClient.Builder(this.getContext()).addConnectionCallbacks(this).build();
@@ -209,7 +215,9 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
 //            mapzenMap.setZoomButtonsEnabled(true);
             enableLocationOnResume = true;
         }
-
+        if(!(searchedLocation == null)){
+            mapzenMap.drawSearchResult(searchedLocation);
+        }
         //set the current instance of the map to this "READY" map
         //allows access to it throughout the current fragment instance.
         MapFragment.this.map = mapzenMap;
@@ -246,7 +254,8 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
 
     public void displayPoint(LngLat destpoint) {
         dest = destpoint;
-        map.drawSearchResult(destpoint);
+        searchedLocation = destpoint;
+        //map.drawSearchResult(destpoint);
         map.setPosition(destpoint);
         map.setZoom(15);
 
@@ -301,6 +310,7 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
     @Override
     public void success(@NotNull Route route) {
 
+        Toast.makeText(this.getContext(), "sweetq", Toast.LENGTH_SHORT).show();
         map.clearRouteLine();
         map.removePolyline();
         List<LngLat> coordinates = new ArrayList<>();
@@ -311,9 +321,9 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
         map.addPolyline(polyline);
         currentroute = route;
         engine.setRoute(route);
-//        distance = (double) route.getTotalDistance();
-//        distance = distance / 1609;
-//        Toast.makeText(context, "Distance: " + (int) distance + "mi", Toast.LENGTH_SHORT).show();
+        distance = (double) route.getTotalDistance();
+        distance = distance / 1609;
+        Toast.makeText(this.getContext(), "Distance: " + (int) distance + "mi", Toast.LENGTH_SHORT).show();
 
     }
 
@@ -333,8 +343,8 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
 
     @Override
     public void onRecalculate(ValhallaLocation location) {
-        map.clearRouteLine();
-        map.removePolyline();
+        //map.clearRouteLine();
+        //map.removePolyline();
         //this.setStart(new LngLat(location.getLongitude(), location.getLatitude()));
         //this.setDestination(this.destination);
         //this.fetch();
@@ -381,6 +391,16 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
 
     @Override
     public void onConnectionSuspended() {
+
+    }
+
+    @Override
+    public void onResponse(Call call, Response response) {
+
+    }
+
+    @Override
+    public void onFailure(Call call, Throwable t) {
 
     }
 }
