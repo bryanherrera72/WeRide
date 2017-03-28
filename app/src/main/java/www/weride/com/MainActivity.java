@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     private LocationManager lm;
     private boolean locationaccess = false;
 
-
     private final static int REQUEST_CODE_ASK_PERMISSIONS = 1;
 
     private static final String[] REQUIRED_SDK_PERMISSIONS = new String[]{
@@ -144,11 +143,10 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        //if(MapFragment.class ==fragmentManager.findFragmentById(R.id.flContent).getClass()){
-          //  toolbar.removeView(findViewById(R.id.search_toolbar));
-
+        if(MapFragment.class ==fragmentManager.findFragmentById(R.id.flContent).getClass()){
+            toolbar.removeView(findViewById(R.id.search_toolbar));
             swapToMapToolbar();
-        //}
+        }
     }
 
     @Override
@@ -219,9 +217,9 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     private void swapToMapToolbar(){
         RelativeLayout mainlayout = (RelativeLayout) findViewById(R.id.activity_main);
         //first check if the child view of the toolbar is set
-        if(!(findViewById(R.id.search) == null)){
-            toolbar.removeView(findViewById(R.id.search_toolbar));
-        }
+//        if(!(findViewById(R.id.search) == null)){
+//            toolbar.removeView(findViewById(R.id.search_toolbar));
+//        }
         //show the main cardview toolbar
         toolbar.setVisibility(View.VISIBLE);
         View cardview = mainlayout.findViewById(R.id.toolbar_card);
@@ -308,12 +306,15 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
 
     @Override
     public void passPoint(LngLat dest) {
-        if(!(MapFragment.class == fragmentManager.findFragmentById(R.id.flContent).getClass()))
-            fragmentManager.beginTransaction().replace(R.id.flContent, map).commit();
-        swapToMapToolbar();
+//        if(!(MapFragment.class == fragmentManager.findFragmentById(R.id.flContent).getClass()))
+//            fragmentManager.beginTransaction().replace(R.id.flContent, map).commit();
+//        swapToMapToolbar();
+        fragmentManager.beginTransaction().replace(R.id.flContent, map).commit();
         if (dest != null) {
             map.displayPoint(dest);
+
         }
+
     }
 
     @Override
