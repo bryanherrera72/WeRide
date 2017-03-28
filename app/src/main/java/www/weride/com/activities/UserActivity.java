@@ -30,6 +30,7 @@ public class UserActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_user);
 
+        //create datalist
         li = getData();
         //toolbar stuff
         Intent intent = getIntent();
@@ -38,6 +39,7 @@ public class UserActivity extends AppCompatActivity {
         toolbar.setTitle(title);
         setSupportActionBar(toolbar);
 
+        //create the recyclerview and set the adapter (adapter takes the list with the data)
         userslist = (RecyclerView) findViewById(R.id.users_list);
         useradapter = new UserListAdapter(this.getBaseContext(), li);
         userslist.setAdapter(useradapter);

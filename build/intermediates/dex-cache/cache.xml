@@ -12,12 +12,21 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\exploded-aar\com.mapzen\mapzen-android-sdk\1.2.1\jars\classes.jar"
+        jar="C:\Users\Kaz Cruz\.android\build-cache\f225e7ae0b5fbf3a2a4dc29b70c2ddc765dc8580\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="68f244ea3356d3ae251d31b4844b4b54e1f86a48">
-        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.mapzen-mapzen-android-sdk-1.2.1_541bde545e6a49c4b5a1bfe7b335113613463daf\classes.dex" />
+        sha1="0dc8ab07eeceda5e99b305c8069765056b6e5c9d">
+        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_5e83bfe86808dc2468b1e41d4952eba8f405bf1f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Kaz Cruz\.gradle\caches\modules-2\files-2.1\com.amazonaws\aws-android-sdk-core\2.3.9\2fa9ee0e95329912656c8ccd98991b195a3ea539\aws-android-sdk-core-2.3.9.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="2fa9ee0e95329912656c8ccd98991b195a3ea539">
+        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\aws-android-sdk-core-2.3.9_82b0d9f7773acbd128d5dbae652c693b70dd20aa\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -39,183 +48,21 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.2.0\jars\classes.jar"
+        jar="C:\Users\Kaz Cruz\.android\build-cache\83878051e07997b6de52dd2967ffe3283d0aa135\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="ee394a892dd21c03a528139c1e8d4e0e1264ac84">
-        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-25.2.0_b9be753c9872aa642dce047ec74bdc7c06141813\classes.dex" />
+        sha1="68f244ea3356d3ae251d31b4844b4b54e1f86a48">
+        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_3449f5feaea69a3f293c13b8dcc7d13a9e9e7194\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\exploded-aar\com.mapzen\on-the-road\1.1.1\jars\classes.jar"
+        jar="C:\Users\Kaz Cruz\.android\build-cache\45ead0dadbdb2a0b18a4f281e048b0e6bee57cd3\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="69b9ce40285f743df8c02c7315f631cbecc0c610">
-        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.mapzen-on-the-road-1.1.1_c692a61f45cd9811758c26a46466daddeead3e2f\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.0.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="ea4b54dcbfe5ac05efb0a314105f07258118d3a7">
-        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-iid-9.0.0_046fe88c7fff08bbd7c9628b0b22d338444072f8\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Kaz Cruz\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-io\1.3.2\b6dde38349ba9bb5e6ea6320531eae969985dae5\commons-io-1.3.2.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="b6dde38349ba9bb5e6ea6320531eae969985dae5">
-        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\commons-io-1.3.2_aa59827257521de147ffc5614db76ed61276bfea\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="29e426ef11779b63d78ee8c770ea44352b7af65c">
-        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_9d973159a44d1a770d3675384597b6c8de6d2efc\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\exploded-aar\com.mapzen.tangram\tangram\0.4.8\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="5f8ef1c4f9c0e4df3c22e0d47aea12ffed6165a7">
-        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.mapzen.tangram-tangram-0.4.8_82da1d76ddb6af56a7a87838a443a8c3b5570e0f\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="ed22d4c28113936920cd280167c593c63f669bf4">
-        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_671d76a0ed34e81536884d2f9da31cd694b0fe93\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.0.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="4ef8ab5fee042023018249474bc93bd4b2b9c17e">
-        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-analytics-9.0.0_015f451e7b5f56ce55386caf672086e47c5bf699\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Kaz Cruz\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlin\kotlin-stdlib\1.0.1\68cddd9aec83d23f789f72bfdc933db245c4a635\kotlin-stdlib-1.0.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="68cddd9aec83d23f789f72bfdc933db245c4a635">
-        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\kotlin-stdlib-1.0.1_50f3bda6114cb5c7bbe012137e8ff248e29fe7aa\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Kaz Cruz\.gradle\caches\modules-2\files-2.1\javax.annotation\javax.annotation-api\1.2\479c1e06db31c432330183f5cae684163f186146\javax.annotation-api-1.2.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="479c1e06db31c432330183f5cae684163f186146">
-        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\javax.annotation-api-1.2_d91580e0e3f5b30027c27a521be39f3a1ec8dc92\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.2.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="702d339bc0a81d21354cd7e2cf2b67225fa4a16c">
-        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-25.2.0_3b0df9ed25683d79e5648f171db3f08b52532c3a\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.2.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="e820b7be8c035dd522da4bc822e8a76c8e27921a">
-        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-25.2.0_ebe02a18ee4d1db882d6e95dfee5587f95104652\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.2.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="67eb33110dbacb46a48175b08ae0c96761d2c17d">
-        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-25.2.0_fa9ab93371449c9c774f839124ac5675adc0e254\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\25.2.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="30a4938ea5235ccf532b3e9f04200e68547e36ad">
-        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-cardview-v7-25.2.0_3a92c9c5dac7bb8046ac97ed2fa168eff58e11f5\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.2.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="152de8da301561dcb0946471697a420d8f7a68c5">
-        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-25.2.0_ba6c64a2e20a9433ad8baab2394d67b5f642f6bc\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Kaz Cruz\AppData\Local\Android\Sdk\extras\android\m2repository\com\android\support\support-annotations\25.2.0\support-annotations-25.2.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="4a5a82a027706397fff621b22fd6fa796e91d7c5">
-        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.2.0_2a52556dba89bcee789272cf3bc777094034fc82\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Kaz Cruz\.gradle\caches\modules-2\files-2.1\com.amazonaws\aws-android-sdk-core\2.3.9\2fa9ee0e95329912656c8ccd98991b195a3ea539\aws-android-sdk-core-2.3.9.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="2fa9ee0e95329912656c8ccd98991b195a3ea539">
-        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\aws-android-sdk-core-2.3.9_82b0d9f7773acbd128d5dbae652c693b70dd20aa\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.2.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-25.2.0_c8a2942ea66ba3cf8e5e8107eda7fae1b10025e5\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\exploded-aar\com.mapzen.android\lost\2.1.2\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="b7184ba67437a5689cfb166f422feb8618088732">
-        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.mapzen.android-lost-2.1.2_1cc20bf07331022447493058d9595c3c907125b3\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics-impl\9.0.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="0dc8ab07eeceda5e99b305c8069765056b6e5c9d">
-        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-analytics-impl-9.0.0_3a25e41c524912d09a481da492d1118cd04594af\classes.dex" />
+        sha1="810f41e5b7fd99f196ebeabe865ba2c54e7e76dc">
+        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_063bdf741ad02160600bc2d4a2d5f4203ffa7ccc\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -228,48 +75,30 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\exploded-aar\com.android.support\design\25.2.0\jars\classes.jar"
+        jar="C:\Users\Kaz Cruz\.android\build-cache\57fabd02a510ef7261163a2a305525dce36c1ba4\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="ea6a989b83d19b1b461281e0475a6cd6514897f8">
-        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-25.2.0_f1787673f87925b02e43072beee5af6f2dfdf389\classes.dex" />
+        sha1="67eb33110dbacb46a48175b08ae0c96761d2c17d">
+        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_7cc09c6b4adcd5eb5f70a7e24caa6c3f3420f138\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.2.0\jars\classes.jar"
+        jar="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="810f41e5b7fd99f196ebeabe865ba2c54e7e76dc">
-        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-25.2.0_55efb7a6e646e99131d8c732dfca18dc9d2c250f\classes.dex" />
+        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
+        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_9d973159a44d1a770d3675384597b6c8de6d2efc\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\9.0.0\jars\classes.jar"
+        jar="C:\Users\Kaz Cruz\.android\build-cache\8a05a53bf546d5c0592f7b9e319cb3b2c9893095\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="6f65c144283b31b4b9a70e6e7aa4c4a1c897d4b8">
-        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-base-9.0.0_14b31424cbdb5c85166cc4928aaed4c97fd56a73\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\exploded-aar\com.android.support\transition\25.2.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="e51c2f662bb72419632af5192553c37e33890a99">
-        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-transition-25.2.0_44fb6ff576ef8d64765471632140bb666e2f2ea6\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.2.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="fa0446a14ed5dd3725047d6399ffea771a564b30">
-        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-25.2.0_35f9ec8ebe2967dd8d04169f085137ba88318053\classes.dex" />
+        sha1="702d339bc0a81d21354cd7e2cf2b67225fa4a16c">
+        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_9957a2ecd0e1e29b4f5c35a5537e16a92268cf46\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -282,30 +111,84 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\exploded-aar\com.android.support\multidex\1.0.1\jars\classes.jar"
+        jar="C:\Users\Kaz Cruz\.android\build-cache\bcb68d527ced68101d8e61ee4ee8683f781e526f\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="78ea232052df889856dcb7b7b542707c89bb3bfb">
-        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-multidex-1.0.1_ea631c6e43344086e7212218e08f3278b7249dc9\classes.dex" />
+        sha1="152de8da301561dcb0946471697a420d8f7a68c5">
+        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_00ca111b429e5459ad01bddf8467265dcf2e18d6\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\exploded-aar\com.google.firebase\firebase-common\9.0.0\jars\classes.jar"
+        jar="C:\Users\Kaz Cruz\.android\build-cache\7934c1936e3fef234354ce8a711f4b57f06a0633\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="42df48c7305b08b14fa0e84561091b0c24d70d26">
-        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-common-9.0.0_b41860e4d11e7ccda477ea63c5ff981895733567\classes.dex" />
+        sha1="1941832901fc4e7a93300b53762e9f65d7650b99">
+        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_fb31dc81fa16e547e71dbd2ab9c23f35f4024f13\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.2.0\jars\classes.jar"
+        jar="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="8fe8a8f77d651982ce5e18f6187dc4daf914ac57">
-        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-25.2.0_09d8d63859854125f1d92021862d1b3bfbe0ae6e\classes.dex" />
+        sha1="5f899fb41fb36ad2c2f6d3fc83a2f1aed19bd38b">
+        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_671d76a0ed34e81536884d2f9da31cd694b0fe93\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Kaz Cruz\.android\build-cache\06abfd806fa387ddf189787660e4f0ac1c62bbd0\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="b7184ba67437a5689cfb166f422feb8618088732">
+        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_a2ba02272a7a7d5437a6f5f54b2706a7f6455294\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Kaz Cruz\.android\build-cache\f7dd3b88e584200a01b8f02130db4132a37c0c2e\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="cc178928721f3222b3b06bdfbd9497378ccb9792">
+        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_b784e2ac39bced6b2c8d974cd5f8592dd6b8a7fe\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Kaz Cruz\.android\build-cache\51f19fba3c1b9359fd65a6f198d1a7dd904898be\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e51c2f662bb72419632af5192553c37e33890a99">
+        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_6fb9a3d327f73295a8c52fa27f10e2087b05ef73\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Kaz Cruz\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlin\kotlin-stdlib\1.0.1\68cddd9aec83d23f789f72bfdc933db245c4a635\kotlin-stdlib-1.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="68cddd9aec83d23f789f72bfdc933db245c4a635">
+        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\kotlin-stdlib-1.0.1_50f3bda6114cb5c7bbe012137e8ff248e29fe7aa\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Kaz Cruz\.android\build-cache\da592e814f1b390abe27fbddb8a476136d19c26d\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="4ef8ab5fee042023018249474bc93bd4b2b9c17e">
+        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_21be7faa10c8da70faa4d1d0c794b0e435162861\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Kaz Cruz\.gradle\caches\modules-2\files-2.1\javax.annotation\javax.annotation-api\1.2\479c1e06db31c432330183f5cae684163f186146\javax.annotation-api-1.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="479c1e06db31c432330183f5cae684163f186146">
+        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\javax.annotation-api-1.2_d91580e0e3f5b30027c27a521be39f3a1ec8dc92\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -318,39 +201,93 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.2.0\jars\classes.jar"
+        jar="C:\Users\Kaz Cruz\.android\build-cache\83bf89f2d16fd2465f4c24bfbc749ac52ac04a50\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="cb454b52545859ed2f24a6c01366805b0fa04b22">
-        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-25.2.0_e38845e1963503d4ba164f236197621891466580\classes.dex" />
+        sha1="6f65c144283b31b4b9a70e6e7aa4c4a1c897d4b8">
+        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_af6e07c7aed61a6f1e8e4fd7ec75eb73d8669230\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tasks\9.0.0\jars\classes.jar"
+        jar="C:\Users\Kaz Cruz\.android\build-cache\684e4f004db8ff65d3f19844e2fb2a17bf364b0a\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="1941832901fc4e7a93300b53762e9f65d7650b99">
-        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-tasks-9.0.0_cc9d25d719839c2f90514dc75349966a06f558c9\classes.dex" />
+        sha1="8fe8a8f77d651982ce5e18f6187dc4daf914ac57">
+        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_ea17b9fe0a9d55b68b9727d84d6f83514a191941\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Kaz Cruz\.gradle\caches\modules-2\files-2.1\com.amazonaws\aws-android-sdk-ddb\2.2.22\a1e0dd0d91d40d9e67342d3a8bd26f08edaa3549\aws-android-sdk-ddb-2.2.22.jar"
+        jar="C:\Users\Kaz Cruz\.android\build-cache\91078ab593b4b1ed80bfc532d9604f01e1db64ff\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="a1e0dd0d91d40d9e67342d3a8bd26f08edaa3549">
-        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\aws-android-sdk-ddb-2.2.22_82c1e3ed06d4325b39f29c0fcaa06ffce93fb820\classes.dex" />
+        sha1="5f8ef1c4f9c0e4df3c22e0d47aea12ffed6165a7">
+        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_c6741b55089ee6eddc46b281943d6f705d8b181a\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\exploded-aar\com.mapzen.android\pelias-android-sdk\1.0.0\jars\classes.jar"
+        jar="C:\Users\Kaz Cruz\.android\build-cache\224afe8911efd9be845e4c7f347e8553dcb6b849\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
         sha1="802635934f799e9c55bb3925f2561842d857a30f">
-        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.mapzen.android-pelias-android-sdk-1.0.0_c6cb1f4a2f4fea0bf4bee9947ee2756b62965ab3\classes.dex" />
+        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_8c1040c004d6c51655f36c23f320d1ea9c1d222a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Kaz Cruz\.android\build-cache\6f1372a78c993d625ce02c065846a973eaf66208\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ea6a989b83d19b1b461281e0475a6cd6514897f8">
+        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_2d84329e20a35592b621b05f96b340f66234fe45\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Kaz Cruz\.android\build-cache\56b9c1b85730ceb3471920de45a5571da247ea23\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="42df48c7305b08b14fa0e84561091b0c24d70d26">
+        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_88fce96929cff7ed6df025965cfc466ed2985ba4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Kaz Cruz\.android\build-cache\a4487a6c719d9519f27fcf2a9bda98f91d74694b\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e820b7be8c035dd522da4bc822e8a76c8e27921a">
+        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_bf6f5085690dde28c4d264d9c4648e3874ec3f7a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Kaz Cruz\.android\build-cache\6beb5faf01faa342ce0fad1f403989043474b2a8\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ee394a892dd21c03a528139c1e8d4e0e1264ac84">
+        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_820edf74c3db97385c58d95f5f0c8a910b164c2c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Kaz Cruz\.android\build-cache\38e6039d0f1e52c44d08d05f039fe52468294733\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="cb454b52545859ed2f24a6c01366805b0fa04b22">
+        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_9f41f72855081f6cee4f76fd9da0c713774e478b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Kaz Cruz\.android\build-cache\4a06538b481dd7cb0eb3bf7de91b36ddfe396fb8\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="69b9ce40285f743df8c02c7315f631cbecc0c610">
+        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_a977ba3e12286b2c4268d9542ff3eef0ca67fe1b\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -363,12 +300,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\9.0.0\jars\classes.jar"
+        jar="C:\Users\Kaz Cruz\.android\build-cache\3dcacddbc982784248d8c3040a5f5eebf5409c46\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="cc178928721f3222b3b06bdfbd9497378ccb9792">
-        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-basement-9.0.0_96c2d30c1c588aa3a3a716104c05bc96814e03e7\classes.dex" />
+        sha1="fa0446a14ed5dd3725047d6399ffea771a564b30">
+        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_88aef699b1fc42b76b91cb81fbb57fbb54597116\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -381,6 +318,42 @@
     </item>
     <item
         is-multidex="true"
+        jar="C:\Users\Kaz Cruz\AppData\Local\Android\Sdk\extras\android\m2repository\com\android\support\support-annotations\25.2.0\support-annotations-25.2.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="4a5a82a027706397fff621b22fd6fa796e91d7c5">
+        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.2.0_2a52556dba89bcee789272cf3bc777094034fc82\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Kaz Cruz\.gradle\caches\modules-2\files-2.1\commons-io\commons-io\1.3.2\b6dde38349ba9bb5e6ea6320531eae969985dae5\commons-io-1.3.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="b6dde38349ba9bb5e6ea6320531eae969985dae5">
+        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\commons-io-1.3.2_e097e74b84bbac3f9753c17c54be821b100b7769\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Kaz Cruz\.android\build-cache\05774c962a2dad94a915d8a8fc93feb2da1c3a3d\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="78ea232052df889856dcb7b7b542707c89bb3bfb">
+        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_829f5157fcc60c8b639e0f7fd58cb352a2f1f264\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Kaz Cruz\.android\build-cache\5b08ee0ca3b2b700aff787811163cbb850534e73\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_1342853ccf2a420922c78a7aa1e6580b835cd227\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="C:\Users\Kaz Cruz\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.6.0\98476622f10715998eacf9240d6b479f12c66143\okio-1.6.0.jar"
         jumboMode="true"
         optimize="true"
@@ -390,12 +363,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Kaz Cruz\.gradle\caches\modules-2\files-2.1\com.amazonaws\aws-android-sdk-s3\2.2.22\40fe82092e0ae3ca549b132a1e7e876807525176\aws-android-sdk-s3-2.2.22.jar"
+        jar="C:\Users\Kaz Cruz\.android\build-cache\ab29afc8962b89a09611051ae01ec53ece62d49f\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="40fe82092e0ae3ca549b132a1e7e876807525176">
-        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\aws-android-sdk-s3-2.2.22_9f9e54b601e6c3de4128c3c2898a8c276bd6764a\classes.dex" />
+        sha1="ea4b54dcbfe5ac05efb0a314105f07258118d3a7">
+        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_418abddbc2a938a51568cc35c1008b4ac02c076b\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -405,6 +378,15 @@
         revision="25.0.0"
         sha1="6975da39a7040257bd51d21a231b76c915872d38">
         <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\javax.inject-1_c2ee5dd35f94ec356592eca0403613ed80df36de\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Kaz Cruz\.android\build-cache\83b0fbfa76e81fe6ea6fc9df4564a28a1aeb0b53\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="30a4938ea5235ccf532b3e9f04200e68547e36ad">
+        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\New\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_ad72a74c6d306f0ba14ff71e0496e86117a3c49e\classes.dex" />
     </item>
 
 </items>

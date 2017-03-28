@@ -87,13 +87,16 @@ public class GroupFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         setHasOptionsMenu(true);
+        //get a list with the data we are going to display
         li = getData();
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_group, container, false);
+        //create the recyclerview and set the adapter (adapter takes the list with the data)
         groupslist = (RecyclerView) view.findViewById(R.id.groups_list);
         groupadapter = new GroupsListAdapter(getActivity(), li);
         groupslist.setAdapter(groupadapter);
         groupslist.setLayoutManager(new LinearLayoutManager(this.getActivity()));
+        //set the create group button and listener
         final Button createGroup = (Button) view.findViewById(R.id.create_group_button);
         createGroup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,11 +114,13 @@ public class GroupFragment extends Fragment {
                 */
                 ////////////
 
+                //in the dialog, set the listener
                 group_create.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         String name = group_name.getText().toString();
                         if(TextUtils.isEmpty(groupId)){
+                            //create the group from the given name, method on line 154
                             createGroup(name);
                             groupadapter.notifyDataSetChanged();
                             dialog.hide();
@@ -131,6 +136,8 @@ public class GroupFragment extends Fragment {
         });
         return view;
     }
+
+    //place holder method for adding data into the list.
     public static List<GroupInfo> getData(){
         List<GroupInfo> data = new ArrayList<>();
         String[] titles = {"Bryan's Group", "Friends", "Work"};
@@ -142,6 +149,8 @@ public class GroupFragment extends Fragment {
         return data;
     }
 
+    //create the group from a string
+    //the Groupinfo class contains information like the name and icon.
     public void createGroup(String s){
         GroupInfo group = new GroupInfo();
         group.iconId = R.drawable.ic_group;
@@ -149,7 +158,7 @@ public class GroupFragment extends Fragment {
         li.add(group);
 
     }
-
+    ///everything below this line is auto generated code
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {

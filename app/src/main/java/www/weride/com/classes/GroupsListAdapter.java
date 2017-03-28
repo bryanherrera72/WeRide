@@ -22,6 +22,7 @@ import www.weride.com.activities.UserActivity;
 //note from miguel: removed references to image view
 public class GroupsListAdapter extends RecyclerView.Adapter<GroupsListAdapter.GroupViewHolder>{
     private LayoutInflater inflater;
+
     public static final String GROUP_NAME = "www.weride.com.activities.UserActivity";
     Context context;
     List<GroupInfo> data = Collections.emptyList();
@@ -42,10 +43,13 @@ public class GroupsListAdapter extends RecyclerView.Adapter<GroupsListAdapter.Gr
     @Override
     public void onBindViewHolder(final GroupViewHolder holder, int position) {
         final GroupInfo current = data.get(position);
+        //set the title for each card
         holder.title.setText(current.title);
         holder.editGroup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //when selecting the button we go to the use activity for the group.
+                //pass the name of the group
                 Intent myIntent = new Intent(context, UserActivity.class);
                 myIntent.putExtra(GROUP_NAME,current.title);
                 context.startActivity(myIntent);

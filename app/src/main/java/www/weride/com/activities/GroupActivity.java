@@ -22,7 +22,7 @@ import www.weride.com.classes.GroupsListAdapter;
  */
 
 ///note by Miguel: this entire activity might be useless, use the code in fragment_group to
-// change anything in the group portion of the app, the code is identical there
+// change anything in the group portion of the app, the code is identical there, if a bit harder to read
 public class GroupActivity extends Activity {
     private EditText group_name;
     private Button group_create;
