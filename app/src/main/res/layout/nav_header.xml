@@ -6,7 +6,8 @@
     android:background="?attr/colorPrimary"
     android:padding="16dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
-    android:gravity="bottom">
+    android:gravity="bottom"
+    android:id="@+id/header_view">
     <LinearLayout
         android:id="@+id/user_info"
         android:layout_width="wrap_content"

@@ -83,15 +83,18 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_main);
         checkPermissions();
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        standardtoolbar = (Toolbar) findViewById(R.id.standard_toolbar);
         lm = (LocationManager) getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
 
         // Obtain a reference to the mobile client. It is created in the Application class,
         // but in case a custom Application class is not used, we initialize it here if necessary.
         AWSMobileClient.initializeMobileClientIfNecessary(this);
         //prepare and set toolbar
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        standardtoolbar = (Toolbar) findViewById(R.id.standard_toolbar);
 
         // Obtain a reference to the mobile client. It is created in the Application class.
         final AWSMobileClient awsMobileClient = AWSMobileClient.defaultMobileClient();
@@ -99,13 +102,15 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
         // Obtain a reference to the identity manager.
         identityManager = awsMobileClient.getIdentityManager();
 
-        setContentView(R.layout.activity_main);
 
         //set the drawer layout inside the main layout
         mainDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         navDrawer = (NavigationView) findViewById(R.id.navView);
+
         setupDrawerContent(navDrawer);
         swapToMapToolbar();
+        //have to force the view to initialize
+        setupSignInButtons(navDrawer.getHeaderView(0));
 
         //set the first fragment.
         fragmentManager = getSupportFragmentManager();
@@ -120,12 +125,12 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     /**
      * Initializes the sign-in and sign-out buttons.
      */
-    private void setupSignInButtons() {
+    private void setupSignInButtons(View view) {
 
-        signOutButton = (Button) findViewById(R.id.button_signout);
+        signOutButton = (Button)view.findViewById(R.id.button_signout);
         signOutButton.setOnClickListener(this);
 
-        signInButton = (Button) findViewById(R.id.button_signin);
+        signInButton = (Button) view.findViewById(R.id.button_signin);
         signInButton.setOnClickListener(this);
 
         final boolean isUserSignedIn = identityManager.isUserSignedIn();
@@ -271,7 +276,7 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
         super.onResume();
         //if we have a mapfragment, ensure the permissions are prepped.
         //MapFragment frag = (MapFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_map);
-        setupSignInButtons();
+        setupSignInButtons(navDrawer.getHeaderView(0));
         // register notification receiver
         LocalBroadcastManager.getInstance(this).registerReceiver(notificationReceiver,
                 new IntentFilter(PushListenerService.ACTION_SNS_NOTIFICATION));
