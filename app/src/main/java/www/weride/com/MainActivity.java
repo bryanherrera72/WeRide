@@ -2,9 +2,14 @@ package www.weride.com;
 
 import android.Manifest;
 import android.annotation.TargetApi;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
@@ -14,29 +19,45 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.mapzen.tangram.LngLat;
+import com.weride.www.awsmobilehelper.auth.IdentityManager;
+import com.weride.www.awsmobilehelper.auth.IdentityProvider;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import www.weride.com.amazonaws.mobile.AWSMobileClient;
 import www.weride.com.fragments.GroupFragment;
 import www.weride.com.fragments.MapFragment;
 import www.weride.com.fragments.SearchFragment;
+import www.weride.com.utils.PushListenerService;
+import www.weride.com.utils.SignInHandler;
 
 public class MainActivity extends AppCompatActivity implements MapFragment.OnFragmentInteractionListener,
                                                                 GroupFragment.OnFragmentInteractionListener,
-                                                                SearchFragment.OnFragmentInteractionListener{
+                                                                SearchFragment.OnFragmentInteractionListener,
+        View.OnClickListener{
+
+    /** Class name for log messages. */
+    private static final String LOG_TAG = MainActivity.class.getSimpleName();
+
     public DrawerLayout mainDrawer;
     private Toolbar toolbar, standardtoolbar;
     private  NavigationView navDrawer;
@@ -45,6 +66,12 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     private MapFragment map;
     private LocationManager lm;
     private boolean locationaccess = false;
+    private Button signInButton;
+    private Button signOutButton;
+    private ImageView imageView;
+    private TextView userNameView;
+    /** The identity manager used to keep track of the current user account. */
+    private IdentityManager identityManager;
 
 
     private final static int REQUEST_CODE_ASK_PERMISSIONS = 1;
@@ -58,10 +85,21 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
         super.onCreate(savedInstanceState);
         checkPermissions();
         lm = (LocationManager) getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
-        setContentView(R.layout.activity_main);
+
+        // Obtain a reference to the mobile client. It is created in the Application class,
+        // but in case a custom Application class is not used, we initialize it here if necessary.
+        AWSMobileClient.initializeMobileClientIfNecessary(this);
         //prepare and set toolbar
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         standardtoolbar = (Toolbar) findViewById(R.id.standard_toolbar);
+
+        // Obtain a reference to the mobile client. It is created in the Application class.
+        final AWSMobileClient awsMobileClient = AWSMobileClient.defaultMobileClient();
+
+        // Obtain a reference to the identity manager.
+        identityManager = awsMobileClient.getIdentityManager();
+
+        setContentView(R.layout.activity_main);
 
         //set the drawer layout inside the main layout
         mainDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -79,10 +117,42 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
         }
         fragmentManager.beginTransaction().add(R.id.flContent, map).commit();
     }
+    /**
+     * Initializes the sign-in and sign-out buttons.
+     */
+    private void setupSignInButtons() {
+
+        signOutButton = (Button) findViewById(R.id.button_signout);
+        signOutButton.setOnClickListener(this);
+
+        signInButton = (Button) findViewById(R.id.button_signin);
+        signInButton.setOnClickListener(this);
+
+        final boolean isUserSignedIn = identityManager.isUserSignedIn();
+        signOutButton.setVisibility(isUserSignedIn ? View.VISIBLE : View.INVISIBLE);
+        signInButton.setVisibility(!isUserSignedIn ? View.VISIBLE : View.INVISIBLE);
+
+    }
 
     //assign a drawer toggle to a toolbar parameter.
     private ActionBarDrawerToggle setupDrawerToggle(Toolbar toolbar){
-        return new ActionBarDrawerToggle(this, mainDrawer,toolbar, R.string.drawer_open, R.string.drawer_close);
+        return new ActionBarDrawerToggle(this, mainDrawer, toolbar, R.string.drawer_open, R.string.drawer_close);
+// {
+//            @Override
+//            public void syncState(){
+//                super.syncState();
+//                updateUserName();
+//                updateUserImage();
+//            }
+//
+//            @Override
+//            public void onDrawerOpened(View drawerView){
+//                super.onDrawerOpened(drawerView);
+//                updateUserName();
+//                updateUserImage();
+//            }
+//        };
+
     }
 
     //Setup the drawer content within the nav view
@@ -201,8 +271,31 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
         super.onResume();
         //if we have a mapfragment, ensure the permissions are prepped.
         //MapFragment frag = (MapFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_map);
+        setupSignInButtons();
+        // register notification receiver
+        LocalBroadcastManager.getInstance(this).registerReceiver(notificationReceiver,
+                new IntentFilter(PushListenerService.ACTION_SNS_NOTIFICATION));
+        // register settings changed receiver.
+
+
         onPermissionsValid(canAccessLocation());
     }
+
+    private final BroadcastReceiver notificationReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Log.d(LOG_TAG, "Received notification from local broadcast. Display it in a dialog.");
+
+            Bundle data = intent.getBundleExtra(PushListenerService.INTENT_SNS_NOTIFICATION_DATA);
+            String message = PushListenerService.getMessage(data);
+
+            new AlertDialog.Builder(MainActivity.this)
+                    .setTitle(R.string.push_demo_title)
+                    .setMessage(message)
+                    .setPositiveButton(android.R.string.ok, null)
+                    .show();
+        }
+    };
 
     public Toolbar getToolbar(){
         Toolbar rtn;
@@ -322,9 +415,100 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+
+        // unregister notification receiver
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(notificationReceiver);
+
+    }
+
+
+    @Override
     public void onFragmentInteraction(Uri uri) {
 
 
     }
 
+    @Override
+    public void onClick(View view) {
+        if (view == signOutButton) {
+            // The user is currently signed in with a provider. Sign out of that provider.
+            identityManager.signOut();
+            // Show the sign-in button and hide the sign-out button.
+            signOutButton.setVisibility(View.INVISIBLE);
+            signInButton.setVisibility(View.VISIBLE);
+
+            // Close the navigation drawer.
+            mainDrawer.closeDrawers();
+            return;
+        }
+        if (view == signInButton) {
+            identityManager.signInOrSignUp(this, new SignInHandler());
+
+            // Close the navigation drawer.
+            mainDrawer.closeDrawers();
+            return;
+        }
+
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle bundle){
+        super.onSaveInstanceState(bundle);
+        if(standardtoolbar!=null){
+            bundle.putCharSequence("Title", standardtoolbar.getTitle());
+        }
+    }
+
+    private void updateUserName() {
+        final IdentityManager identityManager =
+                AWSMobileClient.defaultMobileClient().getIdentityManager();
+        final IdentityProvider identityProvider =
+                identityManager.getCurrentIdentityProvider();
+
+         userNameView = (TextView)findViewById(R.id.userName);
+
+        if (identityProvider == null) {
+            // Not signed in
+            userNameView.setText(getString(R.string.main_nav_menu_default_user_text));
+            userNameView.setBackgroundColor(getResources().getColor(R.color.nav_drawer_no_user_background));
+            return;
+        }
+
+        final String userName = identityProvider.getUserName();
+
+        if (userName != null) {
+            userNameView.setText(userName);
+            userNameView.setBackgroundColor(
+                    getResources().getColor(R.color.nav_drawer_top_background));
+        }
+    }
+
+    private void updateUserImage() {
+
+        final IdentityManager identityManager =
+                AWSMobileClient.defaultMobileClient().getIdentityManager();
+        final IdentityProvider identityProvider =
+                identityManager.getCurrentIdentityProvider();
+
+         imageView = (ImageView)findViewById(R.id.userImage);
+
+        if (identityProvider == null) {
+            // Not signed in
+            if (Build.VERSION.SDK_INT < 22) {
+                imageView.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.ic_account));
+            }
+            else {
+                imageView.setImageDrawable(getDrawable(R.drawable.ic_account));
+            }
+
+            return;
+        }
+
+        final Bitmap userImage = identityManager.getUserImage();
+        if (userImage != null) {
+            imageView.setImageBitmap(userImage);
+        }
+    }
 }

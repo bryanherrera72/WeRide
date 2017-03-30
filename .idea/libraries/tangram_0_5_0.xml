@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="tangram-0.5.0">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.android/build-cache/3b3035e75bb248de406d84e3d93e716273752a46/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/3b3035e75bb248de406d84e3d93e716273752a46/output/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.mapzen.tangram/tangram/0.5.0/fc6c1909f229397e838a917805d07e4c0279617e/tangram-0.5.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

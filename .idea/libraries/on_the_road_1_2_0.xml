@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="on-the-road-1.2.0">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.android/build-cache/af4f90119d83b74f391d0f199b376372d755b5bb/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/af4f90119d83b74f391d0f199b376372d755b5bb/output/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.mapzen/on-the-road/1.2.0/c3c8658155ec961a3e43af7b156b2af94213cf78/on-the-road-1.2.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

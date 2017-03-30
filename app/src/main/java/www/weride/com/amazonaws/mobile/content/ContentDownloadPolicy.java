@@ -1,0 +1,18 @@
+
+package www.weride.com.amazonaws.mobile.content;
+
+
+public enum ContentDownloadPolicy {
+    /** Download the file if not currently in the cache. */
+    DOWNLOAD_IF_NOT_CACHED,
+    /** Download the file if not currently in the cache or a newer file exists remotely. */
+    DOWNLOAD_IF_NEWER_EXIST,
+    /** Download the file remotely, never retrieve it from the local cache. */
+    DOWNLOAD_ALWAYS,
+    /** Always only retrieve the file from the local cache, never download the file remotely. */
+    DOWNLOAD_NEVER,
+    /** Retrieve the file from the local cache if it exists, but if not locally cached then
+     * download the remote content metadata and return a remote content item containing the
+     * metadata. */
+    DOWNLOAD_METADATA_IF_NOT_CACHED
+}
