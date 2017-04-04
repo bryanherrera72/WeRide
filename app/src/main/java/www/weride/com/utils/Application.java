@@ -15,12 +15,15 @@ import www.weride.com.amazonaws.mobile.push.PushManager;
  */
 public class Application extends MultiDexApplication {
     private static final String LOG_TAG = Application.class.getSimpleName();
+    private static Application mInstance;
+    private MyPreferenceManager preferenceManager;
 
     @Override
     public void onCreate() {
         Log.d(LOG_TAG, "Application.onCreate - Initializing application...");
         super.onCreate();
         initializeApplication();
+        mInstance = this;
         Log.d(LOG_TAG, "Application.onCreate - Application initialized OK");
     }
 
@@ -37,5 +40,16 @@ public class Application extends MultiDexApplication {
         });
 
         // ...Put any application-specific initialization logic here...
+    }
+
+    public static synchronized Application getInstance(){
+        return mInstance;
+    }
+
+    public MyPreferenceManager getPreferenceManager(){
+        if(preferenceManager==null){
+            preferenceManager = new MyPreferenceManager(this);
+        }
+        return preferenceManager;
     }
 }

@@ -6,6 +6,7 @@
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="search">Search</string>
+    <string name="create_button_text">+ Create Group</string>
         <!-- Suffix after '-' must be the app package name as specified in the build.gradle file. This
          is used by the com.amazonaws.mobile.downloader.query.DownloadQueueProvider class. -->
         <string name="download_queue_provider_authority">com.amazonaws.mobile.downloader-www.weride.com</string>
@@ -224,7 +225,8 @@
         <string name="nosql_dialog_message_confirm_update_item_text">Are you sure you want to update the selected item?</string>
         <string name="nosql_dialog_title_confirm_delete_item_text">Confirm Delete</string>
         <string name="nosql_dialog_message_confirm_delete_item_text">Are you sure you want to delete the selected item?</string>
-
+    <string name="create_group">CREATE GROUP</string>
+    <string name="enter_group_name">Enter group name...</string>
 
 
 </resources>

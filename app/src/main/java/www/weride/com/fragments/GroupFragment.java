@@ -1,17 +1,28 @@
 package www.weride.com.fragments;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import www.weride.com.MainActivity;
 import www.weride.com.R;
+import www.weride.com.utils.GroupInfo;
+import www.weride.com.utils.GroupListAdapter;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,6 +42,12 @@ public class GroupFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    private EditText group_name;
+    private Button group_create;
+    private String groupId;
+    private List<GroupInfo> list;
+    private RecyclerView groupslist;
+    private GroupListAdapter groupAdapter;
     private OnFragmentInteractionListener mListener;
 
     public GroupFragment() {
@@ -68,13 +85,57 @@ public class GroupFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         setHasOptionsMenu(true);
-
+        list = getData();
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_group, container, false);
+        groupslist = (RecyclerView)view.findViewById(R.id.groups_list);
+        groupAdapter = new GroupListAdapter(getActivity(), list);
+        groupslist.setAdapter(groupAdapter);
+        groupslist.setLayoutManager(new LinearLayoutManager(this.getActivity()));
+        final Button createGroup = (Button)view.findViewById(R.id.create_group_button);
+        createGroup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Dialog dialog = new Dialog(getContext());
+                dialog.setContentView(R.layout.create_group_dialog);
+                group_name = (EditText)dialog.findViewById(R.id.group_name);
+                group_create = (Button)dialog.findViewById(R.id.group_create);
 
+                group_create.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String name = group_name.getText().toString();
+                        if(TextUtils.isEmpty(name)){
+                            createGroup(name);
+                            groupAdapter.notifyDataSetChanged();
+                            dialog.hide();
+                        }
+                    }
+                });
+                dialog.show();
+            }
+        });
 
         return view;
+    }
+
+    public static List<GroupInfo> getData(){
+        List<GroupInfo> data = new ArrayList<>();
+        String[] title = {"Bryan's Group", "Friends", "Work"};
+        for(int i=0; i<title.length; i++){
+            GroupInfo current = new GroupInfo();
+            current.title = title[i];
+            data.add(current);
+        }
+        return data;
+    }
+
+    public void createGroup(String s){
+        GroupInfo group = new GroupInfo();
+        group.iconId = R.drawable.ic_group;
+        group.title = s;
+        list.add(group);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

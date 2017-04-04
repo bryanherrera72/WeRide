@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="create_group">CREATE GROUP</string>
+    <string name="enter_group_name">Enter group name...</string>
+</resources>
