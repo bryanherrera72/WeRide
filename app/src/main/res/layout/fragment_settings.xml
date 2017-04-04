@@ -4,10 +4,16 @@
     android:layout_height="match_parent"
     tools:context="www.weride.com.fragments.SettingsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
+
+    <RelativeLayout
+        android:id="@+id/group_container"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_width="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/note_list"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent" />
+    </RelativeLayout>
 
 </FrameLayout>
