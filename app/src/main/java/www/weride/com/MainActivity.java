@@ -145,6 +145,9 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        if(SearchFragment.class ==fragmentManager.findFragmentById(R.id.flContent).getClass()){
+            fragmentManager.popBackStack(BACK_STACK_ID, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        }
         if(MapFragment.class ==fragmentManager.findFragmentById(R.id.flContent).getClass()){
             toolbar.removeView(findViewById(R.id.search_toolbar));
             swapToMapToolbar();
