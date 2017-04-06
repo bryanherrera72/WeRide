@@ -145,9 +145,10 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-
-        swapToMapToolbar();
-
+        if(MapFragment.class ==fragmentManager.findFragmentById(R.id.flContent).getClass()){
+            toolbar.removeView(findViewById(R.id.search_toolbar));
+            swapToMapToolbar();
+        }
     }
 
     @Override
@@ -218,9 +219,9 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     private void swapToMapToolbar(){
         RelativeLayout mainlayout = (RelativeLayout) findViewById(R.id.activity_main);
         //first check if the child view of the toolbar is set
-        if(!(findViewById(R.id.search) == null)){
-            toolbar.removeView(findViewById(R.id.search_toolbar));
-        }
+//        if(!(findViewById(R.id.search) == null)){
+//            toolbar.removeView(findViewById(R.id.search_toolbar));
+//        }
         //show the main cardview toolbar
         toolbar.setVisibility(View.VISIBLE);
         View cardview = mainlayout.findViewById(R.id.toolbar_card);
@@ -318,6 +319,7 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
                 map.displayPoint(dest);
             }
         }
+
     }
 
     @Override

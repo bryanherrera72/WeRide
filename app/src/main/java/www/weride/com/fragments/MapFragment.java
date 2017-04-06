@@ -1,16 +1,21 @@
 package www.weride.com.fragments;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
+import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.mapzen.android.core.MapzenManager;
 import com.mapzen.android.graphics.CompassView;
@@ -19,10 +24,28 @@ import com.mapzen.android.graphics.MapzenMap;
 import com.mapzen.android.graphics.OnMapReadyCallback;
 import com.mapzen.android.graphics.model.BubbleWrapStyle;
 import com.mapzen.android.graphics.model.CameraType;
-import com.mapzen.android.graphics.model.Marker;
+
+import com.mapzen.android.graphics.model.Polyline;
+import com.mapzen.android.lost.api.LocationRequest;
+import com.mapzen.android.lost.api.LocationServices;
+import com.mapzen.android.lost.api.LostApiClient;
+import com.mapzen.android.routing.MapzenRouter;
+import com.mapzen.helpers.RouteEngine;
+import com.mapzen.helpers.RouteListener;
+import com.mapzen.model.ValhallaLocation;
 import com.mapzen.pelias.widget.PeliasSearchView;
 import com.mapzen.tangram.LngLat;
+import com.mapzen.valhalla.Route;
+import com.mapzen.valhalla.RouteCallback;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import www.weride.com.R;
 
 /**
@@ -33,7 +56,8 @@ import www.weride.com.R;
  * Use the {@link MapFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MapFragment extends com.mapzen.android.graphics.MapFragment implements OnMapReadyCallback{
+public class MapFragment extends com.mapzen.android.graphics.MapFragment implements OnMapReadyCallback, View.OnClickListener, LostApiClient.ConnectionCallbacks, RouteListener, RouteCallback, Callback{
+
     PeliasSearchView searchView;
     MapzenMap map;
     private boolean enableLocationOnResume = false;
@@ -43,7 +67,18 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
     OnFragmentInteractionListener activity;
     MapzenManager mapzenman;
     FloatingActionButton navfab;
+    FloatingActionButton fab;
+    LngLat dest;
+    LostApiClient lostApiClient;
+
+    MapzenRouter router;
+    RouteEngine engine;
+    RouteListener routeListener;
+    LocationRequest locationRequest;
+    ValhallaLocation valhallaLocation;
+    Route currentroute;
     LngLat searchedLocation = null;
+    double distance;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -90,7 +125,6 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
 
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -103,6 +137,17 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
         initMapButtons(mapview);
         mapview.getMapAsync(new BubbleWrapStyle(), this);
 
+        fab = (FloatingActionButton) map.findViewById(R.id.floatingActionButton);
+        fab.setOnClickListener(this);
+        router = new MapzenRouter(this.getContext());
+        router.setCallback(this);
+        valhallaLocation = new ValhallaLocation();
+
+        lostApiClient = new LostApiClient.Builder(this.getContext()).addConnectionCallbacks(this).build();
+        lostApiClient.connect();
+
+        engine = new RouteEngine();
+        engine.setListener(this);
 
         return map;
     }
@@ -169,15 +214,15 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
 //            mapzenMap.setZoomButtonsEnabled(true);
             enableLocationOnResume = true;
         }
-
         if(!(searchedLocation == null)){
             mapzenMap.drawSearchResult(searchedLocation);
         }
         //set the current instance of the map to this "READY" map
         //allows access to it throughout the current fragment instance.
         MapFragment.this.map = mapzenMap;
-        Log.i("Mapready: ", "hello");
+        //map.drawSearchResult(new LngLat(-118.026126,34.570467));
     }
+
     /*
     * This method initializes the findme, zoom, and compass buttons.
     * also sets their layout parameters.
@@ -207,14 +252,13 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
     }
 
     public void displayPoint(LngLat destpoint) {
-        Log.i("drawn to map: " , "now");
+        dest = destpoint;
         searchedLocation = destpoint;
+        //map.drawSearchResult(destpoint);
         map.setPosition(destpoint);
-
         map.setZoom(15);
 
     }
-
 
     /**
      * This interface must be implemented by activities that contain this
@@ -232,8 +276,130 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
         void onPermissionsValid(boolean valid);
         void passPoint(LngLat dest);
         void mapIsReady();
+        //void generateRoute(LatLng start, LatLng dest);
     }
 
+    private void generateRoute(double[] startpoint, LngLat destpoint){
 
+        if(!(destpoint == null) && !(map == null) ) {
+            double[] dest = {destpoint.longitude, destpoint.latitude};
+            router.setLocation(startpoint);
+            router.setLocation(dest);
+            router.fetch();
+        }
 
+    }
+
+    @Override
+    public void onClick(View view) {
+        double[] userLoc = null;
+        int permissionCheck = ContextCompat.checkSelfPermission(this.getContext(),
+                Manifest.permission.ACCESS_COARSE_LOCATION);
+        if(permissionCheck == PackageManager.PERMISSION_GRANTED) {
+            Location loc = LocationServices.FusedLocationApi.getLastLocation(lostApiClient);
+            if(loc != null ) {
+                userLoc = new double[]{loc.getLongitude(), loc.getAltitude()};
+            }
+        }
+        if (dest != null) {
+            generateRoute(userLoc, dest);
+        }
+    }
+
+    @Override
+    public void success(@NotNull Route route) {
+
+        Toast.makeText(this.getContext(), "sweetq", Toast.LENGTH_SHORT).show();
+        map.clearRouteLine();
+        map.removePolyline();
+        List<LngLat> coordinates = new ArrayList<>();
+        for (ValhallaLocation location : route.getGeometry()) {
+            coordinates.add(new LngLat(location.getLongitude(), location.getLatitude()));
+        }
+        Polyline polyline = new Polyline(coordinates);
+        map.addPolyline(polyline);
+        currentroute = route;
+        engine.setRoute(route);
+        distance = (double) route.getTotalDistance();
+        distance = distance / 1609;
+        Toast.makeText(this.getContext(), "Distance: " + (int) distance + "mi", Toast.LENGTH_SHORT).show();
+
+    }
+
+    @Override
+    public void failure(int i) {
+        Log.w("could not be fetched", "" + i);
+        map.clearRouteLine();
+    }
+
+    @Override
+    public void onRouteStart() {
+        Toast.makeText(this.getContext(), "Route starting", Toast.LENGTH_SHORT).show();
+        if(currentroute != null){
+            Log.w("current route", "" + currentroute.getRouteInstructions());
+        }
+    }
+
+    @Override
+    public void onRecalculate(ValhallaLocation location) {
+        //map.clearRouteLine();
+        //map.removePolyline();
+        //this.setStart(new LngLat(location.getLongitude(), location.getLatitude()));
+        //this.setDestination(this.destination);
+        //this.fetch();
+        Toast.makeText(this.getContext(), "Recalculating", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onSnapLocation(ValhallaLocation originalLocation, ValhallaLocation snapLocation) {
+        map.setPosition(new LngLat(snapLocation.getLongitude(), snapLocation.getLatitude()));
+
+    }
+
+    @Override
+    public void onMilestoneReached(int index, RouteEngine.Milestone milestone) {
+        String instruction = currentroute.getRouteInstructions().get(index).toString();
+        Toast.makeText(this.getContext(), instruction, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onApproachInstruction(int index) {
+
+    }
+
+    @Override
+    public void onInstructionComplete(int index) {
+
+    }
+
+    @Override
+    public void onUpdateDistance(int distanceToNextInstruction, int distanceToDestination) {
+
+    }
+
+    @Override
+    public void onRouteComplete() {
+
+    }
+
+    //Lost api connection
+    @Override
+    public void onConnected() {
+
+    }
+
+    @Override
+    public void onConnectionSuspended() {
+
+    }
+
+    @Override
+    public void onResponse(Call call, Response response) {
+
+    }
+
+    @Override
+    public void onFailure(Call call, Throwable t) {
+
+    }
 }
