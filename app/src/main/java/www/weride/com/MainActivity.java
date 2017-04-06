@@ -13,6 +13,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     private LocationManager lm;
     private boolean locationaccess = false;
 
-
+    private static final String BACK_STACK_ID="MainMapBackStack";
     private final static int REQUEST_CODE_ASK_PERMISSIONS = 1;
 
     private static final String[] REQUIRED_SDK_PERMISSIONS = new String[]{
@@ -144,11 +145,9 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        //if(MapFragment.class ==fragmentManager.findFragmentById(R.id.flContent).getClass()){
-          //  toolbar.removeView(findViewById(R.id.search_toolbar));
 
-            swapToMapToolbar();
-        //}
+        swapToMapToolbar();
+
     }
 
     @Override
@@ -312,8 +311,8 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
             swapToMapToolbar();
             //check if the map is up front.
             if(!(map.isVisible())){
-//                if its not, place it up front
-                fragmentManager.beginTransaction().replace(R.id.flContent, map).commit();
+//              if its not, place it up front
+                fragmentManager.popBackStack(BACK_STACK_ID, FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }
             if(!(dest == null)){
                 map.displayPoint(dest);

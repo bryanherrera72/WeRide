@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -39,7 +40,7 @@ public class SearchFragment extends Fragment implements retrofit2.Callback<Resul
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    private static final String BACK_STACK_ID="MainMapBackStack";
     PeliasSearchView searchView;
     MainActivity mainActivity;
     Toolbar mainToolbar;
@@ -93,7 +94,7 @@ public class SearchFragment extends Fragment implements retrofit2.Callback<Resul
         mapzenSearch = new MapzenSearch(mainActivity);
         mapzenSearch.setLocationProvider(lp);
         pel = mapzenSearch.getPelias();
-
+        fragmentManager = getFragmentManager();
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -119,7 +120,6 @@ public class SearchFragment extends Fragment implements retrofit2.Callback<Resul
         searchView.setCallback(this);
         searchView.setIconifiedByDefault(false);
         searchView.requestFocus();
-        fragmentManager = getFragmentManager();
         return view;
 
 
@@ -148,7 +148,9 @@ public class SearchFragment extends Fragment implements retrofit2.Callback<Resul
         super.onDetach();
         mListener = null;
     }
-
+    /*
+    *  Location was found.
+    * */
     @Override
     public void onResponse(Call<Result> call, Response<Result> response) {
         if(!(response.body() == null)){

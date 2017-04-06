@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.weride.www.awsmobilehelper.auth.signin.userpools.MFAActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/mfa_header"
+        android:id="@+id/mfa_title"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/mfa_title"
+        android:id="@+id/mfa_space1" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/mfa_code_sent_message"
+        android:id="@+id/mfa_message"
+        android:layout_below="@id/mfa_space1"
+        android:layout_centerHorizontal="true" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/user_pools_activity_intra_group_separation"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/mfa_message"
+        android:id="@+id/mfa_space2" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/user_pools_activity_text_height"
+        android:id="@+id/mfa_code"
+        android:layout_below="@id/mfa_space2"
+        android:layout_centerHorizontal="true"
+        android:hint="@string/forgot_password_input_code_hint"
+        android:inputType="number"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/user_pools_activity_intra_group_separation"
+        android:layout_below="@id/mfa_code"
+        android:id="@+id/mfa_space3" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/user_pools_activity_button_height"
+        android:text="@string/verify_button_text"
+        android:textAllCaps="false"
+        android:textSize="@dimen/user_pools_activity_button_text_size"
+        android:id="@+id/mfa_button"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/mfa_space3"
+        android:onClick="verify"/>
+</RelativeLayout>

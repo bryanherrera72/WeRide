@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "/Users/bryanherrera/Documents/Code/Github/WeRide/AWSMobileHelper/build/intermediates/res/merged/release/layout-v11/notification_template_big_media_narrow.xml",
+        "source": "/Users/bryanherrera/.android/build-cache/31f88642e4021309f187b5244a776fed3b9243cb/output/res/layout-v11/notification_template_big_media_narrow.xml"
+    },
+    {
+        "merged": "/Users/bryanherrera/Documents/Code/Github/WeRide/AWSMobileHelper/build/intermediates/res/merged/release/layout-v11/notification_media_action.xml",
+        "source": "/Users/bryanherrera/.android/build-cache/31f88642e4021309f187b5244a776fed3b9243cb/output/res/layout-v11/notification_media_action.xml"
+    },
+    {
+        "merged": "/Users/bryanherrera/Documents/Code/Github/WeRide/AWSMobileHelper/build/intermediates/res/merged/release/layout-v11/notification_template_big_media.xml",
+        "source": "/Users/bryanherrera/.android/build-cache/31f88642e4021309f187b5244a776fed3b9243cb/output/res/layout-v11/notification_template_big_media.xml"
+    },
+    {
+        "merged": "/Users/bryanherrera/Documents/Code/Github/WeRide/AWSMobileHelper/build/intermediates/res/merged/release/layout-v11/notification_media_cancel_action.xml",
+        "source": "/Users/bryanherrera/.android/build-cache/31f88642e4021309f187b5244a776fed3b9243cb/output/res/layout-v11/notification_media_cancel_action.xml"
+    },
+    {
+        "merged": "/Users/bryanherrera/Documents/Code/Github/WeRide/AWSMobileHelper/build/intermediates/res/merged/release/layout-v11/notification_template_big_media_custom.xml",
+        "source": "/Users/bryanherrera/.android/build-cache/31f88642e4021309f187b5244a776fed3b9243cb/output/res/layout-v11/notification_template_big_media_custom.xml"
+    },
+    {
+        "merged": "/Users/bryanherrera/Documents/Code/Github/WeRide/AWSMobileHelper/build/intermediates/res/merged/release/layout-v11/notification_template_big_media_narrow_custom.xml",
+        "source": "/Users/bryanherrera/.android/build-cache/31f88642e4021309f187b5244a776fed3b9243cb/output/res/layout-v11/notification_template_big_media_narrow_custom.xml"
+    }
+]

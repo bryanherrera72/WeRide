@@ -209,8 +209,6 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
     public void displayPoint(LngLat destpoint) {
         Log.i("drawn to map: " , "now");
         searchedLocation = destpoint;
-        ///////////////////////////////////////may need to set this destpoint to null after nav is attempted or something.
-        ///otherwise map will keep drawing it when it loads.
         map.setPosition(destpoint);
 
         map.setZoom(15);
