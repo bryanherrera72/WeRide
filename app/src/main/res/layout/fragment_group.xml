@@ -5,9 +5,26 @@
     tools:context="www.weride.com.fragments.GroupFragment">
 
 
-        <!-- TODO: Update blank fragment layout -->
-        <TextView
-            android:layout_width="match_parent"
+        <RelativeLayout
+            android:id="@+id/group_container"
             android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
+            android:layout_width="match_parent">
+
+                <Button
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:id="@+id/create_group_button"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/create_button_text"
+                    android:textColor="@color/mz_white"
+                    android:enabled="true"/>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/groups_list"
+                    android:layout_below="@id/create_group_button"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent" />
+        </RelativeLayout>
+
 </FrameLayout>

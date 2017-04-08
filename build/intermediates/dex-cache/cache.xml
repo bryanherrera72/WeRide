@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="C:\Users\JDaskalov\.android\build-cache\3fdeb32eb024fc1208ed6d429535bb62a2939dd5\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="c03bf57f358aa10d253f21989e93bcf6014b3b17">
+        <dex dex="C:\Git Repo Extras\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_d707654a16f2acf5936b0e8bd7d4df4e9e98bef5\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\JDaskalov\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\retrofit\2.1.0\2de7cd8b95b7021b1d597f049bcb422055119f2c\retrofit-2.1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="2de7cd8b95b7021b1d597f049bcb422055119f2c">
+        <dex dex="C:\Git Repo Extras\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\retrofit-2.1.0_b4fd895c0be6902b659abedd6ecfdac8c80fd3b7\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\JDaskalov\.android\build-cache\96978c6e6f284c784db5a7ec577b4fe0099605fc\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="0b44a82d49944e3cf3a7f0d24d08c1c4411a22d1">
+        <dex dex="C:\Git Repo Extras\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_fbedfac58547941b185fe27ee60c3402f233d2fc\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\JDaskalov\.android\build-cache\f8efc9e70374cf8e17b02559929b827d86b9cc8c\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="0fb891e8f0cfba0513043a7bb357513d229ca2cd">
+        <dex dex="C:\Git Repo Extras\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_6df2e6673072a4ff8fc5d17fb9ae972468a45555\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\JDaskalov\.android\build-cache\207e822c08837a52e14bb79c79e4c41807c259b3\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="aa3b9dfd276e600880c96d632cd64dcae6220e6f">
+        <dex dex="C:\Git Repo Extras\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_afa309093572e7224fe36ac80a2e6d6f612046d8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\JDaskalov\.android\build-cache\784b5833dc7f2acaba95fd68038977b9980f2aa2\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="6003d64df88a6ce5e961fa2bad7f1b9b97689ac1">
+        <dex dex="C:\Git Repo Extras\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_85334e0ba6f5a53f5fbf3b7781460730200da17d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\JDaskalov\.android\build-cache\32839d2738288ef33dc0312bf69406528a3b3055\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="78ea232052df889856dcb7b7b542707c89bb3bfb">
+        <dex dex="C:\Git Repo Extras\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_7c08f8c2568a1cf54dc9957aa8a01574a91fffba\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\JDaskalov\.android\build-cache\facc67a356eecbc312b11b6e8b35c3a307040a40\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="0d191c1a09e4892d059e5ce749e4ad4e08129e35">
+        <dex dex="C:\Git Repo Extras\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_1511013bcc1e1ebc7fa50245b901cd537b980f8c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\JDaskalov\.android\build-cache\2f1f73b2d33bbed2af4c588f373fcb4c7b5dada4\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="bdcc2a9572f18b8c90a3a157cab6cdfc97c6c736">
+        <dex dex="C:\Git Repo Extras\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_b8d5ca102f8ae9c1caabc721d78c442dae124256\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\JDaskalov\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\logging-interceptor\3.5.0\94c11f915bfe1aeaa5ef6351ddfbe58bae1ea397\logging-interceptor-3.5.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="94c11f915bfe1aeaa5ef6351ddfbe58bae1ea397">
+        <dex dex="C:\Git Repo Extras\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\logging-interceptor-3.5.0_6eb789bfdff8743aaa4c6842bb7924f45c69ac44\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\JDaskalov\.android\build-cache\deb1892ec86225e27527660e61ef2f3d5f9b3954\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e2719c102dca3a7a5b02ce07f769362da6ddb4ab">
+        <dex dex="C:\Git Repo Extras\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_934b58c5874312d873dde97712ad7d3f27ffcdee\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\JDaskalov\.android\build-cache\3c3c623e87d925b1be8afced9d113bc8403bdd4d\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="cd7951e04cfb9a8bf008d544a478d9a8d8192d38">
+        <dex dex="C:\Git Repo Extras\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_c34193de69906e6a30eb1d259b0ad96a11deeaee\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\JDaskalov\.android\build-cache\85eed49c5db7cc7dfaa2a51862d932c098ef4980\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="0a5d5553c308643a9022f15513ebdd59e9c78d82">
+        <dex dex="C:\Git Repo Extras\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_2bc672e23a5a14d928f5be11ca230ed12da1202e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\JDaskalov\.android\build-cache\7f3a806e3e1086023633b29baa9c02dae2ed4213\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="7bde4c34162092e0a77e7f12dc85ed77c484cf5c">
+        <dex dex="C:\Git Repo Extras\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_f70441f609bcb88372eaf41ee4f12e668b60a024\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\JDaskalov\.android\build-cache\c4dce861870790cb3f367947ff938ce7e4eca95a\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="9b2d031686cc4eebbd118ab262f1c1528f31f4de">
+        <dex dex="C:\Git Repo Extras\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_5a6cf2a12082eccee19d3cdf581206e495f55d9b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\JDaskalov\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlin\kotlin-stdlib\1.0.6\d19acb6ed49b9c48228c0e5dff8071fce23be4b8\kotlin-stdlib-1.0.6.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d19acb6ed49b9c48228c0e5dff8071fce23be4b8">
+        <dex dex="C:\Git Repo Extras\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\kotlin-stdlib-1.0.6_f7ea40f45d5b66d6971078bb069c2b8cd3e176eb\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\JDaskalov\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\converter-scalars\2.1.0\7c0d7c8f6e52115bb82fa018d81a8d0cae35dde5\converter-scalars-2.1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="7c0d7c8f6e52115bb82fa018d81a8d0cae35dde5">
+        <dex dex="C:\Git Repo Extras\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\converter-scalars-2.1.0_67c0a418e5460a5b2b3eb8234a0f51acaec669ac\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\JDaskalov\.android\build-cache\7a3d5962fefb92330133fba564026f411926c6fc\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d0a843615f3b5fa3a080497709f5436696149a09">
+        <dex dex="C:\Git Repo Extras\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_8b3d2a7aaa6dcd8a8727a98a089ea1db8cc38d34\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\JDaskalov\.android\build-cache\2a1040fbfb038449278044b82f9bec834733c7a6\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="02741d05d4b697fba5e279e9881aaa1da0ca7c7f">
+        <dex dex="C:\Git Repo Extras\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_54e8404bf8a54a855325f3ae90eac2bb355681e5\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\JDaskalov\.android\build-cache\3d36ac2f2fa0759cd2b57778f9441361b4004384\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="399f75732ff1ac159f9e73611536f1508bf18d3b">
+        <dex dex="C:\Git Repo Extras\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_f08170f0a2c4eefbc6d6c03aaf623f99f6e725e5\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\JDaskalov\.android\build-cache\6aec946a5f50253be1aabd53a9d1b91ce741ec95\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="3e04ac8ca644ea7baddf6fdcf72e15c79e9df94a">
+        <dex dex="C:\Git Repo Extras\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_37090221cdd7fb786cffe5741aca06a8b81733cb\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\JDaskalov\.android\build-cache\a6d08c4c60f661077d500e006a85422cab75ad18\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="a8ae156c2726ac9c56daaf4b49452ec2cdb7bba9">
+        <dex dex="C:\Git Repo Extras\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_a37111aaa03a314f0d50feb670e01e722da37120\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\JDaskalov\.android\build-cache\e50e2955a2117aa3f11d625f59dac4d4a557b2bc\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="15b049fedbd8e3926bf99d9e45dfc9b2a1043bb9">
+        <dex dex="C:\Git Repo Extras\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_07434a88df73e33af4c06a97558372bf7e2887d9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\JDaskalov\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.7\751f548c85fa49f330cecbb1875893f971b33c4e\gson-2.7.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="751f548c85fa49f330cecbb1875893f971b33c4e">
+        <dex dex="C:\Git Repo Extras\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\gson-2.7_65e38eaace944b2722d72404a2ae69bae19d2848\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\JDaskalov\.android\build-cache\fba79416c4406aa35f8c9f9e8aa4f5e863236ce8\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Git Repo Extras\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_f470e3c3a4cb289ed4b49ecaa9ed514297b70d83\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\JDaskalov\.android\build-cache\c254490e0c5a92ea606e7a314031a412ea4505a9\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="c9649557905bf7a80fca9e0d54cbcb7662627860">
+        <dex dex="C:\Git Repo Extras\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_fe4a987461a249ad2b033eff3bc4dbc1f556a290\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\JDaskalov\.android\build-cache\f12f900083355f8a4edd6b4e424d06dff71176c0\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="2a7ffe939ffd830b5d4052f3c1c4c235923790ce">
+        <dex dex="C:\Git Repo Extras\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_8fb7448e37b8e3a9a0fe20a961b6078b98a88834\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\JDaskalov\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.5.0\4b0bb6bfbecbdd42b97ff400af342bfe7f32bc83\okhttp-3.5.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="4b0bb6bfbecbdd42b97ff400af342bfe7f32bc83">
+        <dex dex="C:\Git Repo Extras\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\okhttp-3.5.0_55c5091cb6daaf2b2802f7cc9fde19ae305ca5b9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\JDaskalov\.android\build-cache\f3b4c7d2af99e65ae9399be4fb02e38229fca390\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="6928eb7c38feb3ce134be273416d6b53b4f5309b">
+        <dex dex="C:\Git Repo Extras\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_b112f8352f515b40a4e15284e6abacc0e8dafb94\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\JDaskalov\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.11.0\840897fcd7223a8143f1d9b6f69714e7be34fd50\okio-1.11.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="840897fcd7223a8143f1d9b6f69714e7be34fd50">
+        <dex dex="C:\Git Repo Extras\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\okio-1.11.0_2ca121940ab190a97ad0cc923eb25e212e20f50a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\JDaskalov\.android\build-cache\147b62f28fb701ab70b836005a9e45294ff01ceb\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="91e6331820408d738a6645eab5d7c0d91c193b4b">
+        <dex dex="C:\Git Repo Extras\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_47e40c785209e358c421f351b86de59f4fa59473\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\JDaskalov\.android\build-cache\9af2a22ea04a9065019262343f63da1d02d19eab\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="a1aa1dd9917e887bfe732cc5e561ae6ae8f9a84a">
+        <dex dex="C:\Git Repo Extras\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_9d0418bdfef19772083b38ee7fd3f51a76fc2bd8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\JDaskalov\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\converter-gson\2.1.0\aa557d71ead91cbf26e0c316a0f593d168303309\converter-gson-2.1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="aa557d71ead91cbf26e0c316a0f593d168303309">
+        <dex dex="C:\Git Repo Extras\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\converter-gson-2.1.0_aad5bf1d24a8e0d194076f083309c5092b1c8ab9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\JDaskalov\.android\build-cache\0c5ba4dc61a222131428d2d92e02129b059ed761\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ecb496cc08dd52551fc5ec6db3bc0632e95a89bb">
+        <dex dex="C:\Git Repo Extras\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_2355a85eb6f96166d937e27348457720091bb49e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\JDaskalov\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.1.1\support-annotations-25.1.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="b59b6ee8d6ecc03e672d253800430343493a6ed8">
+        <dex dex="C:\Git Repo Extras\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.1.1_d2ea9a5f85d968c3fc4b0c1dd751eb2f0a1d1cfd\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\JDaskalov\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlin\kotlin-runtime\1.0.6\3562c66f648480d3bd4f76cff722488ced13445b\kotlin-runtime-1.0.6.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="3562c66f648480d3bd4f76cff722488ced13445b">
+        <dex dex="C:\Git Repo Extras\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\kotlin-runtime-1.0.6_ddb2f5e3ddb478ec6d9c7932511dadc9ef57f8b8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\JDaskalov\.android\build-cache\c801dfaf2a06a9c47d52f3492c19225b68032102\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="922f50ee4de65ca743299da2afd28fd66d42818b">
+        <dex dex="C:\Git Repo Extras\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_aa3cabf66b56cc9d64297c1f379c604c5b2f3d5c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\JDaskalov\.android\build-cache\b7d4a2c7b96f7e257b6fcd2ee2acef8749f42625\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="888983f51cf34f57a93ff16832552f2f15937212">
+        <dex dex="C:\Git Repo Extras\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_41c7656dc5ce0aa3e001cb3c2d95cbf74e65b3d3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\JDaskalov\.android\build-cache\3f283cfb4ed1f59c74ebdcef45112cc39ecb59d1\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="acce1f45c71b79a58e243b919e1bc6a5274750d9">
+        <dex dex="C:\Git Repo Extras\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_e3ef2e62e80baf553bab5bd2dfb8db7385654c3e\classes.dex" />
+    </item>
+
+</items>

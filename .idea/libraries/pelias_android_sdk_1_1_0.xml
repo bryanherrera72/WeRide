@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="pelias-android-sdk-1.1.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.android/build-cache/c4dce861870790cb3f367947ff938ce7e4eca95a/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/c4dce861870790cb3f367947ff938ce7e4eca95a/output/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.mapzen.android/pelias-android-sdk/1.1.0/ff3543c56ee9bae9121f5ef4c6e02fea8a9b5b43/pelias-android-sdk-1.1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
