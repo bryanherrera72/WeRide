@@ -334,6 +334,7 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
         }
         textView.setBackgroundResource(R.color.mz_white);
         textView.setText(currentroute.getRouteInstructions().get(0).getVerbalPreTransitionInstruction().toString());
+        textView.setTextSize(20);
     }
 
     @Override
