@@ -17,6 +17,9 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 import com.mapzen.android.core.MapzenManager;
 import com.mapzen.android.graphics.CompassView;
 import com.mapzen.android.graphics.MapView;
@@ -81,6 +84,9 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
     LngLat searchedLocation = null;
     LocationUpdater lu;
     double distance;
+
+    FirebaseUser user;
+    FirebaseDatabase db;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -119,6 +125,9 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        db = FirebaseDatabase.getInstance();
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        lu = new LocationUpdater(user, db);
 
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);

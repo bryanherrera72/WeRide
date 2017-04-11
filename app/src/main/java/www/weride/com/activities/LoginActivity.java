@@ -41,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String username = username_box.getText().toString();
                 String password = password_box.getText().toString();
+
                 checkFirebaseCreds(username, password);
 
             }
