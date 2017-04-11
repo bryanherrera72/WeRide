@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mapzen.android.core.MapzenManager;
@@ -75,6 +76,8 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
     Route currentroute;
     LngLat searchedLocation = null;
     double distance;
+    double[] userLoc = null;
+    TextView textView;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -135,6 +138,7 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
 
         fab = (FloatingActionButton) map.findViewById(R.id.floatingActionButton);
         fab.setOnClickListener(this);
+        textView = (TextView) map.findViewById(R.id.textView);
 
         router = new MapzenRouter(this.getContext());
         router.setCallback(this);
@@ -275,7 +279,7 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
 
     @Override
     public void onClick(View view) {
-        double[] userLoc = null;
+
         int permissionCheck = ContextCompat.checkSelfPermission(this.getContext(),
                 Manifest.permission.ACCESS_COARSE_LOCATION);
         if(permissionCheck == PackageManager.PERMISSION_GRANTED) {
@@ -306,8 +310,12 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
         currentroute = route;
         engine.setRoute(route);
         distance = (double) route.getTotalDistance();
-        distance = distance / 1609;
+        distance = distance / 1609;  // to get distance in miles
+        LngLat userlc = new LngLat(userLoc[1], userLoc[0]);
+        map.setPosition(userlc);
+        map.setZoom(13);
         Toast.makeText(this.getContext(), "Distance: " + (int) distance + "mi", Toast.LENGTH_SHORT).show();
+        engine.setRoute(route);
 
     }
 
@@ -324,6 +332,8 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
         if(currentroute != null){
             Log.w("current route", "" + currentroute.getRouteInstructions());
         }
+        textView.setBackgroundResource(R.color.mz_white);
+        textView.setText(currentroute.getRouteInstructions().get(0).getVerbalPreTransitionInstruction().toString());
     }
 
     @Override
@@ -344,7 +354,7 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
 
     @Override
     public void onMilestoneReached(int index, RouteEngine.Milestone milestone) {
-        String instruction = currentroute.getRouteInstructions().get(index).toString();
+        String instruction = currentroute.getRouteInstructions().get(index).getVerbalTransitionAlertInstruction().toString();
         Toast.makeText(this.getContext(), instruction, Toast.LENGTH_LONG).show();
     }
 
