@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -46,9 +47,6 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import www.weride.com.R;
 import www.weride.com.classes.LocationUpdater;
 
@@ -60,7 +58,7 @@ import www.weride.com.classes.LocationUpdater;
  * Use the {@link MapFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MapFragment extends com.mapzen.android.graphics.MapFragment implements OnMapReadyCallback, View.OnClickListener, LostApiClient.ConnectionCallbacks, RouteListener, RouteCallback, Callback{
+public class MapFragment extends com.mapzen.android.graphics.MapFragment implements OnMapReadyCallback, View.OnClickListener, LostApiClient.ConnectionCallbacks, RouteListener, RouteCallback{
 
     PeliasSearchView searchView;
     MapzenMap map;
@@ -84,6 +82,8 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
     LngLat searchedLocation = null;
     LocationUpdater lu;
     double distance;
+    double[] userLoc = null;
+    TextView textView;
 
     FirebaseUser user;
     FirebaseDatabase db;
@@ -144,17 +144,19 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
         // Inflate the layout for this fragment
         final View map = inflater.inflate(R.layout.fragment_map, container, false);
         mapzenman.instance(getContext()).setApiKey("mapzen-HDGPF6m");
-
         MapView mapview = (MapView) map.findViewById(R.id.fragment_map);
         initMapButtons(mapview);
         mapview.getMapAsync(new BubbleWrapStyle(), this);
 
         fab = (FloatingActionButton) map.findViewById(R.id.floatingActionButton);
         fab.setOnClickListener(this);
+        textView = (TextView) map.findViewById(R.id.textView);
+
         router = new MapzenRouter(this.getContext());
         router.setCallback(this);
-        valhallaLocation = new ValhallaLocation();
+        router.setDriving();
 
+        valhallaLocation = new ValhallaLocation();
         lostApiClient = new LostApiClient.Builder(this.getContext()).addConnectionCallbacks(this).build();
         lostApiClient.connect();
 
@@ -221,10 +223,9 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
         //determine if location is allowed, if so, display current location button.
         mListener.mapIsReady();
         if(permissionsvalid) {
-
             mapzenMap.setMyLocationEnabled(true);
-//            mapzenMap.setCompassButtonEnabled(true);
-//            mapzenMap.setZoomButtonsEnabled(true);
+
+            Log.i("location enabled?", ""  + mapzenMap.getOverlayManager().isMyLocationEnabled());
             enableLocationOnResume = true;
         }
         if(!(searchedLocation == null)){
@@ -233,7 +234,6 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
         //set the current instance of the map to this "READY" map
         //allows access to it throughout the current fragment instance.
         MapFragment.this.map = mapzenMap;
-        //map.drawSearchResult(new LngLat(-118.026126,34.570467));
     }
 
     /*
@@ -254,14 +254,6 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
         params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
         findme.setLayoutParams(params);
         mapview.showFindMe();
-        //init compass..need to fix. Not priority :P
-//        compass = mapview.getCompass();
-//        source  = new RelativeLayout.LayoutParams(compass.getLayoutParams().width, compass.getLayoutParams().height);
-//        params = new RelativeLayout.LayoutParams(source);
-//        params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
-//        params.addRule(RelativeLayout.BELOW, R.id.standard_toolbar);
-//        compass.setLayoutParams(params);
-//        mapview.showCompass();
     }
 
     public void displayPoint(LngLat destpoint) {
@@ -270,7 +262,6 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
         //map.drawSearchResult(destpoint);
         map.setPosition(destpoint);
         map.setZoom(15);
-
     }
 
     /**
@@ -284,12 +275,10 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
         void onPermissionsValid(boolean valid);
         void passPoint(LngLat dest);
         void mapIsReady();
-        //void generateRoute(LatLng start, LatLng dest);
     }
 
     @Override
@@ -297,11 +286,10 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
         super.onDestroy();
     }
     private void generateRoute(double[] startpoint, LngLat destpoint){
-
-        if(!(destpoint == null) && !(map == null) ) {
-            double[] dest = {destpoint.longitude, destpoint.latitude};
-            router.setLocation(startpoint);
+        if(!(destpoint == null) && !(map == null) && !(startpoint == null)) {
+            double[] dest = {destpoint.latitude, destpoint.longitude};
             router.setLocation(dest);
+            router.setLocation(startpoint);
             router.fetch();
         }
 
@@ -309,24 +297,26 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
 
     @Override
     public void onClick(View view) {
-        double[] userLoc = null;
+
         int permissionCheck = ContextCompat.checkSelfPermission(this.getContext(),
                 Manifest.permission.ACCESS_COARSE_LOCATION);
         if(permissionCheck == PackageManager.PERMISSION_GRANTED) {
             Location loc = LocationServices.FusedLocationApi.getLastLocation(lostApiClient);
             if(loc != null ) {
-                userLoc = new double[]{loc.getLongitude(), loc.getAltitude()};
+                userLoc = new double[]{loc.getLatitude(), loc.getLongitude()};
             }
         }
-        if (dest != null) {
+        if (!(dest == null) && !(userLoc == null)) {
             generateRoute(userLoc, dest);
+        }
+        else {
+            Toast.makeText(this.getContext(), "null value!", Toast.LENGTH_SHORT).show();
+
         }
     }
 
     @Override
     public void success(@NotNull Route route) {
-
-        Toast.makeText(this.getContext(), "sweetq", Toast.LENGTH_SHORT).show();
         map.clearRouteLine();
         map.removePolyline();
         List<LngLat> coordinates = new ArrayList<>();
@@ -338,13 +328,18 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
         currentroute = route;
         engine.setRoute(route);
         distance = (double) route.getTotalDistance();
-        distance = distance / 1609;
+        distance = distance / 1609;  // to get distance in miles
+        LngLat userlc = new LngLat(userLoc[1], userLoc[0]);
+        map.setPosition(userlc);
+        map.setZoom(13);
         Toast.makeText(this.getContext(), "Distance: " + (int) distance + "mi", Toast.LENGTH_SHORT).show();
+        engine.setRoute(route);
 
     }
 
     @Override
     public void failure(int i) {
+        Toast.makeText(this.getContext(), "Can't fetch route!", Toast.LENGTH_SHORT).show();
         Log.w("could not be fetched", "" + i);
         map.clearRouteLine();
     }
@@ -355,6 +350,9 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
         if(currentroute != null){
             Log.w("current route", "" + currentroute.getRouteInstructions());
         }
+        textView.setBackgroundResource(R.color.mz_white);
+        textView.setText(currentroute.getRouteInstructions().get(0).getVerbalPreTransitionInstruction().toString());
+        textView.setTextSize(20);
     }
 
     @Override
@@ -375,8 +373,9 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
 
     @Override
     public void onMilestoneReached(int index, RouteEngine.Milestone milestone) {
-        String instruction = currentroute.getRouteInstructions().get(index).toString();
-        Toast.makeText(this.getContext(), instruction, Toast.LENGTH_LONG).show();
+        String instruction = currentroute.getRouteInstructions().get(index).getVerbalTransitionAlertInstruction().toString();
+        //Toast.makeText(this.getContext(), instruction, Toast.LENGTH_LONG).show();
+        textView.setText(currentroute.getRouteInstructions().get(index).getVerbalTransitionAlertInstruction().toString());
     }
 
     @Override
@@ -410,13 +409,4 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
 
     }
 
-    @Override
-    public void onResponse(Call call, Response response) {
-
-    }
-
-    @Override
-    public void onFailure(Call call, Throwable t) {
-
-    }
 }

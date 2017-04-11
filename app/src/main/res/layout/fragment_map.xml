@@ -10,6 +10,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.10"
+                    android:layout_marginTop="70dp"
+                    android:backgroundTint="@color/mz_white"/>
+
                 <android.support.design.widget.FloatingActionButton
                     android:id="@+id/floatingActionButton"
                     android:layout_width="wrap_content"
@@ -23,5 +31,6 @@
                     android:clickable="true"
                     app:fabSize="mini"
                     app:srcCompat="@drawable/find_me_fab" />
+
         </com.mapzen.android.graphics.MapView>
 </FrameLayout>
