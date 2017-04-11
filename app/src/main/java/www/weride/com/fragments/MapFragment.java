@@ -355,7 +355,8 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
     @Override
     public void onMilestoneReached(int index, RouteEngine.Milestone milestone) {
         String instruction = currentroute.getRouteInstructions().get(index).getVerbalTransitionAlertInstruction().toString();
-        Toast.makeText(this.getContext(), instruction, Toast.LENGTH_LONG).show();
+        //Toast.makeText(this.getContext(), instruction, Toast.LENGTH_LONG).show();
+        textView.setText(currentroute.getRouteInstructions().get(index).getVerbalTransitionAlertInstruction().toString());
     }
 
     @Override
