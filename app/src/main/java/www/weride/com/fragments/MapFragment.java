@@ -198,6 +198,7 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
                 map.setMyLocationEnabled(false);
                 enableLocationOnResume = true;
             }
+            lostApiClient.disconnect();
         }
     }
 
@@ -279,6 +280,10 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
         //void generateRoute(LatLng start, LatLng dest);
     }
 
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+    }
     private void generateRoute(double[] startpoint, LngLat destpoint){
 
         if(!(destpoint == null) && !(map == null) ) {

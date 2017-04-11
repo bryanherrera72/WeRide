@@ -5,13 +5,34 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import www.weride.com.MainActivity;
 import www.weride.com.R;
+import www.weride.com.classes.ActiveToggler;
+import www.weride.com.classes.Group;
+import www.weride.com.classes.GroupsListAdapter;
+import www.weride.com.classes.User;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,6 +54,17 @@ public class GroupFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
+    FirebaseUser user;
+    FirebaseDatabase db;
+    DatabaseReference dbref;
+    HashMap<String,String> mygroups;
+    ListView groupsview;
+    List<Group> groupsdetail;
+    Button creategroup;
+    DatabaseReference userref;
+    DatabaseReference groupref;
+    ArrayList<Group> retrievedgrouplist;
+    ActiveToggler at;
     public GroupFragment() {
         // Required empty public constructor
     }
@@ -58,6 +90,10 @@ public class GroupFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        db = FirebaseDatabase.getInstance();
+        at = new ActiveToggler(user,db);
+        grabListForUser(user);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -73,7 +109,16 @@ public class GroupFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_group, container, false);
 
-
+        groupsview = (ListView) view.findViewById(R.id.groups_list);
+        creategroup = (Button) view.findViewById(R.id.create_group_button);
+        creategroup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //createGroup(user, "");
+                CreateGroupDialogFragment dialog = new CreateGroupDialogFragment();
+                dialog.show(getFragmentManager(), "create");
+            }
+        });
         return view;
     }
 
@@ -122,5 +167,103 @@ public class GroupFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+        void activeSwitchToMap();
     }
+
+    /*
+    Grab current users groups that they belong to, and update the UI.
+    */
+    private void grabListForUser(FirebaseUser user){
+
+        dbref=db.getReference("/users");
+        userref = dbref.child(user.getUid()).child("groups");
+        ValueEventListener groupsListener = new ValueEventListener() {
+
+            ArrayList<String> list=new ArrayList<String>();
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                HashMap<String,String> groups = (HashMap<String,String>) dataSnapshot.getValue();
+                if(!(groups == null)){
+                    /*We'll add the id's that are part of current users group list, into a proper list*/
+                    List<String> idslist = new ArrayList<String>();
+                    for(Map.Entry<String,String> groupid: groups.entrySet()){
+                        String key = groupid.getKey();
+                        if(!(key.equals("current_active"))){
+                            idslist.add(groupid.getValue());
+                        }
+                    }
+                    /*now that we have the list, we can search the DB for their info*/
+                    retrieveGroupDetailFromDb(idslist);
+                    /*now we have a detailed groups list stored inside 'retrievedgrouplist'
+                    Create a list view from it.*/
+                    updateUI();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        };
+        userref.addValueEventListener(groupsListener);
+    }
+
+    //Display the list view for the current user.
+    private void updateUI(){
+
+        if(!(retrievedgrouplist == null)){
+
+            final ArrayList<Group> groups = retrievedgrouplist;
+            GroupsListAdapter adapter = new GroupsListAdapter(this.getContext(),  groups, at);
+            groupsview.setAdapter(adapter);
+        }
+
+    }
+    private void retrieveGroupDetailFromDb(List<String> groupids){
+        final List<String> final_ids= groupids;
+        dbref=db.getReference("/groups");
+        if(!(groupids.isEmpty())){
+                dbref.addListenerForSingleValueEvent(new ValueEventListener() {
+
+
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        retrievedgrouplist = new ArrayList<Group>();
+                        for(String id: final_ids){
+
+                            Group retrievedgroup = (Group) dataSnapshot.child(id).getValue(Group.class);
+                            retrievedgrouplist.add(retrievedgroup);
+                            updateUI();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+        }
+    }
+    public void activeSwitchToMap(){
+
+    }
+    public void createGroup(String title){
+        createGroup(user, title);
+    }
+    //Create group method
+    private void createGroup(FirebaseUser user, String title){
+        dbref = db.getReference("/");
+        HashMap<String,String> groupuserlist = new HashMap<String,String>();
+        ArrayList<Double> currentuserlocation = new ArrayList<Double>();
+        /*a value of zero will indicate a creator*/
+        groupuserlist.put("creator", user.getUid());
+        DatabaseReference pushedGroupRef = dbref.child("groups").push();
+        Group newgroup = new Group(pushedGroupRef.getKey(), title,groupuserlist,currentuserlocation);
+        pushedGroupRef.setValue(newgroup);
+        /*We also need to add the new groups id to the current users group list since, you know, they created it*/
+        dbref.child("users").child(user.getUid()).child("groups").push().setValue(pushedGroupRef.getKey());
+    }
+
 }

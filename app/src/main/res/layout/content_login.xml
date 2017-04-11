@@ -14,24 +14,56 @@
         android:id="@+id/imageView"
         android:layout_centerHorizontal="true"></ImageView>
 
-    <EditText
-        android:id="@+id/username_box"
+    <TextView
+        android:id="@+id/username_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView"
-        android:layout_centerHorizontal="true"
+        android:layout_alignLeft="@+id/username_box"
         android:layout_marginTop="170dp"
+        android:text="@string/username_hint" />
+
+    <EditText
+        android:id="@id/username_box"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/username_label"
+        android:layout_centerHorizontal="true"
         android:ems="10"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress"
+        android:maxWidth="300dp" />
+
 
     <EditText
         android:id="@+id/password_box"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/username_box"
         android:layout_alignStart="@+id/username_box"
         android:layout_centerVertical="true"
         android:ems="10"
+        android:maxWidth="300dp"
         android:inputType="textPassword" />
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/password_hint"
+        android:layout_above="@+id/password_box"
+        android:layout_alignLeft="@+id/password_box"
+        android:layout_alignStart="@+id/password_box" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/login_button"
+        android:text="Login"
+        android:layout_alignRight="@id/password_box"
+        android:layout_below="@id/password_box"
+        android:background="@color/mz_white"
+        android:textColor="@color/common_google_signin_btn_text_light"/>
+    <TextView
+        android:id="@+id/sign_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/login_button"
+        android:layout_centerInParent="true"
+        android:text="@string/sign_up_redirect_hint"/>
 </RelativeLayout>

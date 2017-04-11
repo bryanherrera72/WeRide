@@ -3,11 +3,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="www.weride.com.fragments.GroupFragment">
+    <RelativeLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+            <Button
+                android:id="@+id/create_group_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/create_group"/>
+
+            <!-- TODO: Update blank fragment layout -->
+            <ListView
+                android:id="@+id/groups_list"
+                android:layout_below="@id/create_group_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+    </RelativeLayout>
 
 
-        <!-- TODO: Update blank fragment layout -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
 </FrameLayout>

@@ -20,24 +20,29 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.mapzen.tangram.LngLat;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import www.weride.com.fragments.CreateGroupDialogFragment;
 import www.weride.com.fragments.GroupFragment;
 import www.weride.com.fragments.MapFragment;
 import www.weride.com.fragments.SearchFragment;
 
 public class MainActivity extends AppCompatActivity implements MapFragment.OnFragmentInteractionListener,
                                                                 GroupFragment.OnFragmentInteractionListener,
-                                                                SearchFragment.OnFragmentInteractionListener{
+                                                                SearchFragment.OnFragmentInteractionListener,
+                                                    CreateGroupDialogFragment.OnFragmentInteractionListener{
     public DrawerLayout mainDrawer;
     private Toolbar toolbar, standardtoolbar;
     private  NavigationView navDrawer;
@@ -46,7 +51,8 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     private MapFragment map;
     private LocationManager lm;
     private boolean locationaccess = false;
-
+    private FirebaseUser user;
+    private FirebaseAuth mAuth;
     private static final String BACK_STACK_ID="MainMapBackStack";
     private final static int REQUEST_CODE_ASK_PERMISSIONS = 1;
 
@@ -58,6 +64,9 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         checkPermissions();
+        mAuth = FirebaseAuth.getInstance();
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        handleUser(user);
         lm = (LocationManager) getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
         setContentView(R.layout.activity_main);
         //prepare and set toolbar
@@ -326,9 +335,19 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     }
 
     @Override
-    public void onFragmentInteraction(Uri uri) {
+    public void onFragmentInteraction(Uri uri) {}
 
-
+    @Override
+    public void createGroup(String title) {
+        if(GroupFragment.class ==getSupportFragmentManager().findFragmentById(R.id.flContent).getClass()){
+            GroupFragment groupfrag = (GroupFragment) getSupportFragmentManager().findFragmentById(R.id.flContent);
+            groupfrag.createGroup(title);
+        }
     }
 
+    private void handleUser(FirebaseUser user){
+        if(!(user == null)){
+
+        }
+    }
 }

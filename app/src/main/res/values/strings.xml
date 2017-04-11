@@ -7,4 +7,16 @@
     <string name="drawer_close">Close navigation drawer</string>
     <string name="search">Search</string>
     <string name="title_activity_login">LoginActivity</string>
+    <string name="username_hint">Username</string>
+    <string name="password_hint">Password</string>
+    <string name="auth_failed">Sign in with these credentials has failed. Please try again.</string>
+    <string name="sign_up_redirect_hint">or <u>sign up.</u></string>
+    <string name="email_hint">Email</string>
+    <string name="first_name_hint">First Name</string>
+    <string name="last_name_hint">Last Name</string>
+    <string name="retype_password_hint">Re-enter Password</string>
+    <string name="sign_up_hint">Sign Up</string>
+    <string name="create_group">Create Group + </string>
+    <string name="create_group_dialog_label">Create a new Group:</string>
+    <string name = "add">Add</string>
 </resources>

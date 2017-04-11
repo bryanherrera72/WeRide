@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:showIn="@layout/activity_sign_up">
+    <EditText
+        android:id="@+id/first_name_box"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin_huge"
+        android:hint="@string/first_name_hint"
+        android:ems="10"
+        android:inputType="text"
+        android:maxWidth="300dp" />
+    <EditText
+        android:id="@+id/last_name_box"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/first_name_box"
+        android:layout_marginTop="@dimen/margin_large"
+        android:layout_centerHorizontal="true"
+        android:hint="@string/last_name_hint"
+        android:ems="10"
+        android:inputType="text"
+        android:maxWidth="300dp" />
+    <EditText
+        android:id="@+id/sign_up_email_box"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/last_name_box"
+        android:layout_marginTop="@dimen/margin_large"
+        android:layout_centerHorizontal="true"
+        android:hint="@string/email_hint"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:maxWidth="300dp" />
+    <EditText
+        android:id="@+id/sign_up_password_box"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sign_up_email_box"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:hint="@string/password_hint"
+        android:layout_marginTop="@dimen/margin_large"
+        android:ems="10"
+        android:maxWidth="300dp"
+        android:inputType="textPassword" />
+    <EditText
+        android:id="@+id/verify_password_box"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sign_up_password_box"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin_large"
+        android:hint="@string/retype_password_hint"
+        android:ems="10"
+        android:maxWidth="300dp"
+        android:inputType="textPassword" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sign_up_button"
+        android:text="@string/sign_up_hint"
+        android:layout_alignRight="@id/verify_password_box"
+        android:layout_below="@id/verify_password_box"
+        android:background="@color/mz_white"
+        android:textColor="@color/common_google_signin_btn_text_light"/>
+</RelativeLayout>
