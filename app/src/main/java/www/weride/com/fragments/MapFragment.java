@@ -47,6 +47,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import www.weride.com.R;
+import www.weride.com.classes.LocationUpdater;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -78,6 +79,7 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
     ValhallaLocation valhallaLocation;
     Route currentroute;
     LngLat searchedLocation = null;
+    LocationUpdater lu;
     double distance;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -117,6 +119,7 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
