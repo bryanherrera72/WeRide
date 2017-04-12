@@ -65,6 +65,7 @@ public class GroupFragment extends Fragment {
     DatabaseReference groupref;
     ArrayList<Group> retrievedgrouplist;
     ActiveToggler at;
+    GroupsListAdapter adapter;
     public GroupFragment() {
         // Required empty public constructor
     }
@@ -128,7 +129,11 @@ public class GroupFragment extends Fragment {
             mListener.onFragmentInteraction(uri);
         }
     }
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState){
+        super.onActivityCreated(savedInstanceState);
 
+    }
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -214,8 +219,11 @@ public class GroupFragment extends Fragment {
         if(!(retrievedgrouplist == null)){
 
             final ArrayList<Group> groups = retrievedgrouplist;
-            GroupsListAdapter adapter = new GroupsListAdapter(this.getContext(),  groups, at);
-            groupsview.setAdapter(adapter);
+            if(getActivity()!=null){
+                adapter = new GroupsListAdapter(getContext(),  groups, at);
+                groupsview.setAdapter(adapter);
+            }
+
         }
 
     }

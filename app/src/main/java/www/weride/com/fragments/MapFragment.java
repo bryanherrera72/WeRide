@@ -250,6 +250,8 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
         findme.getLocationInWindow(findmelocation);
         source  = new RelativeLayout.LayoutParams(findme.getLayoutParams().width, findme.getLayoutParams().height);
         params = new RelativeLayout.LayoutParams(source);
+        params.rightMargin = 50;
+        params.bottomMargin = 70;
         params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
         params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
         findme.setLayoutParams(params);
@@ -397,6 +399,7 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
     public void onRouteComplete() {
 
     }
+
 
     //Lost api connection
     @Override

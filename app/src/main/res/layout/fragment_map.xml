@@ -20,6 +20,7 @@
 
                 <android.support.design.widget.FloatingActionButton
                     android:id="@+id/floatingActionButton"
+                    android:src="@drawable/nav_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
@@ -29,7 +30,7 @@
                     android:layout_marginLeft="27dp"
                     android:layout_marginStart="27dp"
                     android:clickable="true"
-                    app:fabSize="mini"
+                    app:fabSize="normal"
                     app:srcCompat="@drawable/find_me_fab" />
 
         </com.mapzen.android.graphics.MapView>
