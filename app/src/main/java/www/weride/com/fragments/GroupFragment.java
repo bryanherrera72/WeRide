@@ -223,9 +223,7 @@ public class GroupFragment extends Fragment {
                 adapter = new GroupsListAdapter(getContext(),  groups, at);
                 groupsview.setAdapter(adapter);
             }
-
         }
-
     }
     private void retrieveGroupDetailFromDb(List<String> groupids){
         final List<String> final_ids= groupids;

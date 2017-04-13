@@ -3,57 +3,21 @@
 
     <item
         is-multidex="true"
-        jar="C:\Users\Kaz Cruz\.android\build-cache\f452ca963f96d08a59183adae20602152d8de5ce\output\jars\classes.jar"
+        jar="/Users/bryanherrera/Documents/Code/Github/WeRide/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="4b42a61cd5924f28e95894e859e6abe57847e2f3">
-        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\notCrappyWeRide\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_5c2f91d227d7babb35064c4e0d14ac771cce217a\classes.dex" />
+        sha1="1361b6df5ac6ee26da8f98dde3517140e2475eab">
+        <dex dex="/Users/bryanherrera/Documents/Code/Github/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_47b0531829b9b7996c3ff54a43e9c5a9bf8e82b9/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Kaz Cruz\AppData\Local\Android\Sdk\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.0-beta4\constraint-layout-solver-1.0.0-beta4.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="0a9cb567dc008f570c28531720168f19148da965">
-        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\notCrappyWeRide\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\constraint-layout-solver-1.0.0-beta4_8a2017718fff248e0aff03c6cd192764fc527194\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Kaz Cruz\.android\build-cache\24458db4cda0296120bae968c62d72262503a701\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="662d7533b25a666c649c10a16b42edfb95f25a4f">
-        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\notCrappyWeRide\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_fa730b2fbabe448cfe4a53d22dcbc19c3514683f\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Kaz Cruz\Documents\College\COMP490\notCrappyWeRide\WeRide\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="28d035dbde13376dc4f7908a31c034138a02424e">
-        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\notCrappyWeRide\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_b7767c5e729b3468673e4bac298c9f8c119c73c7\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Kaz Cruz\.android\build-cache\fbe2b4ecb4c44a02c0d5ef1fc0f47026c37ba3dd\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="19696dc358ac668e341f28c41e3387d61ccdb81d">
-        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\notCrappyWeRide\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_05a4fb750bdb3109e533cbd44918ec84af606281\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Kaz Cruz\Documents\College\COMP490\notCrappyWeRide\WeRide\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jar="/Users/bryanherrera/Documents/Code/Github/WeRide/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
         sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
-        <dex dex="C:\Users\Kaz Cruz\Documents\College\COMP490\notCrappyWeRide\WeRide\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_03701d66b2159f57a772bffc800137e09b09197f\classes.dex" />
+        <dex dex="/Users/bryanherrera/Documents/Code/Github/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_485a905dc42e57a19ba6b2655a03707a2799af69/classes.dex" />
     </item>
 
 </items>
