@@ -128,7 +128,8 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
         super.onCreate(savedInstanceState);
         db = FirebaseDatabase.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser();
-        lu = new LocationUpdater(user, db);
+        if(user!=null)
+            lu = new LocationUpdater(user, db);
 
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
@@ -213,8 +214,8 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
                 map.setMyLocationEnabled(false);
                 enableLocationOnResume = true;
             }
-            lostApiClient.disconnect();
         }
+        lostApiClient.disconnect();
     }
 
     @Override
@@ -222,7 +223,8 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
         //set some initial configs
         mapzenMap.setCameraType(CameraType.FLAT);
         //determine if location is allowed, if so, display current location button.
-        mListener.mapIsReady();
+        if(!(mListener == null));
+            mListener.mapIsReady();
         if(permissionsvalid) {
             mapzenMap.setMyLocationEnabled(true);
 
@@ -414,26 +416,28 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
                 userLoc = new double[]{loc.getLatitude(), loc.getLongitude()};
             }
         }
-        LocationRequest request = LocationRequest.create().setPriority(LocationRequest.PRIORITY_LOW_POWER).setInterval(5000).setSmallestDisplacement(10);
-        LocationListener listener = new LocationListener() {
-            @Override
-            public void onLocationChanged(Location location) {
+        if(lostApiClient.isConnected()) {
+            LocationRequest request = LocationRequest.create().setPriority(LocationRequest.PRIORITY_LOW_POWER).setInterval(5000).setSmallestDisplacement(10);
+            LocationListener listener = new LocationListener() {
+                @Override
+                public void onLocationChanged(Location location) {
 
-                userLoc = new double[]{location.getLatitude(), location.getLongitude()};
-                lu.updateLocation(userLoc);
-            }
+                    userLoc = new double[]{location.getLatitude(), location.getLongitude()};
+                    lu.updateLocation(userLoc);
+                }
 
-            @Override
-            public void onProviderDisabled(String provider) {
+                @Override
+                public void onProviderDisabled(String provider) {
 
-            }
+                }
 
-            @Override
-            public void onProviderEnabled(String provider) {
+                @Override
+                public void onProviderEnabled(String provider) {
 
-            }
-        };
-        LocationServices.FusedLocationApi.requestLocationUpdates(lostApiClient, request, listener);
+                }
+            };
+            LocationServices.FusedLocationApi.requestLocationUpdates(lostApiClient, request, listener);
+        }
     }
 
     @Override

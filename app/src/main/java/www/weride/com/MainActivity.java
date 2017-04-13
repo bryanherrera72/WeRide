@@ -3,12 +3,14 @@ package www.weride.com;
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
@@ -34,15 +36,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import www.weride.com.activities.LoginActivity;
+import www.weride.com.classes.User;
 import www.weride.com.fragments.CreateGroupDialogFragment;
 import www.weride.com.fragments.GroupFragment;
 import www.weride.com.fragments.MapFragment;
+import www.weride.com.fragments.OptionsFragment;
 import www.weride.com.fragments.SearchFragment;
 
 public class MainActivity extends AppCompatActivity implements MapFragment.OnFragmentInteractionListener,
                                                                 GroupFragment.OnFragmentInteractionListener,
                                                                 SearchFragment.OnFragmentInteractionListener,
-                                                    CreateGroupDialogFragment.OnFragmentInteractionListener{
+                                                    CreateGroupDialogFragment.OnFragmentInteractionListener,
+                                                    OptionsFragment.OnFragmentInteractionListener{
     public DrawerLayout mainDrawer;
     private Toolbar toolbar, standardtoolbar;
     private  NavigationView navDrawer;
@@ -56,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     private static final String BACK_STACK_ID="MainMapBackStack";
     private final static int REQUEST_CODE_ASK_PERMISSIONS = 1;
 
+    private FirebaseAuth.AuthStateListener mAuthListener;
     private static final String[] REQUIRED_SDK_PERMISSIONS = new String[]{
             Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.BLUETOOTH, Manifest.permission.ACCESS_COARSE_LOCATION
     };
@@ -64,7 +71,22 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         checkPermissions();
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if(user!=null){
+
+                }
+                else{
+
+                    sendToLogin();
+
+                }
+            }
+        };
         mAuth = FirebaseAuth.getInstance();
+
         user = FirebaseAuth.getInstance().getCurrentUser();
         handleUser(user);
         lm = (LocationManager) getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
@@ -121,6 +143,14 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
                 fragmentClass = GroupFragment.class;
                 swapToFragmentToolbar();
                 break;
+            case R.id.options_fragment:
+                fragmentClass = OptionsFragment.class;
+                swapToFragmentToolbar();
+                break;
+            case R.id.log_out_button:
+                //freeFragManager();
+                mAuth.signOut();
+
             default:
                 fragmentClass = MapFragment.class;
         }
@@ -144,6 +174,19 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
 
     }
 
+    @Override
+    public void onStart(){
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
+    }
+
+    @Override
+    public void onStop(){
+        super.onStop();
+        if(mAuthListener!=null){
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
+    }
     @Override
     protected void onPostCreate(Bundle savedInstanceState){
         super.onPostCreate(savedInstanceState);
@@ -349,5 +392,22 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
         if(!(user == null)){
 
         }
+    }
+
+    private void sendToLogin(){
+        Intent i = new Intent(this, LoginActivity.class);
+        startActivity(i);
+        finish();
+    }
+    private void freeFragManager(){
+        Fragment frag = fragmentManager.findFragmentById(R.id.flContent);
+        fragmentManager.beginTransaction().remove(frag).commit();
+
+     }
+
+    @Override
+    public void finish() {
+
+        super.finish();
     }
 }

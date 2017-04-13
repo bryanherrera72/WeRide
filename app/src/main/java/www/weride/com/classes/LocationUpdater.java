@@ -52,16 +52,18 @@ public class LocationUpdater {
         groupref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                HashMap<String,Object> group = (HashMap<String,Object>)dataSnapshot.getValue();
-                HashMap<String, String> groupusers = (HashMap<String, String>) group.get("users");
-                ArrayList<DatabaseReference> friends = new ArrayList<DatabaseReference>();
-                for(Map.Entry<String, String> user: groupusers.entrySet()){
-                    if(!(user.equals(userid))){
-                        userref = getUserRef(user.getValue());
-                        friends.add(userref);
+                HashMap<String, Object> group = (HashMap<String, Object>) dataSnapshot.getValue();
+                if (!(group == null)){
+                    HashMap<String, String> groupusers = (HashMap<String, String>) group.get("users");
+                    ArrayList<DatabaseReference> friends = new ArrayList<DatabaseReference>();
+                    for (Map.Entry<String, String> user : groupusers.entrySet()) {
+                        if (!(user.equals(userid))) {
+                            userref = getUserRef(user.getValue());
+                            friends.add(userref);
+                        }
                     }
+                    setFriendLocationReferences(friends);
                 }
-                setFriendLocationReferences(friends);
             }
 
             @Override

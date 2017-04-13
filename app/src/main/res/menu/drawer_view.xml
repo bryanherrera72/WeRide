@@ -17,7 +17,10 @@
             android:icon="@drawable/ic_settings"
             android:title="Options"
             />
-
+        <item
+            android:id="@+id/log_out_button"
+            android:icon="@drawable/log_out_icon"
+            android:title="Log Out"/>
         <!--Any subheaders can be added as subgroups too-->
     </group>
 </menu>
