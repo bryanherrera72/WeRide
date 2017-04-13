@@ -26,6 +26,7 @@ import com.mapzen.android.graphics.OnMapReadyCallback;
 import com.mapzen.android.graphics.model.BubbleWrapStyle;
 import com.mapzen.android.graphics.model.CameraType;
 import com.mapzen.android.graphics.model.Polyline;
+import com.mapzen.android.lost.api.LocationListener;
 import com.mapzen.android.lost.api.LocationRequest;
 import com.mapzen.android.lost.api.LocationServices;
 import com.mapzen.android.lost.api.LostApiClient;
@@ -384,6 +385,33 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
     @Override
     public void onConnected() {
 
+        int permissionCheck = ContextCompat.checkSelfPermission(this.getContext(),
+                Manifest.permission.ACCESS_COARSE_LOCATION);
+        if(permissionCheck == PackageManager.PERMISSION_GRANTED) {
+            Location loc = LocationServices.FusedLocationApi.getLastLocation(lostApiClient);
+            if(loc != null ) {
+                userLoc = new double[]{loc.getLatitude(), loc.getLongitude()};
+            }
+        }
+        LocationRequest request = LocationRequest.create().setPriority(LocationRequest.PRIORITY_LOW_POWER).setInterval(5000).setSmallestDisplacement(10);
+        LocationListener listener = new LocationListener() {
+            @Override
+            public void onLocationChanged(Location location) {
+
+                userLoc = new double[]{location.getLatitude(), location.getLongitude()};
+            }
+
+            @Override
+            public void onProviderDisabled(String provider) {
+
+            }
+
+            @Override
+            public void onProviderEnabled(String provider) {
+
+            }
+        };
+        LocationServices.FusedLocationApi.requestLocationUpdates(lostApiClient, request, listener);
     }
 
     @Override
