@@ -175,6 +175,14 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     }
 
     @Override
+    public void onPause(){
+        super.onPause();
+        if(map!=null){
+            map.disconnectClient();
+        }
+    }
+
+    @Override
     public void onStart(){
         super.onStart();
         mAuth.addAuthStateListener(mAuthListener);
@@ -256,6 +264,9 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
         super.onResume();
         //if we have a mapfragment, ensure the permissions are prepped.
         //MapFragment frag = (MapFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_map);
+        if(map!=null){
+            map.reconnectClient();
+        }
         onPermissionsValid(canAccessLocation());
     }
 

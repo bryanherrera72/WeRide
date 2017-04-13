@@ -47,7 +47,7 @@ public class LocationUpdater {
     /*
     *  Sets the data change listeners for the group at the specified location
     * */
-    public void setListenersForGroup(String groupid){
+    public void setArrayForGroup(String groupid){
         groupref = getGroupRef(groupid);
         groupref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -58,7 +58,7 @@ public class LocationUpdater {
                     ArrayList<DatabaseReference> friends = new ArrayList<DatabaseReference>();
                     for (Map.Entry<String, String> user : groupusers.entrySet()) {
                         if (!(user.equals(userid))) {
-                            userref = getUserRef(user.getValue());
+                            userref = getUserLocationRefs(user.getValue());
                             friends.add(userref);
                         }
                     }
@@ -77,11 +77,11 @@ public class LocationUpdater {
         groupmemberrefs = friends;
     }
 
-    private ArrayList<DatabaseReference> getFriendLocationReferences(){
+    public ArrayList<DatabaseReference> getFriendLocationReferences(){
         return groupmemberrefs;
     }
-    private DatabaseReference getUserRef(String userid){
-        return db.getReference("/users").child(userid);
+    private DatabaseReference getUserLocationRefs(String userid){
+        return db.getReference("/users").child(userid).child("location");
     }
     private DatabaseReference getGroupRef(String groupid){
         return  db.getReference("/groups").child(groupid);

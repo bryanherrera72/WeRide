@@ -45,7 +45,7 @@ public class ActiveToggler {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 groupid= (String) dataSnapshot.getValue();
                 setGroupId(groupid);
-                lu.setListenersForGroup(groupid);
+                lu.setArrayForGroup(groupid);
             }
 
             @Override

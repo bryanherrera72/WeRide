@@ -20,7 +20,11 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.mapzen.android.core.MapzenManager;
 import com.mapzen.android.graphics.CompassView;
 import com.mapzen.android.graphics.MapView;
@@ -45,10 +49,14 @@ import com.mapzen.valhalla.RouteCallback;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import www.weride.com.R;
+import www.weride.com.classes.ActiveToggler;
 import www.weride.com.classes.LocationUpdater;
 
 /**
@@ -82,6 +90,7 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
     Route currentroute;
     LngLat searchedLocation = null;
     LocationUpdater lu;
+    ActiveToggler at;
     double distance;
     double[] userLoc = null;
     TextView textView;
@@ -100,6 +109,7 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
     private boolean permissionsvalid = false;
     private OnFragmentInteractionListener mListener;
 
+    private String active_group;
     public MapFragment() {
         // Required empty public constructor
     }
@@ -128,8 +138,12 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
         super.onCreate(savedInstanceState);
         db = FirebaseDatabase.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser();
-        if(user!=null)
+        if(user!=null) {
+            at = new ActiveToggler(user,db);
+
             lu = new LocationUpdater(user, db);
+            active_group = "";
+        }
 
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
@@ -164,7 +178,9 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
 
         engine = new RouteEngine();
         engine.setListener(this);
-
+        if(at.getActiveGroupId()!=null) {
+            lu.setArrayForGroup(at.getActiveGroupId());
+        }
         return map;
     }
 
@@ -200,7 +216,7 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
     @Override
     public void onResume(){
         super.onResume();
-
+        active_group = "";
             if (enableLocationOnResume) {
                 map.setMyLocationEnabled(true);
             }
@@ -269,6 +285,16 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
         map.setZoom(15);
     }
 
+    public void disconnectClient(){
+        if(lostApiClient!=null && lostApiClient.isConnected()){
+            lostApiClient.disconnect();
+        }
+    }
+    public void reconnectClient(){
+        if(lostApiClient!=null && !(lostApiClient.isConnected())){
+            lostApiClient.connect();
+        }
+    }
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -417,13 +443,75 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
             }
         }
         if(lostApiClient.isConnected()) {
+
+            active_group = "";
+
             LocationRequest request = LocationRequest.create().setPriority(LocationRequest.PRIORITY_LOW_POWER).setInterval(5000).setSmallestDisplacement(10);
             LocationListener listener = new LocationListener() {
                 @Override
                 public void onLocationChanged(Location location) {
-
                     userLoc = new double[]{location.getLatitude(), location.getLongitude()};
                     lu.updateLocation(userLoc);
+
+                    if(at.getActiveGroupId()!=null && active_group != at.getActiveGroupId()){
+                        active_group = at.getActiveGroupId();
+                        Log.i("active", active_group+ "");
+                        db.getReference("/groups").child(active_group)
+                                                    .child("users")
+                                                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                                                        @Override
+                                                        public void onDataChange(DataSnapshot dataSnapshot) {
+                                                            HashMap<String,String> users = (HashMap<String,String>) dataSnapshot.getValue();
+                                                            for(Map.Entry<String, String> curruser: users.entrySet()){
+                                                                String userid = curruser.getValue();
+                                                                db.getReference("users").child(userid).child("location").addValueEventListener(new ValueEventListener() {
+                                                                    @Override
+                                                                    public void onDataChange(DataSnapshot dataSnapshot) {
+                                                                        ArrayList<Number> point = (ArrayList<Number>) dataSnapshot.getValue();
+                                                                        Log.i("here is: ", point + "");
+                                                                        map.clearDroppedPins();
+                                                                        drawFriendToMap(point.get(0).doubleValue(), point.get(1).doubleValue());
+
+
+                                                                    }
+
+                                                                    @Override
+                                                                    public void onCancelled(DatabaseError databaseError) {
+
+                                                                    }
+                                                                });
+                                                            }
+                                                        }
+
+                                                        @Override
+                                                        public void onCancelled(DatabaseError databaseError) {
+
+                                                        }
+                                                    });
+
+//                        ArrayList<DatabaseReference> friendrefs = lu.getFriendLocationReferences();
+//                        Log.i("friendrefs are null? ", "" + (friendrefs == null));
+//                        if(friendrefs!=null) {
+//                            Log.i("this was called", "for once");
+//                            for (DatabaseReference ref : friendrefs) {
+//                                ref.addValueEventListener(new ValueEventListener() {
+//                                    @Override
+//                                    public void onDataChange(DataSnapshot dataSnapshot) {
+//                                        ArrayList<Long> friendlocation = (ArrayList<Long>) dataSnapshot.getValue();
+//                                        Log.i("location lat: ", "" + friendlocation.get(0));
+//                                        Log.i("location lng: ","" + friendlocation.get(1));
+//                                        drawFriendToMap(friendlocation.get(0), friendlocation.get(1));
+//                                    }
+//
+//                                    @Override
+//                                    public void onCancelled(DatabaseError databaseError) {
+//
+//                                    }
+//                                });
+//                            }
+//                            map.clearDroppedPins();
+//                        }
+                    }
                 }
 
                 @Override
@@ -440,6 +528,11 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
         }
     }
 
+    private void drawFriendToMap(Double lat, Double lng){
+        if(map!=null && !(lat == 0.0) && !(lng == 0.0)){
+            map.drawDroppedPin(new LngLat(lat, lng));
+        }
+    }
     @Override
     public void onConnectionSuspended() {
 
