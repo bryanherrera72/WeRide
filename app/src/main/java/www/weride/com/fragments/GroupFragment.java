@@ -257,15 +257,42 @@ public class GroupFragment extends Fragment {
     //Create group method
     private void createGroup(FirebaseUser user, String title){
         dbref = db.getReference("/");
+
         HashMap<String,String> groupuserlist = new HashMap<String,String>();
         ArrayList<Double> currentuserlocation = new ArrayList<Double>();
         /*a value of zero will indicate a creator*/
         groupuserlist.put("creator", user.getUid());
         DatabaseReference pushedGroupRef = dbref.child("groups").push();
-        Group newgroup = new Group(pushedGroupRef.getKey(), title,groupuserlist,currentuserlocation);
+        final String groupid = pushedGroupRef.getKey();
+        Group newgroup = new Group(groupid, title,groupuserlist,currentuserlocation);
         pushedGroupRef.setValue(newgroup);
         /*We also need to add the new groups id to the current users group list since, you know, they created it*/
         dbref.child("users").child(user.getUid()).child("groups").push().setValue(pushedGroupRef.getKey());
-    }
+        /*TODO:for the purposes of demoing, we'll be adding all users that currently exist, into the group. */
 
+        dbref.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                pushUsersToNewGroup(groupid, (Map<String, User>)dataSnapshot.getValue());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+    /*takes the full list of users and adds them to a new group. also pushes a group id into their own personal group list*/
+    public void pushUsersToNewGroup(String groupid, Map<String, User> userlist){
+        dbref = db.getReference("/");
+        for(Map.Entry<String, User> currfriend: userlist.entrySet()){
+            String friendid = currfriend.getKey();
+            if(!(friendid.equals("@nonull")) && !(friendid.equals(user.getUid()))) {
+                dbref.child("groups").child(groupid).child("users").push().setValue(friendid);
+                dbref.child("users").child(friendid).child("groups").push().setValue(groupid);
+            }
+        }
+
+    }
 }

@@ -28,6 +28,7 @@ public class GroupsListAdapter extends BaseAdapter{
         mContext = context;
         groups = items;
         this.at = at;
+
         mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
     @Override

@@ -420,6 +420,7 @@ public class MapFragment extends com.mapzen.android.graphics.MapFragment impleme
             public void onLocationChanged(Location location) {
 
                 userLoc = new double[]{location.getLatitude(), location.getLongitude()};
+                lu.updateLocation(userLoc);
             }
 
             @Override

@@ -18,8 +18,10 @@ public class ActiveToggler {
     String groupid;
     DatabaseReference userref;
     DatabaseReference activeref;
+    LocationUpdater lu;
     public ActiveToggler(FirebaseUser user, FirebaseDatabase db){
         userid = user.getUid();
+        lu = new LocationUpdater(user,db);
         userref = db.getReference("/users").child(userid);
         syncActiveGroup();
     }
@@ -28,6 +30,7 @@ public class ActiveToggler {
         this.groupid = groupid;
         activeref = userref.child("groups").child("current_active");
         activeref.setValue(groupid);
+
     }
     public void turnOffActive(){
         activeref = userref.child("groups").child("current_active");
@@ -42,6 +45,7 @@ public class ActiveToggler {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 groupid= (String) dataSnapshot.getValue();
                 setGroupId(groupid);
+                lu.setListenersForGroup(groupid);
             }
 
             @Override
@@ -54,7 +58,7 @@ public class ActiveToggler {
     private void setGroupId(String groupid){
         this.groupid = groupid;
     }
-    public String getGroupId(){
+    public String getActiveGroupId(){
         return groupid;
     }
 }
