@@ -3,12 +3,14 @@ package www.weride.com;
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
@@ -24,8 +26,12 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.mapzen.tangram.LngLat;
@@ -34,6 +40,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import www.weride.com.activities.LoginActivity;
+import www.weride.com.classes.CircleTransform;
 import www.weride.com.fragments.CreateGroupDialogFragment;
 import www.weride.com.fragments.GroupFragment;
 import www.weride.com.fragments.MapFragment;
@@ -50,9 +58,13 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     public ActionBarDrawerToggle drawerToggle;
     private MapFragment map;
     private LocationManager lm;
+    private ImageView profileImg;
+    private TextView name;
+    private View navHeader;
     private boolean locationaccess = false;
     private FirebaseUser user;
     private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener authStateListener;
     private static final String BACK_STACK_ID="MainMapBackStack";
     private final static int REQUEST_CODE_ASK_PERMISSIONS = 1;
 
@@ -73,12 +85,36 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         standardtoolbar = (Toolbar) findViewById(R.id.standard_toolbar);
 
+
+        authStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                user = FirebaseAuth.getInstance().getCurrentUser();
+                if(user!=null){
+
+                }
+            }
+        };
+
         //set the drawer layout inside the main layout
         mainDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         navDrawer = (NavigationView) findViewById(R.id.navView);
         setupDrawerContent(navDrawer);
         swapToMapToolbar();
 
+        navHeader = navDrawer.getHeaderView(0);
+        profileImg = (ImageView)navHeader.findViewById(R.id.imgProfile);
+        name = (TextView)navHeader.findViewById(R.id.displayName);
+/*
+        String someName = user.getDisplayName();
+        name.setText(someName);
+        Glide.with(MainActivity.this).load(user.getPhotoUrl())
+                .crossFade().thumbnail(0.5f)
+                .bitmapTransform(new CircleTransform(MainActivity.this))
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(profileImg);
+
+*/
         //set the first fragment.
         fragmentManager = getSupportFragmentManager();
         try{
@@ -88,6 +124,19 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
             e.printStackTrace();
         }
         fragmentManager.beginTransaction().add(R.id.flContent, map).commit();
+
+        setNavHeader(user);
+    }
+
+    private void setNavHeader(FirebaseUser user1){
+        name.setText(user1.getDisplayName());
+        String img = user1.getPhotoUrl().toString();
+        Glide.with(this).load(img)
+                .centerCrop()
+                .placeholder(R.drawable.bg_circle)
+                .crossFade()
+                .into(profileImg);
+
     }
 
     //assign a drawer toggle to a toolbar parameter.
@@ -109,7 +158,7 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     }
     public void selectDrawerItem(MenuItem item){
         Fragment frag = null;
-        Class fragmentClass;
+        Class fragmentClass=null;
         switch(item.getItemId()){
             //map is visible
             case R.id.map_fragment:
@@ -120,6 +169,9 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
             case R.id.group_fragment:
                 fragmentClass = GroupFragment.class;
                 swapToFragmentToolbar();
+                break;
+            case R.id.nav_logout:
+                logout();
                 break;
             default:
                 fragmentClass = MapFragment.class;
@@ -338,6 +390,11 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     public void onFragmentInteraction(Uri uri) {}
 
     @Override
+    public void activeSwitchToMap() {
+
+    }
+
+    @Override
     public void createGroup(String title) {
         if(GroupFragment.class ==getSupportFragmentManager().findFragmentById(R.id.flContent).getClass()){
             GroupFragment groupfrag = (GroupFragment) getSupportFragmentManager().findFragmentById(R.id.flContent);
@@ -349,5 +406,13 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
         if(!(user == null)){
 
         }
+    }
+
+    protected void logout(){
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        MainActivity.this.finish();
     }
 }

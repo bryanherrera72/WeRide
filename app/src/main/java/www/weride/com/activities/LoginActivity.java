@@ -2,11 +2,16 @@ package www.weride.com.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,17 +30,25 @@ public class LoginActivity extends AppCompatActivity {
     private Button loginbtn;
     private FirebaseAuth mAuth;
     private TextView sign_up;
+    private CheckBox remember_me;
     private FirebaseAuth.AuthStateListener mAuthListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         mAuth = FirebaseAuth.getInstance();
         username_box = (EditText) findViewById(R.id.username_box);
         password_box = (EditText) findViewById(R.id.password_box);
+        remember_me = (CheckBox)findViewById(R.id.rememberMe);
 
         loginbtn = (Button) findViewById(R.id.login_button);
-
+        if(mAuth.getCurrentUser()!=null && mAuth.getCurrentUser().getPhotoUrl()!=null){
+            sendToMain();
+            return;
+        }
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,7 +78,24 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, R.string.auth_failed, Toast.LENGTH_SHORT).show();
                }
                else{
-                   sendToMain();
+
+                   FirebaseUser user =  FirebaseAuth.getInstance().getCurrentUser();
+                   SharedPreferences preferences = getSharedPreferences("user_data", MODE_PRIVATE);
+                   SharedPreferences.Editor editor = preferences.edit();
+                   if(remember_me.isChecked()){
+                       editor.putBoolean("remembered", true);
+                       assert user != null;
+                       editor.putString("user_name", user.getDisplayName());
+                       editor.putString("email", user.getEmail());
+                       editor.putString("uid", user.getUid());
+                   }else{
+                       editor.putBoolean("remembered", false);
+                       editor.remove("user_name");
+                       editor.remove("email");
+                       editor.remove("uid");
+                   }
+                   editor.apply();
+                   sendToSetProfile();
                }
             }
         });
@@ -73,7 +103,6 @@ public class LoginActivity extends AppCompatActivity {
     private void sendToMain(){
         Intent i = new Intent(getContext(), MainActivity.class);
         //pass the user object into main.
-        FirebaseUser user =  FirebaseAuth.getInstance().getCurrentUser();
         startActivity(i);
         finish();
     }
@@ -87,5 +116,11 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onStop(){
         super.onStop();
+    }
+
+    private void sendToSetProfile(){
+        Intent intent = new Intent(getContext(), SetProfilePicture.class);
+        startActivity(intent);
+        finish();
     }
 }

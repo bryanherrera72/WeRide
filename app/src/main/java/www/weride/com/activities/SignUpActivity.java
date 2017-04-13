@@ -30,7 +30,7 @@ import www.weride.com.classes.User;
 public class SignUpActivity extends AppCompatActivity {
     String fname, lname, email, password, vpassword;
     EditText fname_box, lname_box,email_box, password_box,vpassword_box;
-    Button sign_up;
+    Button sign_up, login;
     FirebaseAuth mAuth;
     FirebaseDatabase db;
     DatabaseReference dbref;
@@ -55,6 +55,16 @@ public class SignUpActivity extends AppCompatActivity {
                 password = password_box.getText().toString();
                 vpassword = vpassword_box.getText().toString();
                 signUp(fname,lname,email,password,vpassword);
+            }
+        });
+
+        login = (Button)findViewById(R.id.login);
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }

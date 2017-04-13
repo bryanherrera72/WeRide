@@ -4,16 +4,28 @@
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:background="@color/colorPrimary"
     tools:showIn="@layout/activity_sign_up">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="64dp"
+        android:minHeight="64dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:src="@mipmap/ic_launcher"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/imageView2" />
     <EditText
         android:id="@+id/first_name_box"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/margin_huge"
         android:hint="@string/first_name_hint"
         android:ems="10"
         android:inputType="text"
-        android:maxWidth="300dp" />
+        android:maxWidth="300dp"
+        android:layout_below="@+id/imageView2"
+        android:layout_alignLeft="@+id/last_name_box"
+        android:layout_alignStart="@+id/last_name_box"
+        android:layout_marginTop="14dp" />
     <EditText
         android:id="@+id/last_name_box"
         android:layout_width="300dp"
@@ -66,7 +78,21 @@
         android:id="@+id/sign_up_button"
         android:text="@string/sign_up_hint"
         android:layout_alignRight="@id/verify_password_box"
+        android:layout_alignEnd="@id/verify_password_box"
         android:layout_below="@id/verify_password_box"
+        android:layout_marginTop="10dp"
         android:background="@color/mz_white"
         android:textColor="@color/common_google_signin_btn_text_light"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/verify_password_box"
+        android:background="@color/mz_white"
+        android:layout_marginTop="10dp"
+        android:id="@+id/login"
+        android:text="Login"
+        android:layout_alignLeft="@id/verify_password_box"
+        android:layout_alignStart="@id/verify_password_box"
+        android:textColor="@color/common_google_signin_btn_text_light"
+        />
 </RelativeLayout>

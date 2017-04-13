@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--here is the header for the navigation drawer-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="192dp"
@@ -8,11 +9,24 @@
     android:padding="16dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
     android:gravity="bottom">
-    <TextView
-        android:layout_width="match_parent"
+
+    <ImageView
+        android:id="@+id/imgProfile"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Header design shit goes here."
-        android:textColor="@android:color/white"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+        app:srcCompat="@android:drawable/sym_def_app_icon"
+        android:layout_gravity="center"
+        android:contentDescription="Profile Picture" />
+    <TextView
+        android:id="@+id/displayName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/mz_white"
+        android:textSize="20sp"
+        android:text="Guest"
+        android:layout_marginTop="20dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        />
 
 </LinearLayout>

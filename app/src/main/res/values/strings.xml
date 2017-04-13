@@ -18,5 +18,8 @@
     <string name="sign_up_hint">Sign Up</string>
     <string name="create_group">Create Group + </string>
     <string name="create_group_dialog_label">Create a new Group:</string>
-    <string name = "add">Add</string>
+    <string name="add">Add</string>
+    <string name="welcome">Welcome!!!</string>
+    <string name="profile_names">Display name</string>
+    <string name="induce_smile">Induce Smile</string>
 </resources>

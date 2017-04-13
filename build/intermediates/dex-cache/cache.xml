@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/.android/build-cache/b2b98198e3145a5ac78291b6ffc48bc3fbad68cf/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="399f75732ff1ac159f9e73611536f1508bf18d3b">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_0026cddddea6add70855f7b1e1242c11166a359b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/.android/build-cache/8c2b83fff0ef0d0f66a7b8454f3450a1f651e305/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="38789e20ace9ab7dbd00554bd2673ab424478d3b">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_3e5a6087e6a19d86a06c977bbf6bf19bb3c9fb4e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/.android/build-cache/c35085c33ea006fc3429ac56b3b4ffceb9eb0308/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_7012eb8a077eef3c75f83ca20e08a95000cb513b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/.android/build-cache/e42f4bd3d6070d00ba1c58e8d603ffab300edd3e/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6928eb7c38feb3ce134be273416d6b53b4f5309b">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_fd6ee402f91ec0e680a548e21923ee00a657b5c9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/Library/Android/sdk/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.0-beta4/constraint-layout-solver-1.0.0-beta4.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0a9cb567dc008f570c28531720168f19148da965">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/constraint-layout-solver-1.0.0-beta4_204b739f855492d86782c5666269545dabee5ce8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/android-sdks/build-tools/22.0.1/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-runtime/1.0.6/3562c66f648480d3bd4f76cff722488ced13445b/kotlin-runtime-1.0.6.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3562c66f648480d3bd4f76cff722488ced13445b">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/kotlin-runtime-1.0.6_f882a2444ce49575e6c80f26464926f051804273/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/.android/build-cache/bf216410d05a1dfb9e1193812cfbd6bacb7c2b47/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="888983f51cf34f57a93ff16832552f2f15937212">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_1f59157366c953f347607e5418648bc6d074f105/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/android-sdks/build-tools/22.0.1/caches/modules-2/files-2.1/com.squareup.okhttp3/logging-interceptor/3.5.0/94c11f915bfe1aeaa5ef6351ddfbe58bae1ea397/logging-interceptor-3.5.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="94c11f915bfe1aeaa5ef6351ddfbe58bae1ea397">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/logging-interceptor-3.5.0_ca88fb762d380551daaab90ff657d128447970e9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/android-sdks/build-tools/22.0.1/caches/modules-2/files-2.1/com.squareup.retrofit2/converter-gson/2.1.0/aa557d71ead91cbf26e0c316a0f593d168303309/converter-gson-2.1.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="aa557d71ead91cbf26e0c316a0f593d168303309">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/converter-gson-2.1.0_1055d73191be87d960c417c3f52e2687282ef025/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/.android/build-cache/843343ad5b7337ffe86328ac1f2390cf8d54039b/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="91e6331820408d738a6645eab5d7c0d91c193b4b">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_dde80be1096b834cfcf7f497f92f5493ba92d46b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/.android/build-cache/a9aa53b55fceafa09ba46f3113aff191e4223e24/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="9b2d031686cc4eebbd118ab262f1c1528f31f4de">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_35a8566a7e142ca3102316b970a3272d48e3d015/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/android-sdks/build-tools/22.0.1/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.0.6/d19acb6ed49b9c48228c0e5dff8071fce23be4b8/kotlin-stdlib-1.0.6.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d19acb6ed49b9c48228c0e5dff8071fce23be4b8">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/kotlin-stdlib-1.0.6_3a89e54ae7e5b839e3b27e3dde74f0cf0c6ba468/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/android-sdks/build-tools/22.0.1/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.5.0/4b0bb6bfbecbdd42b97ff400af342bfe7f32bc83/okhttp-3.5.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4b0bb6bfbecbdd42b97ff400af342bfe7f32bc83">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/okhttp-3.5.0_6cfa249280b7926bfd61fa460af11da0fdacff79/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/android-sdks/build-tools/22.0.1/caches/modules-2/files-2.1/commons-io/commons-io/1.3.2/b6dde38349ba9bb5e6ea6320531eae969985dae5/commons-io-1.3.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b6dde38349ba9bb5e6ea6320531eae969985dae5">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/commons-io-1.3.2_dfa0776ff714f7440b4c408232979096b6841a5e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/.android/build-cache/f7ee1c57953d4b750a2d15266917b567d11d918b/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4b42a61cd5924f28e95894e859e6abe57847e2f3">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_188bdc8206c3ea85726ae01464f62a795e5e40a2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/.android/build-cache/68ad1faae768a3ec723d988efebc64f258c3a1fa/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d0a843615f3b5fa3a080497709f5436696149a09">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_40fe54150917883fd7db5989d3626af5a06cc6e7/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/.android/build-cache/89a6562ec4c8563dffe7b39f4951563c41d9c55c/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_6e01895f3a58d588a8340e17bc1f0b88f79d5198/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/.android/build-cache/033305209a637e2e3da1d9d0259f1181f3557934/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_7bb86e830c8f9a4b0f32e8913f46b62b1befb715/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/.android/build-cache/de03ca6b107730e4f19cf4cc0c5cad8fbd4e8e9d/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0a5d5553c308643a9022f15513ebdd59e9c78d82">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_6b48cb4372659ff0bbd3a0d8aaca61cfab24abb3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/android-sdks/build-tools/22.0.1/caches/modules-2/files-2.1/com.github.frankiesardo/auto-parcel/0.3.1/501393158454717fef27cba8d177f32a158b8955/auto-parcel-0.3.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="501393158454717fef27cba8d177f32a158b8955">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/auto-parcel-0.3.1_8655f044d4a01f838b135b403f948859130899f3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/android-sdks/build-tools/22.0.1/caches/modules-2/files-2.1/com.squareup.okio/okio/1.11.0/840897fcd7223a8143f1d9b6f69714e7be34fd50/okio-1.11.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="840897fcd7223a8143f1d9b6f69714e7be34fd50">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/okio-1.11.0_8d6d2fa43f7f340ccab7c346cb2b29ce5af63c62/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/android-sdks/build-tools/22.0.1/caches/modules-2/files-2.1/com.squareup.retrofit2/retrofit/2.1.0/2de7cd8b95b7021b1d597f049bcb422055119f2c/retrofit-2.1.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2de7cd8b95b7021b1d597f049bcb422055119f2c">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/retrofit-2.1.0_04d40d5dce1edd2b6ae9b2b127fb9db51c91cdf5/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/.android/build-cache/d7cc319ed2de6d5fb700a20e594facc17058f870/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_e0195ee0d484630b10ee90f2886cf58427ffb83c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/.android/build-cache/8ff52fd68596f3d6badd3ef21427b9a30ba2bb0a/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2a7ffe939ffd830b5d4052f3c1c4c235923790ce">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_942c521b8bbd3a07283c2bb44c9fc739f05a88a5/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/.android/build-cache/b67fc7a99d38a6a2919fd0ef3b373e49395fd3b7/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="922f50ee4de65ca743299da2afd28fd66d42818b">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_dc96d5aa675f725f3110837fb967fa13706a1ab8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/.android/build-cache/0790b961705274c302d708704d56e3d50a1434a2/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_d6c3960f6c544259069915cc24ab8626b0882af6/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/android-sdks/build-tools/22.0.1/caches/modules-2/files-2.1/com.squareup.retrofit2/converter-scalars/2.1.0/7c0d7c8f6e52115bb82fa018d81a8d0cae35dde5/converter-scalars-2.1.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7c0d7c8f6e52115bb82fa018d81a8d0cae35dde5">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/converter-scalars-2.1.0_22290257914ed93fbb5306c2e9b25dddedf1dc03/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/.android/build-cache/91ff116b7550882488e9a05d716af5266c3d8254/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_334c7d6072d5477491bbebf25d02682c4ad47b3c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/android-sdks/build-tools/22.0.1/caches/modules-2/files-2.1/com.google.dagger/dagger/2.0/da7ba0ee1d30edd955da276cdf01d3d7cb24aedc/dagger-2.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="da7ba0ee1d30edd955da276cdf01d3d7cb24aedc">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/dagger-2.0_bf67d9465be18e659d2ec108da5ac05dbbbf6800/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/.android/build-cache/a1ca0e71e2879c7375b33e8d156f6e458d2b300a/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4b868b833b0887aa48c4e581558eef4f1196f6a2">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_549122a0a2beca2d676cd807fb75388598815e3b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/.android/build-cache/87f70d5d1fbddb31bcc1b8bf8f3addb484188d1e/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="914f5d3e3ace66080e59613708f06d129a222e25">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_20d491f3350852b8ea0ac2da283832ba45235e68/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/.android/build-cache/fdce2fa6e12c41cefcc4637f459a26b8a7e17af1/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="acce1f45c71b79a58e243b919e1bc6a5274750d9">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_c1141a84a26e3e20983bb34eaf2de69819cd69db/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.3.1/support-annotations-25.3.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-25.3.1_394a02c70867fe12f4b77aea3a21030b0827727a/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_e50d0e0f501501a1b883da8bc28f0c295dfb8d48/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/.android/build-cache/9ec38659d04c4bee7ffa02ac063ccbf5ffac2928/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0b44a82d49944e3cf3a7f0d24d08c1c4411a22d1">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_71b511535f199df3f8116e32dd2d6be8d2b2f823/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/.android/build-cache/653a82ff95eb2ab43e64d7d80a5bd4c827fb9a77/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="95519720620b553f63afc789beba9ad582807f7c">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_4933855d95c2ef2368d46ec84adc457bc40c9d4f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/.android/build-cache/91564fe49b057d0df8cd07184b85279feb37497c/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="44098e691b36776973374ac03afe0225b17f8a74">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_90963322db728d4c6af337c271554a48a8f7efce/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/android-sdks/build-tools/22.0.1/caches/modules-2/files-2.1/javax.inject/javax.inject/1/6975da39a7040257bd51d21a231b76c915872d38/javax.inject-1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6975da39a7040257bd51d21a231b76c915872d38">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/javax.inject-1_ef7fb707717d11ed9da9da839f0549273a70c4c4/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/.android/build-cache/e7d1fc4b5489b801a169289bb78007e317a71b69/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="aa3b9dfd276e600880c96d632cd64dcae6220e6f">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_9aa9a3b09b2a778518163d195bb544805835a8df/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/android-sdks/build-tools/22.0.1/caches/modules-2/files-2.1/xmlpull/xmlpull/1.1.3.1/2b8e230d2ab644e4ecaa94db7cdedbc40c805dfa/xmlpull-1.1.3.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2b8e230d2ab644e4ecaa94db7cdedbc40c805dfa">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/xmlpull-1.1.3.1_e90ef1752540f1eedc397d08138d9c753cabcb49/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/android-sdks/build-tools/22.0.1/caches/modules-2/files-2.1/com.github.bumptech.glide/glide/3.7.0/9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4/glide-3.7.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/glide-3.7.0_b541927a856eb820bb0165b1a5e4c69b5791775a/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/.android/build-cache/e8a76bf6f228c3714250340e31d0f492f8650286/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d4cf6227dd6a2ceff0f7dcf0c324380b7abf2c28">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_0156834f015175af158c267d4db72ac3bb0873b4/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/.android/build-cache/fb6e371f3b76a4455fd0ddb028e688897c284029/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="662d7533b25a666c649c10a16b42edfb95f25a4f">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_6e67c5a63dfe32a75b141f3e92ba16685fccd2ab/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/android-sdks/build-tools/22.0.1/caches/modules-2/files-2.1/javax.annotation/javax.annotation-api/1.2/479c1e06db31c432330183f5cae684163f186146/javax.annotation-api-1.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="479c1e06db31c432330183f5cae684163f186146">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/javax.annotation-api-1.2_aca70c476c9c529a179bc83266e173f403b952bf/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="62de48ce24a20d8826f1b56ab2bf5bd4021865e2">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_a4c9e07059c50d96848bf087ea6323f1a6d7d5c5/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/.android/build-cache/e7ab200de5078924ef54a37a6a60957450c1dd06/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_52d0cfcc7bece95f0ab82c472ae6652691a74cb0/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/.android/build-cache/3182b316e698cd7a2f8e533464a1a51574bb72bb/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a1aa1dd9917e887bfe732cc5e561ae6ae8f9a84a">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_3158e28c7b5f511b580922f74952d4d257f36c78/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/.android/build-cache/a65274c5fb1748f1a542ef588a77a8e7e786a986/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="dbae35d7fc3427d30bef0037bdf61ad0d8d984f8">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_19f4e58c7e72121977d5e335d9563e1b9955fec4/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/.android/build-cache/3128eb324ecfa14a3dae91f09737f4efed625873/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_c7ac669892bacf87f2600c460041a61b951d9107/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/android-sdks/build-tools/22.0.1/caches/modules-2/files-2.1/com.google.code.gson/gson/2.7/751f548c85fa49f330cecbb1875893f971b33c4e/gson-2.7.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="751f548c85fa49f330cecbb1875893f971b33c4e">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/gson-2.7_58540897ed57741337e31564f01868f0b56372f4/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/.android/build-cache/43a7acb98cead79804ce50c39a509068b99455a2/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_dab2cffced6149cb013756c80acd26485a675cea/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/edwige/android-sdks/build-tools/22.0.1/caches/modules-2/files-2.1/com.f2prateek.ln/ln/1.1.1/a378845c0282d54b00d4a4bdf021a604b6cf2a5f/ln-1.1.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a378845c0282d54b00d4a4bdf021a604b6cf2a5f">
+        <dex dex="/Users/edwige/Desktop/show/WeRide/app/build/intermediates/transforms/dex/debug/folders/1000/10/ln-1.1.1_f61fcfe2b936712d374fc7c19e5a6dde6b3c40c0/classes.dex" />
+    </item>
+
+</items>
