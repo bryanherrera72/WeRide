@@ -1,25 +1,48 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context="www.weride.com.fragments.GroupFragment">
+<RelativeLayout
     android:layout_height="match_parent"
-    tools:context="www.weride.com.fragments.GroupFragment">
-    <RelativeLayout
+    android:layout_width="match_parent">
+
+    <!-- TODO: Update blank fragment layout -->
+    <ListView
+        android:id="@+id/groups_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <android.support.design.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_height="match_parent"
-        android:layout_width="match_parent">
-            <Button
-                android:id="@+id/create_group_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/create_group"/>
+        android:layout_width="match_parent"
+        >
 
-            <!-- TODO: Update blank fragment layout -->
-            <ListView
-                android:id="@+id/groups_list"
-                android:layout_below="@id/create_group_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
-    </RelativeLayout>
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            android:clickable="true"
+            app:fabSize="mini"
+            app:srcCompat="@drawable/find_me_fab" />
 
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/New"
+            android:elevation="6dp"
+            android:textSize="18sp"
+            android:textColor="#fff"
+            app:layout_anchor="@id/floatingActionButton"
+            app:layout_anchorGravity="center"/>
 
+    </android.support.design.widget.CoordinatorLayout>
+
+</RelativeLayout>
 </FrameLayout>

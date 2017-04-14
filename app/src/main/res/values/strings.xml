@@ -19,4 +19,5 @@
     <string name="create_group">Create Group + </string>
     <string name="create_group_dialog_label">Create a new Group:</string>
     <string name="add">Add</string>
+    <string name="New">New</string>
 </resources>

@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.support.design.widget.FloatingActionButton;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -111,11 +112,11 @@ public class GroupFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_group, container, false);
 
         groupsview = (ListView) view.findViewById(R.id.groups_list);
-        creategroup = (Button) view.findViewById(R.id.create_group_button);
-        creategroup.setOnClickListener(new View.OnClickListener() {
+
+        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.floatingActionButton);
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                //createGroup(user, "");
+            public void onClick(View v) {
                 CreateGroupDialogFragment dialog = new CreateGroupDialogFragment();
                 dialog.show(getFragmentManager(), "create");
             }
